@@ -8,6 +8,7 @@
 
 
     <meta name="description" content="向来心是看客心，乃何人是剧中人">
+<meta name="keywords" content="数论,莫比乌斯反演,树状数组">
 <meta property="og:type" content="website">
 <meta property="og:title" content="AcF&#39;s Blog">
 <meta property="og:url" content="http://yoursite.com/tags/index.html">
@@ -137,6 +138,39 @@
             </h3>
             <ul class="menu-list">
                 
+                <li>
+                    <a class="level is-marginless" href="/tags/数论/">
+                        <span class="level-start">
+                            <span class="level-item">数论</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">1</span>
+                        </span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a class="level is-marginless" href="/tags/树状数组/">
+                        <span class="level-start">
+                            <span class="level-item">树状数组</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">1</span>
+                        </span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a class="level is-marginless" href="/tags/莫比乌斯反演/">
+                        <span class="level-start">
+                            <span class="level-item">莫比乌斯反演</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">1</span>
+                        </span>
+                    </a>
+                </li>
+                
             </ul>
         </div>
     </div>
@@ -182,7 +216,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        1
+                        2
                     </p>
                 </div>
             </div>
@@ -192,7 +226,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        0
+                        1
                     </p>
                 </div>
             </div>
@@ -202,7 +236,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        0
+                        3
                     </p>
                 </div>
             </div>
@@ -270,7 +304,15 @@
                 分类
             </h3>
             <ul class="menu-list">
-            
+            <li>
+        <a class="level is-marginless" href="/categories/题解/">
+            <span class="level-start">
+                <span class="level-item">题解</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
             </ul>
         </div>
     </div>
@@ -377,16 +419,22 @@
 
     
     
-<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    MathJax.Hub.Config({
-        'HTML-CSS': {matchFontHeight: false},
-        SVG: {matchFontHeight: false},
-        CommonHTML: {matchFontHeight: false}
-    });
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
 });
 </script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
     
     

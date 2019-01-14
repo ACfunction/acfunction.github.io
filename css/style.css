@@ -382,7 +382,7 @@ img.thumbnail {
 .content code,
 .content pre {
   font-size: 0.85em;
-  font-family: "Source Code Pro", monospace, "Microsoft YaHei";
+  font-family: "Fira Mono", "Conslas";
 }
 .content code {
   color: #ff3860;
@@ -428,7 +428,7 @@ figure.highlight figcaption {
 }
 figure.highlight figcaption span {
   font-weight: 500;
-  font-family: "Source Code Pro", monospace, "Microsoft YaHei";
+  font-family: "Fira Mono", "Conslas";
 }
 figure.highlight figcaption a {
   float: right;
@@ -474,4 +474,18 @@ figure.highlight:hover .copy {
 }
 .gist .file {
   all: initial;
+}
+.my-content {
+  width: 75% !important;
+}
+.my-sidebar {
+  width: 25% !important;
+}
+@media screen and (max-width: 1000px) {
+  .my-content {
+    width: 100% !important;
+  }
+  .my-sidebar {
+    display: none;
+  }
 }

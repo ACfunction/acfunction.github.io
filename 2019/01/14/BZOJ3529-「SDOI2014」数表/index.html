@@ -7,18 +7,18 @@
 
 
 
-    <meta name="description" content="Description$T$ 组询问，定义 $F(n)=\sum\limits_{d|n}d$。每次给出 $n,m,a$ 求   $$\sum\limits_{i=1,j=1,F(\gcd(i,j)) \leq a}^{i\leq n, j \leq m} F (\gcd(i,j))$$ $T \leq 20000;n,m,a\leq 10^5$ &amp;lt; !–more–&amp;gt; Solution">
+    <meta name="description" content="Description$T$ 组询问，定义 $F(n)=\sum\limits_{d|n}d$。每次给出 $n,m,a$ 求   $$\sum\limits_{i=1,j=1,F(\gcd(i,j)) \leq a}^{i\leq n, j \leq m} F (\gcd(i,j))$$ $T \leq 20000;n,m,a\leq 10^5$">
 <meta name="keywords" content="数论,莫比乌斯反演,树状数组">
 <meta property="og:type" content="article">
 <meta property="og:title" content="BZOJ3529 「SDOI2014」数表">
 <meta property="og:url" content="http://yoursite.com/2019/01/14/BZOJ3529-「SDOI2014」数表/index.html">
 <meta property="og:site_name" content="AcF&#39;s Blog">
-<meta property="og:description" content="Description$T$ 组询问，定义 $F(n)=\sum\limits_{d|n}d$。每次给出 $n,m,a$ 求   $$\sum\limits_{i=1,j=1,F(\gcd(i,j)) \leq a}^{i\leq n, j \leq m} F (\gcd(i,j))$$ $T \leq 20000;n,m,a\leq 10^5$ &amp;lt; !–more–&amp;gt; Solution">
+<meta property="og:description" content="Description$T$ 组询问，定义 $F(n)=\sum\limits_{d|n}d$。每次给出 $n,m,a$ 求   $$\sum\limits_{i=1,j=1,F(\gcd(i,j)) \leq a}^{i\leq n, j \leq m} F (\gcd(i,j))$$ $T \leq 20000;n,m,a\leq 10^5$">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-14T13:25:50.165Z">
+<meta property="og:updated_time" content="2019-01-15T09:51:16.691Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BZOJ3529 「SDOI2014」数表">
-<meta name="twitter:description" content="Description$T$ 组询问，定义 $F(n)=\sum\limits_{d|n}d$。每次给出 $n,m,a$ 求   $$\sum\limits_{i=1,j=1,F(\gcd(i,j)) \leq a}^{i\leq n, j \leq m} F (\gcd(i,j))$$ $T \leq 20000;n,m,a\leq 10^5$ &amp;lt; !–more–&amp;gt; Solution">
+<meta name="twitter:description" content="Description$T$ 组询问，定义 $F(n)=\sum\limits_{d|n}d$。每次给出 $n,m,a$ 求   $$\sum\limits_{i=1,j=1,F(\gcd(i,j)) \leq a}^{i\leq n, j \leq m} F (\gcd(i,j))$$ $T \leq 20000;n,m,a\leq 10^5$">
 
 
 
@@ -162,7 +162,7 @@
             <h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>$T$ 组询问，定义 $F(n)=\sum\limits_{d|n}d$。每次给出 $n,m,a$ 求  </p>
 <p>$$\sum\limits_{i=1,j=1,F(\gcd(i,j)) \leq a}^{i\leq n, j \leq m} F (\gcd(i,j))$$</p>
 <p>$T \leq 20000;n,m,a\leq 10^5$</p>
-<p>&lt; !–more–&gt;</p>
+<a id="more"></a>
 <h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>首先 $F$ 可以直接暴力地 $O(n \log n)$ 筛出来。</p>
 <p>考虑 $a$ 的限制不是很好处理，假设没有这个 $a$ 的限制，则所求为</p>
 <p>$$\sum\limits_{i=1}^{n}\sum\limits_{j=1}^{m} F (\gcd(i,j))$$</p>

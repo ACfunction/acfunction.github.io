@@ -489,3 +489,46 @@ figure.highlight:hover .copy {
     display: none;
   }
 }
+.navbar .navbar-title {
+  font-size: 17px;
+}
+.navbar .navbar-item {
+  font-size: 15px;
+  padding: 0.7em 1.4em;
+}
+.card-content .title {
+  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.card-content .article-meta {
+  margin-bottom: 30px !important;
+  text-transform: capitalize !important;
+}
+.card-content .article-meta i {
+  margin-right: 5px;
+}
+.card-content .my-title h1 {
+  font-size: 22px !important;
+}
+.card-content .my-post-title {
+  text-align: center;
+}
+.card-content .my-post-title h1 {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  font-size: 26px !important;
+}
+.card-content .my-post-title h1 {
+  transition: 0.5s 0.1s;
+}
+.card-content .my-post-title h1:hover {
+  letter-spacing: 2px;
+}
+.card {
+  border-radius: 2px;
+}
+.ins-selectable {
+  -webkit-animation: 1s;
+  animation: 1s;
+}

@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
-    <meta charset="utf-8">
-<title>AcF&#39;s Blog</title>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+<title>LOJ2174 「FJOI2016」神秘数 - AcF&#39;s Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="AcF!">
+    <meta name="description" content="Description$n$ 个数的序列，每次询问一个区间，求最小的一个数使得不能用这个区间中的数之和表示。 $n \leq 10^5, \sum a_i \leq 10^9$">
+<meta name="keywords" content="主席树">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AcF&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/2019/01/14/QAQ/index.html">
+<meta property="og:title" content="LOJ2174 「FJOI2016」神秘数">
+<meta property="og:url" content="http://yoursite.com/2019/01/17/LOJ2174/index.html">
 <meta property="og:site_name" content="AcF&#39;s Blog">
-<meta property="og:description" content="AcF!">
+<meta property="og:description" content="Description$n$ 个数的序列，每次询问一个区间，求最小的一个数使得不能用这个区间中的数之和表示。 $n \leq 10^5, \sum a_i \leq 10^9$">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-14T07:45:31.949Z">
+<meta property="og:updated_time" content="2019-01-17T08:43:29.604Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="AcF&#39;s Blog">
-<meta name="twitter:description" content="AcF!">
+<meta name="twitter:title" content="LOJ2174 「FJOI2016」神秘数">
+<meta name="twitter:description" content="Description$n$ 个数的序列，每次询问一个区间，求最小的一个数使得不能用这个区间中的数之和表示。 $n \leq 10^5, \sum a_i \leq 10^9$">
 
 
 
@@ -79,15 +80,15 @@
     
 
 
-<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 <body class="is-2-column">
-    <nav class="navbar navbar-main">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><nav class="navbar navbar-main">
     <div class="container">
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="" height="28">
+                <img src="/images/logo.svg" alt="LOJ2174 「FJOI2016」神秘数" height="28">
             
             </a>
         </div>
@@ -127,13 +128,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-01-14T07:45:14.724Z">2019-01-14</time>
+                <time class="level-item has-text-grey" datetime="2019-01-17T08:32:40.000Z">2019-01-17</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/题解/">题解</a>
+                </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    几秒 读完 (大约 1 个字)
+                    3 分钟 读完 (大约 481 个字)
                 </span>
                 
             </div>
@@ -141,12 +146,37 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                
+                LOJ2174 「FJOI2016」神秘数
             
         </h1>
         <div class="content">
-            <p>AcF!</p>
+            <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>$n$ 个数的序列，每次询问一个区间，求最小的一个数使得不能用这个区间中的数之和表示。</p>
+<p>$n \leq 10^5, \sum a_i \leq 10^9$</p>
+<a id="more"></a>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p><del>第一次用数组写数据结构真短啊</del></p>
+<p>考虑只有一次询问怎么做</p>
+<p>把给定的区间内的数排序，从小到大扫一遍。</p>
+<p>如果一个数比他之前的数之和至少大了 $1$ ，那么答案就是和 + 1</p>
+<p>否则就可以把$[1,\text{前缀和}]$ 都表示出来（感性理解很容易）</p>
+<p>这道题怎么做也就显然了起来。只需要用主席树维护区间中小于等于某个数的数之和即可。流程如下</p>
+<p>当前答案是 $a$，令 $S$ 是区间中 $\leq a$ 的数之和  </p>
+<ol>
+<li>如果 $S &lt; a$ 则 $a$ 就是最后的答案</li>
+<li>否则 让 $a = S+1$ 然后重复此操作</li>
+</ol>
+<p>最开始的时候 $a=1$</p>
+<p>这样做的话 $a$ 每次都会翻一倍，所以最后的总复杂度是  $O(m \log n \log \sum a_i)$</p>
+<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N = <span class="hljs-number">50000500</span>; </span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> L = <span class="hljs-number">1000000000</span>; </span><br><span class="line"><span class="hljs-keyword">int</span> n, m, a[N], cnt; </span><br><span class="line"><span class="hljs-keyword">int</span> root[N], ch[N][<span class="hljs-number">2</span>]; ll sum[N]; </span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">I</span> <span class="hljs-params">(<span class="hljs-keyword">int</span> pre, <span class="hljs-keyword">int</span> now, <span class="hljs-keyword">int</span> l, <span class="hljs-keyword">int</span> r, <span class="hljs-keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">  ch[now][<span class="hljs-number">0</span>] = ch[pre][<span class="hljs-number">0</span>], ch[now][<span class="hljs-number">1</span>] = ch[pre][<span class="hljs-number">1</span>]; </span><br><span class="line">  <span class="hljs-keyword">int</span> mid = (l + r) &gt;&gt; <span class="hljs-number">1</span>; sum[now] = sum[pre] + val; <span class="hljs-keyword">if</span>(l == r) <span class="hljs-keyword">return</span> ; </span><br><span class="line">  <span class="hljs-keyword">if</span>(val &lt;= mid) ch[now][<span class="hljs-number">0</span>] = ++cnt, I(ch[pre][<span class="hljs-number">0</span>], ch[now][<span class="hljs-number">0</span>], l, mid, val);</span><br><span class="line">  <span class="hljs-keyword">else</span> ch[now][<span class="hljs-number">1</span>] = ++cnt, I(ch[pre][<span class="hljs-number">1</span>], ch[now][<span class="hljs-number">1</span>], mid + <span class="hljs-number">1</span>, r, val); </span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">Q</span><span class="hljs-params">(<span class="hljs-keyword">int</span> pre, <span class="hljs-keyword">int</span> now, <span class="hljs-keyword">int</span> l, <span class="hljs-keyword">int</span> r, <span class="hljs-keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">if</span>(l == r) <span class="hljs-keyword">return</span> sum[now] - sum[pre]; <span class="hljs-keyword">int</span> mid = (l + r) / <span class="hljs-number">2</span>;</span><br><span class="line">  <span class="hljs-keyword">if</span>(val &lt;= mid) <span class="hljs-keyword">return</span> Q(ch[pre][<span class="hljs-number">0</span>], ch[now][<span class="hljs-number">0</span>], l, mid, val);</span><br><span class="line">  <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> sum[ch[now][<span class="hljs-number">0</span>]] - sum[ch[pre][<span class="hljs-number">0</span>]] + Q(ch[pre][<span class="hljs-number">1</span>], ch[now][<span class="hljs-number">1</span>], mid + <span class="hljs-number">1</span>, r, val); </span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">  <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;n);</span><br><span class="line">  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;a[i]); root[i] = ++cnt; </span><br><span class="line">    I(root[i - <span class="hljs-number">1</span>], root[i], <span class="hljs-number">1</span>, L, a[i]); </span><br><span class="line">  &#125; <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;m); </span><br><span class="line">  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= m; i++) &#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> l, r; <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d %d"</span>, &amp;l, &amp;r); </span><br><span class="line">    <span class="hljs-keyword">int</span> ans = <span class="hljs-number">1</span>; </span><br><span class="line">    <span class="hljs-keyword">int</span> S; <span class="hljs-keyword">while</span>(<span class="hljs-number">1</span>) &#123;</span><br><span class="line">      S = Q(root[l - <span class="hljs-number">1</span>], root[r], <span class="hljs-number">1</span>, L, ans); </span><br><span class="line">      <span class="hljs-keyword">if</span>(S &lt; ans) &#123; <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, ans); <span class="hljs-keyword">break</span> ; &#125;</span><br><span class="line">      <span class="hljs-keyword">else</span> ans = S + <span class="hljs-number">1</span>; </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/主席树/">主席树</a>
+                </div>
+            </div>
         </div>
         
         
@@ -161,13 +191,13 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/01/14/BZOJ3529-「SDOI2014」数表/">
-                <i class="level-item fas fa-chevron-left"></i>
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/01/14/bzoj3529/">
                 <span class="level-item">BZOJ3529 「SDOI2014」数表</span>
+                <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
-        
         
     </div>
 </div>
@@ -256,7 +286,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        3
+                        4
                     </p>
                 </div>
             </div>
@@ -293,7 +323,19 @@
             <h3 class="menu-label">
                 目录
             </h3>
-            
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#Description">
+        <span class="has-mr-6">1</span>
+        <span>Description</span>
+        </a></li><li>
+        <a class="is-flex" href="#Solution">
+        <span class="has-mr-6">2</span>
+        <span>Solution</span>
+        </a></li><li>
+        <a class="is-flex" href="#Code">
+        <span class="has-mr-6">3</span>
+        <span>Code</span>
+        </a></li></ul>
         </div>
     </div>
 </div>
@@ -341,7 +383,7 @@
                 <span class="level-item">题解</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
         </a></li>
             </ul>
@@ -365,7 +407,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="" height="28">
+                    <img src="/images/logo.svg" alt="LOJ2174 「FJOI2016」神秘数" height="28">
                 
                 </a>
                 <p class="is-size-7">
@@ -449,7 +491,7 @@ MathJax.Hub.Queue(function() {
     }
 });
 </script>
-<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
     
     
@@ -511,7 +553,7 @@ MathJax.Hub.Queue(function() {
 </script>
 <script src="/js/insight.js" defer></script>
 <link rel="stylesheet" href="/css/search.css">
-<link rel="stylesheet" href="/css/insight.css">
+<link rel="stylesheet" href="/css/insight.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
     
 </body>
 </html>

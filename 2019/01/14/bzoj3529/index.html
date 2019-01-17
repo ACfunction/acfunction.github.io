@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
-    <meta charset="utf-8">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
 <title>BZOJ3529 「SDOI2014」数表 - AcF&#39;s Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -11,11 +11,11 @@
 <meta name="keywords" content="数论,莫比乌斯反演,树状数组">
 <meta property="og:type" content="article">
 <meta property="og:title" content="BZOJ3529 「SDOI2014」数表">
-<meta property="og:url" content="http://yoursite.com/2019/01/14/BZOJ3529-「SDOI2014」数表/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/01/14/bzoj3529/index.html">
 <meta property="og:site_name" content="AcF&#39;s Blog">
 <meta property="og:description" content="Description$T$ 组询问，定义 $F(n)=\sum\limits_{d|n}d$。每次给出 $n,m,a$ 求   $$\sum\limits_{i=1,j=1,F(\gcd(i,j)) \leq a}^{i\leq n, j \leq m} F (\gcd(i,j))$$ $T \leq 20000;n,m,a\leq 10^5$">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-15T11:21:52.395Z">
+<meta property="og:updated_time" content="2019-01-16T14:13:02.065Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BZOJ3529 「SDOI2014」数表">
 <meta name="twitter:description" content="Description$T$ 组询问，定义 $F(n)=\sum\limits_{d|n}d$。每次给出 $n,m,a$ 求   $$\sum\limits_{i=1,j=1,F(\gcd(i,j)) \leq a}^{i\leq n, j \leq m} F (\gcd(i,j))$$ $T \leq 20000;n,m,a\leq 10^5$">
@@ -80,10 +80,10 @@
     
 
 
-<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 <body class="is-2-column">
-    <nav class="navbar navbar-main">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><nav class="navbar navbar-main">
     <div class="container">
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
@@ -161,7 +161,7 @@
 <p>$$\sum\limits_{i=1}^{n}F(i)G(i)$$</p>
 <p> $$= \sum\limits_{i=1}^{n}F(i)\sum\limits_{d=1}^{\lfloor\frac{n}{i}\rfloor}\mu(d)\lfloor\frac{n}{id}\rfloor\lfloor\frac{m}{id}\rfloor $$</p>
 <p>$$=\sum\limits_{i=1}^{n}F(i)\sum\limits_{i | t}\mu(\frac{t}{i})\lfloor\frac{n}{t}\rfloor\lfloor\frac{m}{t}\rfloor$$</p>
-<p>$$ = \sum\limits_{t=1}^{n}\lfloor\frac{n}{t}\rfloor\lfloor\frac{m}{t}\rfloor\sum\limits_{i | t}F(i)\mu(\frac{t}{i})$$</p>
+<p>$$=\sum\limits_{t=1}^{n}\lfloor\frac{n}{t}\rfloor\lfloor\frac{m}{t}\rfloor\sum\limits_{i | t}F(i)\mu(\frac{t}{i})$$</p>
 <p>观察后面的式子，正好是一个狄利克雷卷积的形式。这种样子的都可以类似于那种 $O(n \log n)$ 地质数筛法在调和级数内求出来，再结合分块就可以做完这个没有 $a$ 的题。</p>
 <p>现在有了 $a$ 的限制之后，离线。把询问按照 $a$ 从小到大排序，然后按照 $F(i)$ 从小到大加入。每当有一个新的 $a$ ，就可以移动指针，将一些 $F$ 用处理 $\sum\limits_{i | t}F(i)\mu(\frac{t}{i})$ 的方式加入到这个里面。然后加入完之后用分块计算就行。</p>
 <p>现在需要维护单点操作，查询前缀和，树状数组是不错的选择。</p>
@@ -191,13 +191,13 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        
-        <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/01/14/QAQ/">
-                <span class="level-item"></span>
-                <i class="level-item fas fa-chevron-right"></i>
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/01/17/LOJ2174/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">LOJ2174 「FJOI2016」神秘数</span>
             </a>
         </div>
+        
         
     </div>
 </div>
@@ -286,7 +286,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        3
+                        4
                     </p>
                 </div>
             </div>
@@ -383,7 +383,7 @@
                 <span class="level-item">题解</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
         </a></li>
             </ul>
@@ -491,7 +491,7 @@ MathJax.Hub.Queue(function() {
     }
 });
 </script>
-<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
     
     
@@ -553,7 +553,7 @@ MathJax.Hub.Queue(function() {
 </script>
 <script src="/js/insight.js" defer></script>
 <link rel="stylesheet" href="/css/search.css">
-<link rel="stylesheet" href="/css/insight.css">
+<link rel="stylesheet" href="/css/insight.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
     
 </body>
 </html>

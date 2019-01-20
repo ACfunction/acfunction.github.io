@@ -2,22 +2,22 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-<title>BZOJ2653 middle - AcF&#39;s Blog</title>
+<title>bzoj2653 middle - AcF&#39;s Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
     <meta name="description" content="Description给你一个序列，每次询问给出四个数 $a,b,c,d$，求所有区间 $[l,r]$ 满足 $l \in [a,b], r \in [c,d]$ 的中位数的最大值。强制在线 $n \leq 20000, Q \leq 25000,a_i \leq 10^9$">
-<meta name="keywords" content="主席树, 二分">
+<meta name="keywords" content="主席树,二分">
 <meta property="og:type" content="article">
-<meta property="og:title" content="BZOJ2653 middle">
-<meta property="og:url" content="http://yoursite.com/2019/01/20/BZOJ2653/index.html">
+<meta property="og:title" content="bzoj2653 middle">
+<meta property="og:url" content="http://yoursite.com/2019/01/20/bzoj2653/index.html">
 <meta property="og:site_name" content="AcF&#39;s Blog">
 <meta property="og:description" content="Description给你一个序列，每次询问给出四个数 $a,b,c,d$，求所有区间 $[l,r]$ 满足 $l \in [a,b], r \in [c,d]$ 的中位数的最大值。强制在线 $n \leq 20000, Q \leq 25000,a_i \leq 10^9$">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-20T02:33:47.463Z">
+<meta property="og:updated_time" content="2019-01-20T05:31:49.332Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="BZOJ2653 middle">
+<meta name="twitter:title" content="bzoj2653 middle">
 <meta name="twitter:description" content="Description给你一个序列，每次询问给出四个数 $a,b,c,d$，求所有区间 $[l,r]$ 满足 $l \in [a,b], r \in [c,d]$ 的中位数的最大值。强制在线 $n \leq 20000, Q \leq 25000,a_i \leq 10^9$">
 
 
@@ -88,7 +88,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <!-- <img src="/favicon.ico" alt="BZOJ2653 middle" height="25"> -->
+                <!-- <img src="/favicon.ico" alt="bzoj2653 middle" height="25"> -->
                 <span class="navbar-title"> AcF's blog </span>
             
             </a>
@@ -134,20 +134,16 @@
         <div class="my-title  my-post-title ">
             <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
                 
-                    BZOJ2653 middle
+                    bzoj2653 middle
                 
             </h1>
             <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
                 <div class="level-left">
                     <i class="far fa-clock"></i>
-                    <time class="level-item has-text-grey" datetime="2019-01-20T02:30:52.000Z">
+                    <time class="level-item has-text-grey" datetime="2019-01-20T05:31:24.000Z">
                         2019-01-20
                     </time>
                     <i class="far fa-folder"></i>
-                    
-                        <div class="level-item">
-                            <a class="has-link-grey -link" href="/categories/题解/">题解</a>
-                        </div>
                     
                     <i class="far fa-edit"></i>
                     
@@ -160,8 +156,7 @@
         </div>
         
         <div class="content">
-            <hr>
-<h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>给你一个序列，每次询问给出四个数 $a,b,c,d$，求所有区间 $[l,r]$ 满足 $l \in [a,b], r \in [c,d]$ 的中位数的最大值。强制在线</p>
+            <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>给你一个序列，每次询问给出四个数 $a,b,c,d$，求所有区间 $[l,r]$ 满足 $l \in [a,b], r \in [c,d]$ 的中位数的最大值。强制在线</p>
 <p>$n \leq 20000, Q \leq 25000,a_i \leq 10^9$</p>
 <a id="more"></a>
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>考虑二分答案。假设现在二分出来的是 $x$ ，那么把 $\ge x$ 的位置设成 $1$ ，$&lt; x$ 的设为 $-1$ 。那么一个区间的中位数 $\ge x$ 等价于这个区间的和 $\ge 0$</p>
@@ -179,7 +174,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <!-- <span class="is-size-6 has-text-grey has-mr-7">#</span> -->
-                    <a class="my-post-tag has-link-grey -link" href="/tags/主席树-二分/">主席树, 二分</a>
+                    <a class="my-post-tag has-link-grey -link" href="/tags/主席树/">主席树</a>, <a class="my-post-tag has-link-grey -link" href="/tags/二分/">二分</a>
                 </div>
             </div>
         </div>
@@ -353,7 +348,7 @@
                 <span class="level-item">题解</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">3</span>
+                <span class="level-item tag">2</span>
             </span>
         </a></li>
             </ul>
@@ -377,7 +372,7 @@
             <div class="level-start has-text-centered-mobile">
                 <!-- <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/favicon.ico" alt="BZOJ2653 middle" height="28">
+                    <img src="/favicon.ico" alt="bzoj2653 middle" height="28">
                 
                 </a> -->
                 <p class="is-size-7">

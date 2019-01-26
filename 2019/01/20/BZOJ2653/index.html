@@ -7,18 +7,18 @@
 
 
 
-    <meta name="description" content="Description给你一个序列，每次询问给出四个数 $a,b,c,d$，求所有区间 $[l,r]$ 满足 $l \in [a,b], r \in [c,d]$ 的中位数的最大值。强制在线 $n \leq 20000, Q \leq 25000,a_i \leq 10^9$">
+    <meta name="description" content="Description给你一个序列，每次询问给出四个数 $a,b,c,d$，求所有区间 $[l,r]$ 满足 $l \in [a,b], r \in [c,d]$ 的中位数的最大值。强制在线。 $n \leq 20000, Q \leq 25000,a_i \leq 10^9$">
 <meta name="keywords" content="主席树,二分">
 <meta property="og:type" content="article">
 <meta property="og:title" content="BZOJ2653 middle">
 <meta property="og:url" content="http://yoursite.com/2019/01/20/BZOJ2653/index.html">
 <meta property="og:site_name" content="AcF&#39;s Blog">
-<meta property="og:description" content="Description给你一个序列，每次询问给出四个数 $a,b,c,d$，求所有区间 $[l,r]$ 满足 $l \in [a,b], r \in [c,d]$ 的中位数的最大值。强制在线 $n \leq 20000, Q \leq 25000,a_i \leq 10^9$">
+<meta property="og:description" content="Description给你一个序列，每次询问给出四个数 $a,b,c,d$，求所有区间 $[l,r]$ 满足 $l \in [a,b], r \in [c,d]$ 的中位数的最大值。强制在线。 $n \leq 20000, Q \leq 25000,a_i \leq 10^9$">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-20T05:59:24.113Z">
+<meta property="og:updated_time" content="2019-01-26T07:05:09.536Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BZOJ2653 middle">
-<meta name="twitter:description" content="Description给你一个序列，每次询问给出四个数 $a,b,c,d$，求所有区间 $[l,r]$ 满足 $l \in [a,b], r \in [c,d]$ 的中位数的最大值。强制在线 $n \leq 20000, Q \leq 25000,a_i \leq 10^9$">
+<meta name="twitter:description" content="Description给你一个序列，每次询问给出四个数 $a,b,c,d$，求所有区间 $[l,r]$ 满足 $l \in [a,b], r \in [c,d]$ 的中位数的最大值。强制在线。 $n \leq 20000, Q \leq 25000,a_i \leq 10^9$">
 
 
 
@@ -152,7 +152,7 @@
                     <i class="far fa-edit"></i>
                     
                         <span class="level-item has-text-grey">
-                            720 Words
+                            721 Words
                         </span>
                     
                 </div>
@@ -160,7 +160,7 @@
         </div>
         
         <div class="content">
-            <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>给你一个序列，每次询问给出四个数 $a,b,c,d$，求所有区间 $[l,r]$ 满足 $l \in [a,b], r \in [c,d]$ 的中位数的最大值。强制在线</p>
+            <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>给你一个序列，每次询问给出四个数 $a,b,c,d$，求所有区间 $[l,r]$ 满足 $l \in [a,b], r \in [c,d]$ 的中位数的最大值。强制在线。</p>
 <p>$n \leq 20000, Q \leq 25000,a_i \leq 10^9$</p>
 <a id="more"></a>
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>考虑二分答案。假设现在二分出来的是 $x$ ，那么把 $\ge x$ 的位置设成 $1$ ，$&lt; x$ 的设为 $-1$ 。那么一个区间的中位数 $\ge x$ 等价于这个区间的和 $\ge 0$</p>

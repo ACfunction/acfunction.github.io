@@ -526,25 +526,27 @@ figure.highlight:hover .copy {
 .card-content .my-post-title h1:hover {
   letter-spacing: 1.7px;
 }
+/*
 .card {
-  opacity: 0.9;
-  line-height: 1rem;
-  padding: 0.5rem 1rem;
-  border: none;
-  outline: none;
-  background-color: #fff;
-  text-decoration: none;
-  position: relative;
-  border-radius: 0px;
-  box-shadow: 0 1px 3px #a9a9a9;
-  transition: box-shadow 0.5s ease-out;
-  -webkit-transition: box-shadow 0.5s ease-out;
+    opacity: 0.9;
+    line-height: 1rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    outline: none;
+    background-color: white;
+    text-decoration: none;
+    position: relative;
+    border-radius:0px;
+    box-shadow:0 1px 3px darkgray;
+    transition: box-shadow 0.5s ease-out;
+    -webkit-transition: box-shadow 0.5s ease-out;
 }
 .card:hover {
-  box-shadow: 0 6px 16px #a9a9a9;
-  transition: all 0.8s ease-out;
-  -webkit-transition: width 0.8s ease-out;
+    box-shadow:0 6px 16px darkgray;
+    transition: all 0.8s ease-out;
+    -webkit-transition: width 0.8s ease-out;
 }
+
 /*
 .card:active {
     opacity: 1;
@@ -552,6 +554,10 @@ figure.highlight:hover .copy {
     transition: all 0.3s ease-out;
 }
 */
+*
+.card {
+  box-shadow: 0 3px 5px #a9a9a9;
+}
 .ins-selectable {
   -webkit-animation: 1s;
   animation: 1s;

@@ -5,11 +5,13 @@
     opacity: 0;
     line-height: 24px;
     outline: none;
-    transform: translateY(120px);
+    -webkit-transform: translateY(120px);
+            transform: translateY(120px);
 }
 #back-to-top.fade-in {
     opacity: 1;
 }
 #back-to-top.rise-up {
-    transform: translateY(0);
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
 }

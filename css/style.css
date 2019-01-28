@@ -495,7 +495,7 @@ figure.highlight:hover .copy {
 }
 .navbar .navbar-item {
   font-size: 15px;
-  padding: 0.65em 1.1em;
+  padding: 0.5em 1.1em;
 }
 .card-content .title {
   font-size: 16px;
@@ -526,37 +526,16 @@ figure.highlight:hover .copy {
 .card-content .my-post-title h1:hover {
   letter-spacing: 1.7px;
 }
-/*
 .card {
-    opacity: 0.9;
-    line-height: 1rem;
-    padding: 0.5rem 1rem;
-    border: none;
-    outline: none;
-    background-color: white;
-    text-decoration: none;
-    position: relative;
-    border-radius:0px;
-    box-shadow:0 1px 3px darkgray;
-    transition: box-shadow 0.5s ease-out;
-    -webkit-transition: box-shadow 0.5s ease-out;
+  border-radius: 0px;
+  box-shadow: 0 3px 3px rgba(0,0,0,0.15);
+  transition: all 0.25s ease-in-out;
 }
 .card:hover {
-    box-shadow:0 6px 16px darkgray;
-    transition: all 0.8s ease-out;
-    -webkit-transition: width 0.8s ease-out;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.3);
 }
-
-/*
 .card:active {
-    opacity: 1;
-    -webkit-transition: all 0.5s ease-out;
-    transition: all 0.3s ease-out;
-}
-*/
-*
-.card {
-  box-shadow: 0 3px 5px #a9a9a9;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
 }
 .ins-selectable {
   -webkit-animation: 1s;

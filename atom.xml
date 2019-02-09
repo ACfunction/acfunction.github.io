@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-02-09T01:42:55.597Z</updated>
+  <updated>2019-02-09T02:00:53.168Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CF1110E Magic Stones</title>
+    <link href="http://yoursite.com/2019/02/09/CF1110E/"/>
+    <id>http://yoursite.com/2019/02/09/CF1110E/</id>
+    <published>2019-02-09T01:52:27.000Z</published>
+    <updated>2019-02-09T02:00:53.168Z</updated>
+    
+    <content type="html"><![CDATA[<hr><h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>给出一个初始序列 $a$ 和一个目标序列 $b$，你可以对 $a$ 中的除去第一个和最后一个点之外的任意一个点 $i$ ，让 $a_i$ 变成 $a_{i-1}+a_{i+1}-a_i$ 。问是否能够通过若干次操作使得 a 变成 b</p><p>序列长度 $n \leq 10^5$ </p><a id="more"></a><h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p><del>我觉得这个题应该放在 A</del> </p><p>考虑一个序列 : a|b|c</p><p>对 b 进行操作：a|a+c-b|c</p><p>他的差分序列原来是：a-b | b-c</p><p>现在变成了：b-c | a-b</p><p>所以一次操作相当于是把差分数组里的相邻两个数给交换了位置</p><p>所以只用判断目标序列的差分数组排序后是否等于初始序列的差分数组</p><p>还有第一个数相不相等（比赛的时候没考虑这个 wa 了一发…）</p><p>时间复杂度瓶颈在排序（或者说判断相同）</p><h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N = <span class="hljs-number">100100</span>; </span><br><span class="line"><span class="hljs-keyword">int</span> n, a[N], b[N]; </span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">  <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;n); </span><br><span class="line">  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;a[i]);</span><br><span class="line">  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;b[i]);</span><br><span class="line">  <span class="hljs-keyword">if</span>(a[<span class="hljs-number">1</span>] != b[<span class="hljs-number">1</span>]) &#123; <span class="hljs-built_in">printf</span>(<span class="hljs-string">"No\n"</span>); <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>; &#125;</span><br><span class="line">  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; n; i++) a[i] = a[i + <span class="hljs-number">1</span>] - a[i];</span><br><span class="line">  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; n; i++) b[i] = b[i + <span class="hljs-number">1</span>] - b[i];</span><br><span class="line">  sort(a + <span class="hljs-number">1</span>, a + n), sort(b + <span class="hljs-number">1</span>, b + n);</span><br><span class="line">  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; n; i++)</span><br><span class="line">    <span class="hljs-keyword">if</span>(a[i] != b[i]) &#123;</span><br><span class="line">      <span class="hljs-built_in">printf</span>(<span class="hljs-string">"No\n"</span>);</span><br><span class="line">      <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>; </span><br><span class="line">    &#125;</span><br><span class="line">  <span class="hljs-built_in">printf</span>(<span class="hljs-string">"Yes\n"</span>);</span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;h1 id=&quot;Description&quot;&gt;&lt;a href=&quot;#Description&quot; class=&quot;headerlink&quot; title=&quot;Description&quot;&gt;&lt;/a&gt;Description&lt;/h1&gt;&lt;p&gt;给出一个初始序列 $a$ 和一个目标序列 $b$，你可以对 $a$ 中的除去第一个和最后一个点之外的任意一个点 $i$ ，让 $a_i$ 变成 $a_{i-1}+a_{i+1}-a_i$ 。问是否能够通过若干次操作使得 a 变成 b&lt;/p&gt;
+&lt;p&gt;序列长度 $n \leq 10^5$ &lt;/p&gt;
+    
+    </summary>
+    
+      <category term="题解" scheme="http://yoursite.com/categories/%E9%A2%98%E8%A7%A3/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>CF1110F Nearest Leaf</title>

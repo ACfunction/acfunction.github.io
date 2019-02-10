@@ -8,7 +8,7 @@
 
 
     <meta name="description" content="向来心是看客心，乃何人是剧中人">
-<meta name="keywords" content="线段树,dfs序,主席树,二分,支配树,倍增,LCA,博弈论,数论,莫比乌斯反演,树状数组">
+<meta name="keywords" content="主席树,二分,线段树,dfs序,支配树,倍增,LCA,博弈论,数论,莫比乌斯反演,树状数组">
 <meta property="og:type" content="website">
 <meta property="og:title" content="AcF&#39;s Blog">
 <meta property="og:url" content="http://yoursite.com/tags/index.html">
@@ -278,7 +278,6 @@
                     </p>
                     
                     
-                    
                 </div>
             </div>
         </nav>
@@ -403,6 +402,21 @@
                     <span id="busuanzi_value_site_uv"></span> Visitors
                     </span>
                 </p>
+                <p class="is-size-7">
+                「<span id="hitokoto"></span>」
+                </p>
+                <script>
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('get', 'https://v1.hitokoto.cn/?c=d');
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState === 4) {
+                            var data = JSON.parse(xhr.responseText);
+                            document.getElementById('hitokoto').innerText = data.hitokoto;
+                            document.getElementById('hitokoto-id').innerText = data.id;
+                        }
+                    }
+                    xhr.send();
+                </script>
             </div>
             <div class="level-end">
             

@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="AcF&#39;s Blog">
 <meta property="og:description" content="Description给一颗以 $1$ 为根的有根树，维护以下操作  连接 $(u,v)$ 这条边 删除 $(u,v)$ 这条边 给 $u$ 到 $v$ 的链上每个点加上一个数 求在 $(u,v)$ 上任意选两个点它们之间的权值和的期望  $n, m \leq 50000, a_i \leq 10^6$">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-21T14:47:56.767Z">
+<meta property="og:updated_time" content="2019-02-21T14:50:27.888Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BZOJ3091 城市旅行">
 <meta name="twitter:description" content="Description给一颗以 $1$ 为根的有根树，维护以下操作  连接 $(u,v)$ 这条边 删除 $(u,v)$ 这条边 给 $u$ 到 $v$ 的链上每个点加上一个数 求在 $(u,v)$ 上任意选两个点它们之间的权值和的期望  $n, m \leq 50000, a_i \leq 10^6$">
@@ -152,7 +152,7 @@
                     <i class="far fa-edit"></i>
                     
                         <span class="level-item has-text-grey">
-                            1457 Words
+                            1458 Words
                         </span>
                     
                 </div>
@@ -180,7 +180,7 @@
 <p>$\sum\limits_{i=1}^{siz}i(siz - i + 1)a_i - \sum\limits_{i=1}^{p}i(p-i+1)a_i-\sum\limits_{i=p+2}^{siz} (i-p-1)(siz - i + 1)a_i$</p>
 <p>$=\sum\limits_{i=1}^{p} i(siz-p)a_i+a_{p+1}(p+1)(siz-p)+\sum\limits_{i=p+2}^{siz}(p+1)(siz-i+1)a_i$</p>
 <p>根据上面得到的 $siz_0=p,siz_1=siz-p-1$ 简单化简一下可以得到</p>
-<p>$=(siz_1+1)\sum\limits_{i=1}^{siz_0}i\cdot a_i+a_{siz_0+1}(siz_0+1)(siz_1+1)+(siz_0+1)\sum\limits_{i=p+2}(siz - i +1)a_i$</p>
+<p>$=(siz_1+1)\sum\limits_{i=1}^{siz_0}i\cdot a_i+a_{siz_0+1}(siz_0+1)(siz_1+1)+(siz_0+1)\sum\limits_{i=p+2}^{siz}(siz - i +1)a_i$</p>
 <p>到这里应该你已经知道怎么做了..</p>
 <p>为了清楚，再令 </p>
 <p>$b_1, b_2, \cdots,b_{siz_b}$ 是左子的， $c_1, c_2, \cdots,c_{siz_c}$ 是右子的，$d$ 是这个点本身的值。那么可以化简成简单清楚对称的形式：</p>

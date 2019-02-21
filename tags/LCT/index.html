@@ -2,7 +2,7 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-<title>标签: 支配树 - AcF&#39;s Blog</title>
+<title>标签: LCT - AcF&#39;s Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
@@ -10,7 +10,7 @@
     <meta name="description" content="向来心是看客心，乃何人是剧中人">
 <meta property="og:type" content="website">
 <meta property="og:title" content="AcF&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/tags/支配树/index.html">
+<meta property="og:url" content="http://yoursite.com/tags/LCT/index.html">
 <meta property="og:site_name" content="AcF&#39;s Blog">
 <meta property="og:description" content="向来心是看客心，乃何人是剧中人">
 <meta property="og:locale" content="zh-CN">
@@ -128,7 +128,7 @@
         <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
             <li><a href="/tags">标签</a></li>
-            <li class="is-active"><a href="#" aria-current="page">支配树</a></li>
+            <li class="is-active"><a href="#" aria-current="page">LCT</a></li>
         </ul>
         </nav>
     </div>
@@ -143,14 +143,14 @@
         <div class="my-title ">
             <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
                 
-                    <a class="has-link-black-ter" href="/2019/02/01/CF757F/">CF757F Team Rocket Rises Again</a>
+                    <a class="has-link-black-ter" href="/2019/02/21/BZOJ3091/">BZOJ3091</a>
                 
             </h1>
             <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
                 <div class="level-left">
                     <i class="far fa-clock"></i>
-                    <time class="level-item has-text-grey" datetime="2019-02-01T11:41:04.000Z">
-                        2019-02-01
+                    <time class="level-item has-text-grey" datetime="2019-02-21T14:44:18.000Z">
+                        2019-02-21
                     </time>
                     <i class="far fa-folder"></i>
                     
@@ -161,7 +161,7 @@
                     <i class="far fa-edit"></i>
                     
                         <span class="level-item has-text-grey">
-                            956 Words
+                            1457 Words
                         </span>
                     
                 </div>
@@ -169,16 +169,21 @@
         </div>
         
         <div class="content">
-            <hr>
-<h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>一个 $n$ 个点 $m$ 条边的无向图，给出起点 $S$ 。求删除掉一个不是 $S$ 的点后最多能改变多少个点到 $S$ 的最短路。输出这个最大值。</p>
-<p>$n \leq 200000, m \leq \min(\frac{n(n-1)}{2},300000)$ </p>
+            <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>给一颗以 $1$ 为根的有根树，维护以下操作</p>
+<ol>
+<li>连接 $(u,v)$ 这条边</li>
+<li>删除 $(u,v)$ 这条边</li>
+<li>给 $u$ 到 $v$ 的链上每个点加上一个数</li>
+<li>求在 $(u,v)$ 上任意选两个点它们之间的权值和的期望</li>
+</ol>
+<p>$n, m \leq 50000, a_i \leq 10^6$</p>
         </div>
         
         
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/02/01/CF757F/#more">阅读更多</a>
+                <a class="button is-size-7 is-light" href="/2019/02/21/BZOJ3091/#more">阅读更多</a>
                 </div>
             </div>
         </div>

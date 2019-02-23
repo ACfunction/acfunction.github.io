@@ -335,24 +335,6 @@
                     <span id="busuanzi_value_site_uv"></span> Visitors
                     </span>
                 </p>
-                <p class="is-size-7">
-                <span id="hitokoto"></span>
-                </p>
-                <script>
-                    var xhr = new XMLHttpRequest();
-                    xhr.open('get', 'https://v1.hitokoto.cn/?c=d');
-                    xhr.onreadystatechange = function () {
-                        if (xhr.readyState === 4) {
-                            var data = JSON.parse(xhr.responseText);
-                            document.getElementById('hitokoto').innerText = data.hitokoto;
-                            document.getElementById('hitokoto-id').innerText = data.id;
-                        }
-                    }
-                    xhr.send();
-                </script>
-                <p></p>
-                <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="298" height="52" src="//music.163.com/outchain/player?type=2&id=420400796&auto=1&height=32"></iframe>
-                <p></p>
             </div>
             <div class="level-end">
             

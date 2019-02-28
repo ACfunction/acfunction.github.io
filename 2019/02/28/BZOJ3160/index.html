@@ -8,14 +8,14 @@
 
 
     <meta name="description" content="Description给定一个字符串由 ‘a’ 或 ‘b’ 组成。求有多少个子序列满足字母和坐标都关于一条对称轴对称并且不是连续的 字符串长度 $=n \leq 10^5$">
-<meta name="keywords" content="manecher, FFT, NTT">
+<meta name="keywords" content="manacher, FFT, NTT">
 <meta property="og:type" content="article">
 <meta property="og:title" content="BZOJ3160 万径人踪灭">
 <meta property="og:url" content="http://yoursite.com/2019/02/28/BZOJ3160/index.html">
 <meta property="og:site_name" content="AcF&#39;s Blog">
 <meta property="og:description" content="Description给定一个字符串由 ‘a’ 或 ‘b’ 组成。求有多少个子序列满足字母和坐标都关于一条对称轴对称并且不是连续的 字符串长度 $=n \leq 10^5$">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-28T11:10:59.286Z">
+<meta property="og:updated_time" content="2019-02-28T11:13:56.135Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BZOJ3160 万径人踪灭">
 <meta name="twitter:description" content="Description给定一个字符串由 ‘a’ 或 ‘b’ 组成。求有多少个子序列满足字母和坐标都关于一条对称轴对称并且不是连续的 字符串长度 $=n \leq 10^5$">
@@ -152,7 +152,7 @@
                     <i class="far fa-edit"></i>
                     
                         <span class="level-item has-text-grey">
-                            1055 Words
+                            1063 Words
                         </span>
                     
                 </div>
@@ -165,9 +165,9 @@
 <a id="more"></a> 
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>默认字符串为 $S$ 从 $0$ 开始标号。 </p>
 <p>答案等于所有的满足字母和坐标都关于一条对称轴对称的子序列数量 - 连续的满足这个性质的子序列数量</p>
-<p>后面这个可以直接用 <strong>manecher算法</strong> 直接求出，只需要考虑前面怎么求</p>
+<p>后面这个可以直接用 <strong>manacher算法</strong> 直接求出，只需要考虑前面怎么求</p>
 <p>考虑怎么算出关于第 $i$ 个位置对称的子序列个数。设有 $k$ 组 $(x, y)$ 使得 $x + y = 2 i$ 且 $x, y \not= i$ 且 $S_x = S_y$ ，那么方案数就是 $2^{k+1}-1$ （k 组和 $i$ 这个位置选不选减去都不选的一种情况）</p>
-<p>考虑怎么算出关于第 $i$ 到第 $i+1$ 个位置中间这个空隙（可以认为是 $i + \frac{1}{2}$）对称的子序列的个数。设有 $k$ 组 $(x,y)$ 满足 $S_x = S_y$ 且 $x+y = 2(i+\frac{1}{2}) = 2i + 1$ ，那么方案数就是 $2^k - 1$（和上面不一样的原因是自己这个位置不是整数不能被选所以不用考虑）</p>
+<p>考虑怎么算出关于第 $i​$ 到第 $i+1​$ 个位置中间这个空隙（可以认为是 $i + \frac{1}{2}​$）对称的子序列的个数。设有 $k​$ 组 $(x,y)​$ 满足 $S_x = S_y​$ 且 $x+y = 2(i+\frac{1}{2}) = 2i + 1​$ ，那么方案数就是 $2^k - 1​$（和上面不一样的原因是自己这个位置不是整数不能被选所以不用考虑）</p>
 <p>令 $ f_i = \sum\limits_{x+y=i} [S_x=S_y] $ ，那么 $f_i$ 和这个 $k$ 的关系是什么呢？</p>
 <p>这里要想清楚。当 $i$ 是偶数的时候，$[S_{\frac{i}{2}}=S_{\frac{i}{2}}]$ 其实也被算了进去，所以应该是 $f_i = 2k + 1$；而 $i$ 是奇数的时候就没有这个问题，直接就是 $f_i = 2k$；综合一下其实就是 $k = \lfloor \frac{f_i}{2} \rfloor$</p>
 <p>然后就是怎么求 $f_i$ 的问题了。这是一个卷积的形式，又显然字母之间是独立的。那么对于每一个字母 $x$，令 $g_i = [S_i = x]$，那么 $f$ 就是由两个 $g$ 卷积得到的。所以最后 f 就是对于两个字母分别做一遍卷积加起来就行。</p>
@@ -188,7 +188,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <!-- <span class="is-size-6 has-text-grey has-mr-7">#</span> -->
-                    <a class="my-post-tag has-link-grey -link" href="/tags/manecher-FFT-NTT/">manecher, FFT, NTT</a>
+                    <a class="my-post-tag has-link-grey -link" href="/tags/manacher-FFT-NTT/">manacher, FFT, NTT</a>
                 </div>
             </div>
         </div>

@@ -7,18 +7,18 @@
 
 
 
-    <meta name="description" content="Description$T$ 组询问，定义 $F(n)=\sum\limits_{d|n}d$。每次给出 $n,m,a$ 求   \sum\limits_{i=1,j=1,F(\gcd(i,j)) \leq a}^{i\leq n, j \leq m} F (\gcd(i,j))$T \leq 20000;n,m,a\leq 10^5$">
+    <meta name="description" content="Description$T$ 组询问，定义 $F(n)=\sum\limits_{d|n}d$。每次给出 $n,m,a$ 求   $$\sum\limits_{i=1,j=1,F(\gcd(i,j)) \leq a}^{i\leq n, j \leq m} F (\gcd(i,j))$$ $T \leq 20000;n,m,a\leq 10^5$">
 <meta name="keywords" content="数论,莫比乌斯反演,树状数组">
 <meta property="og:type" content="article">
 <meta property="og:title" content="BZOJ3529 「SDOI2014」数表">
 <meta property="og:url" content="http://yoursite.com/2019/01/14/bzoj3529/index.html">
 <meta property="og:site_name" content="AcF&#39;s Blog">
-<meta property="og:description" content="Description$T$ 组询问，定义 $F(n)=\sum\limits_{d|n}d$。每次给出 $n,m,a$ 求   \sum\limits_{i=1,j=1,F(\gcd(i,j)) \leq a}^{i\leq n, j \leq m} F (\gcd(i,j))$T \leq 20000;n,m,a\leq 10^5$">
+<meta property="og:description" content="Description$T$ 组询问，定义 $F(n)=\sum\limits_{d|n}d$。每次给出 $n,m,a$ 求   $$\sum\limits_{i=1,j=1,F(\gcd(i,j)) \leq a}^{i\leq n, j \leq m} F (\gcd(i,j))$$ $T \leq 20000;n,m,a\leq 10^5$">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-01-20T05:28:09.946Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BZOJ3529 「SDOI2014」数表">
-<meta name="twitter:description" content="Description$T$ 组询问，定义 $F(n)=\sum\limits_{d|n}d$。每次给出 $n,m,a$ 求   \sum\limits_{i=1,j=1,F(\gcd(i,j)) \leq a}^{i\leq n, j \leq m} F (\gcd(i,j))$T \leq 20000;n,m,a\leq 10^5$">
+<meta name="twitter:description" content="Description$T$ 组询问，定义 $F(n)=\sum\limits_{d|n}d$。每次给出 $n,m,a$ 求   $$\sum\limits_{i=1,j=1,F(\gcd(i,j)) \leq a}^{i\leq n, j \leq m} F (\gcd(i,j))$$ $T \leq 20000;n,m,a\leq 10^5$">
 
 
 
@@ -162,12 +162,18 @@
         <div class="content">
             <hr>
 <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>$T$ 组询问，定义 $F(n)=\sum\limits_{d|n}d$。每次给出 $n,m,a$ 求  </p>
-<script type="math/tex; mode=display">\sum\limits_{i=1,j=1,F(\gcd(i,j)) \leq a}^{i\leq n, j \leq m} F (\gcd(i,j))</script><p>$T \leq 20000;n,m,a\leq 10^5$</p>
+<p>$$\sum\limits_{i=1,j=1,F(\gcd(i,j)) \leq a}^{i\leq n, j \leq m} F (\gcd(i,j))$$</p>
+<p>$T \leq 20000;n,m,a\leq 10^5$</p>
 <a id="more"></a>
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>首先 $F$ 可以直接暴力地 $O(n \log n)$ 筛出来。</p>
 <p>考虑 $a$ 的限制不是很好处理，假设没有这个 $a$ 的限制，则所求为</p>
-<script type="math/tex; mode=display">\sum\limits_{i=1}^{n}\sum\limits_{j=1}^{m} F (\gcd(i,j))</script><p>令 $G(i)=\sum\limits_{x=1}^{n}\sum\limits_{y=1}^{m}[\gcd(x,y)=i]$。这个东西是什么呢？在 <a href="https://www.cnblogs.com/acfunction/p/10127599.html" target="_blank" rel="noopener">这里</a> 有它的推导过程。根据里面的过程，可以得到 $G(i) = \sum\limits_{d=1}^{\lfloor\frac{n}{i}\rfloor}\mu(d)\lfloor\frac{n}{id}\rfloor\lfloor\frac{m}{id}\rfloor$（默认 $n \leq m$）<br>令下面的过程中$t = id$，则所求的是 </p>
-<script type="math/tex; mode=display">\sum\limits_{i=1}^{n}F(i)G(i)</script><script type="math/tex; mode=display">= \sum\limits_{i=1}^{n}F(i)\sum\limits_{d=1}^{\lfloor\frac{n}{i}\rfloor}\mu(d)\lfloor\frac{n}{id}\rfloor\lfloor\frac{m}{id}\rfloor</script><script type="math/tex; mode=display">=\sum\limits_{i=1}^{n}F(i)\sum\limits_{i | t}\mu(\frac{t}{i})\lfloor\frac{n}{t}\rfloor\lfloor\frac{m}{t}\rfloor</script><script type="math/tex; mode=display">=\sum\limits_{t=1}^{n}\lfloor\frac{n}{t}\rfloor\lfloor\frac{m}{t}\rfloor\sum\limits_{i | t}F(i)\mu(\frac{t}{i})</script><p>观察后面的式子，正好是一个狄利克雷卷积的形式。这种样子的都可以类似于那种 $O(n \log n)$ 地质数筛法在调和级数内求出来，再结合分块就可以做完这个没有 $a$ 的题。</p>
+<p>$$\sum\limits_{i=1}^{n}\sum\limits_{j=1}^{m} F (\gcd(i,j))$$</p>
+<p>令 $G(i)=\sum\limits_{x=1}^{n}\sum\limits_{y=1}^{m}[\gcd(x,y)=i]$。这个东西是什么呢？在 <a href="https://www.cnblogs.com/acfunction/p/10127599.html" target="_blank" rel="noopener">这里</a> 有它的推导过程。根据里面的过程，可以得到 $G(i) = \sum\limits_{d=1}^{\lfloor\frac{n}{i}\rfloor}\mu(d)\lfloor\frac{n}{id}\rfloor\lfloor\frac{m}{id}\rfloor$（默认 $n \leq m$）<br>令下面的过程中$t = id$，则所求的是 </p>
+<p>$$\sum\limits_{i=1}^{n}F(i)G(i)$$</p>
+<p> $$= \sum\limits_{i=1}^{n}F(i)\sum\limits_{d=1}^{\lfloor\frac{n}{i}\rfloor}\mu(d)\lfloor\frac{n}{id}\rfloor\lfloor\frac{m}{id}\rfloor $$</p>
+<p>$$=\sum\limits_{i=1}^{n}F(i)\sum\limits_{i | t}\mu(\frac{t}{i})\lfloor\frac{n}{t}\rfloor\lfloor\frac{m}{t}\rfloor$$</p>
+<p>$$=\sum\limits_{t=1}^{n}\lfloor\frac{n}{t}\rfloor\lfloor\frac{m}{t}\rfloor\sum\limits_{i | t}F(i)\mu(\frac{t}{i})$$</p>
+<p>观察后面的式子，正好是一个狄利克雷卷积的形式。这种样子的都可以类似于那种 $O(n \log n)$ 地质数筛法在调和级数内求出来，再结合分块就可以做完这个没有 $a$ 的题。</p>
 <p>现在有了 $a$ 的限制之后，离线。把询问按照 $a$ 从小到大排序，然后按照 $F(i)$ 从小到大加入。每当有一个新的 $a$ ，就可以移动指针，将一些 $F$ 用处理 $\sum\limits_{i | t}F(i)\mu(\frac{t}{i})$ 的方式加入到这个里面。然后加入完之后用分块计算就行。</p>
 <p>现在需要维护单点操作，查询前缀和，树状数组是不错的选择。</p>
 <p>由于取模是 $2^{32} - 1$ ，可以直接 int 自然溢出最后和 $2147483647$ 取一个 &amp; 就行了。</p>

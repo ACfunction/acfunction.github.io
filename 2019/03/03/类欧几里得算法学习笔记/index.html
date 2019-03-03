@@ -7,18 +7,18 @@
 
 
 
-    <meta name="description" content="现在要求  f(a,b,c,n)=\sum\limits_{i=0}^{n} \lfloor\frac{ai + b}{c}\rfloor分类讨论 第一种情况：$a=0$ 。那么   f(a,b,c,n)= \sum\limits_{i=0}^{n} \lfloor \frac{b}{c} \rfloor=(n+1)\lfloor \frac{b}{c} \rfloor第二种情况：$a,b$ 中有">
+    <meta name="description" content="类欧几里得算法用来求诸如此类问题：$$f(a,b,c,n)=\sum\limits_{i=0}^{n} \lfloor\frac{ai + b}{c}\rfloor$$">
 <meta name="keywords" content="数论,类欧几里得算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="类欧几里得算法学习笔记">
 <meta property="og:url" content="http://yoursite.com/2019/03/03/类欧几里得算法学习笔记/index.html">
 <meta property="og:site_name" content="AcF&#39;s Blog">
-<meta property="og:description" content="现在要求  f(a,b,c,n)=\sum\limits_{i=0}^{n} \lfloor\frac{ai + b}{c}\rfloor分类讨论 第一种情况：$a=0$ 。那么   f(a,b,c,n)= \sum\limits_{i=0}^{n} \lfloor \frac{b}{c} \rfloor=(n+1)\lfloor \frac{b}{c} \rfloor第二种情况：$a,b$ 中有">
+<meta property="og:description" content="类欧几里得算法用来求诸如此类问题：$$f(a,b,c,n)=\sum\limits_{i=0}^{n} \lfloor\frac{ai + b}{c}\rfloor$$">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-03T07:27:42.772Z">
+<meta property="og:updated_time" content="2019-03-03T07:40:28.370Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="类欧几里得算法学习笔记">
-<meta name="twitter:description" content="现在要求  f(a,b,c,n)=\sum\limits_{i=0}^{n} \lfloor\frac{ai + b}{c}\rfloor分类讨论 第一种情况：$a=0$ 。那么   f(a,b,c,n)= \sum\limits_{i=0}^{n} \lfloor \frac{b}{c} \rfloor=(n+1)\lfloor \frac{b}{c} \rfloor第二种情况：$a,b$ 中有">
+<meta name="twitter:description" content="类欧几里得算法用来求诸如此类问题：$$f(a,b,c,n)=\sum\limits_{i=0}^{n} \lfloor\frac{ai + b}{c}\rfloor$$">
 
 
 
@@ -152,7 +152,7 @@
                     <i class="far fa-edit"></i>
                     
                         <span class="level-item has-text-grey">
-                            261 Words
+                            275 Words
                         </span>
                     
                 </div>
@@ -160,29 +160,10 @@
         </div>
         
         <div class="content">
-            <p>现在要求</p>
-<script type="math/tex; mode=display">
-f(a,b,c,n)=\sum\limits_{i=0}^{n} \lfloor\frac{ai + b}{c}\rfloor</script><p><strong>分类讨论</strong></p>
-<p><strong>第一种情况</strong>：$a=0$ 。那么 </p>
-<script type="math/tex; mode=display">
-f(a,b,c,n)= \sum\limits_{i=0}^{n} \lfloor \frac{b}{c} \rfloor=(n+1)\lfloor \frac{b}{c} \rfloor</script><p><strong>第二种情况</strong>：$a,b$ 中有一个大于等于 $c$ 。那么</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-f(a,b,c,n) &= \sum\limits_{i=0}^{n} \lfloor\frac{ai + b}{c}\rfloor \\\
-&= \sum\limits_{i = 0}^{n}(\lfloor\frac{a\bmod c\cdot i + b \bmod c}{c}\rfloor+i\lfloor\frac{a}{c} \rfloor+\lfloor \frac{b}{c} \rfloor) \\\
-&= \sum\limits_{i = 0}^{n}\lfloor\frac{a\bmod c\cdot i + b \bmod c}{c}\rfloor +\frac{n(n+1)}{2} \cdot \lfloor\frac{a}{c} \rfloor + (n+1)\lfloor \frac{b}{c} \rfloor \\\
-&= f(a\bmod c, b \bmod c , c, n) + \frac{n(n+1)}{2} \cdot \lfloor\frac{a}{c} \rfloor + (n+1)\lfloor \frac{b}{c} \rfloor
-\end{aligned}</script><p><strong>第三种情况</strong>：$a&lt;c$ 且 $b &lt; c$ 。那么 </p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-f(a,b,c,n) &= \sum\limits_{i=0}^{n} \lfloor\frac{ai + b}{c}\rfloor \\\
-&= \sum\limits_{i=0}^{n} \sum\limits_{j=0}^{\lfloor\frac{an + b}{c}\rfloor-1} [j+1 \leq \lfloor\frac{ai + b}{c}\rfloor] \\\
-&= \sum\limits_{j=0}^{\lfloor\frac{an + b}{c}\rfloor-1}\sum\limits_{i=0}^{n} [c(j+1) <ai + b + 1] \\\
-&= \sum\limits_{j=0}^{\lfloor\frac{an + b}{c}\rfloor-1}\sum\limits_{i=0}^{n} [i > \frac{cj+c-b-1}{a}] \\\
-&= \sum\limits_{j=0}^{\lfloor\frac{an + b}{c}\rfloor-1}(n - \lfloor \frac{cj+c-b-1}{a} \rfloor) \\\
-&= n \cdot \lfloor\frac{an + b}{c}\rfloor - \sum\limits_{j=0}^{\lfloor\frac{an + b}{c}\rfloor-1}\lfloor \frac{cj+c-b-1}{a} \rfloor \\\
-&= n \cdot \lfloor\frac{an + b}{c}\rfloor - f(c, c - b - 1, a, \lfloor\frac{an + b}{c}\rfloor-1)
-\end{aligned}</script><p>递归计算即可 复杂度一个 $\log​$ </p>
+            <p>类欧几里得算法用来求诸如此类问题：<br>$$<br>f(a,b,c,n)=\sum\limits_{i=0}^{n} \lfloor\frac{ai + b}{c}\rfloor<br>$$<br><a id="more"></a> </p>
+<p><strong>分类讨论</strong></p>
+<p><strong>第一种情况</strong>：$a=0​$ 。那么<br>$$<br>f(a,b,c,n)= \sum\limits_{i=0}^{n} \lfloor \frac{b}{c} \rfloor=(n+1)\lfloor \frac{b}{c} \rfloor<br>$$<br><strong>第二种情况</strong>：$a,b$ 中有一个大于等于 $c$ 。那么<br>$$<br>\begin{aligned}<br>f(a,b,c,n) &amp;= \sum\limits_{i=0}^{n} \lfloor\frac{ai + b}{c}\rfloor \\\<br>&amp;= \sum\limits_{i = 0}^{n}(\lfloor\frac{a\bmod c\cdot i + b \bmod c}{c}\rfloor+i\lfloor\frac{a}{c} \rfloor+\lfloor \frac{b}{c} \rfloor) \\\<br>&amp;= \sum\limits_{i = 0}^{n}\lfloor\frac{a\bmod c\cdot i + b \bmod c}{c}\rfloor +\frac{n(n+1)}{2} \cdot \lfloor\frac{a}{c} \rfloor + (n+1)\lfloor \frac{b}{c} \rfloor \\\<br>&amp;= f(a\bmod c, b \bmod c , c, n) + \frac{n(n+1)}{2} \cdot \lfloor\frac{a}{c} \rfloor + (n+1)\lfloor \frac{b}{c} \rfloor<br>\end{aligned}<br>$$<br><strong>第三种情况</strong>：$a&lt;c$ 且 $b &lt; c$ 。那么 </p>
+<p>$$<br>\begin{aligned}<br>f(a,b,c,n) &amp;= \sum\limits_{i=0}^{n} \lfloor\frac{ai + b}{c}\rfloor \\\<br>&amp;= \sum\limits_{i=0}^{n} \sum\limits_{j=0}^{\lfloor\frac{an + b}{c}\rfloor-1} [j+1 \leq \lfloor\frac{ai + b}{c}\rfloor] \\\<br>&amp;= \sum\limits_{j=0}^{\lfloor\frac{an + b}{c}\rfloor-1}\sum\limits_{i=0}^{n} [c(j+1) <ai +="" b="" 1]="" \\\="" &="\sum\limits_{j=0}^{\lfloor\frac{an" b}{c}\rfloor-1}\sum\limits_{i="0}^{n}" [i=""> \frac{cj+c-b-1}{a}] \\\<br>&amp;= \sum\limits_{j=0}^{\lfloor\frac{an + b}{c}\rfloor-1}(n - \lfloor \frac{cj+c-b-1}{a} \rfloor) \\\<br>&amp;= n \cdot \lfloor\frac{an + b}{c}\rfloor - \sum\limits_{j=0}^{\lfloor\frac{an + b}{c}\rfloor-1}\lfloor \frac{cj+c-b-1}{a} \rfloor \\\<br>&amp;= n \cdot \lfloor\frac{an + b}{c}\rfloor - f(c, c - b - 1, a, \lfloor\frac{an + b}{c}\rfloor-1)<br>\end{aligned}<br>$$<br>递归计算即可 复杂度一个 $\log$ </ai></p>
 
         </div>
         

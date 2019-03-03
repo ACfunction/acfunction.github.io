@@ -161,7 +161,7 @@
                     <i class="far fa-edit"></i>
                     
                         <span class="level-item has-text-grey">
-                            261 Words
+                            275 Words
                         </span>
                     
                 </div>
@@ -169,32 +169,17 @@
         </div>
         
         <div class="content">
-            <p>现在要求</p>
-<script type="math/tex; mode=display">
-f(a,b,c,n)=\sum\limits_{i=0}^{n} \lfloor\frac{ai + b}{c}\rfloor</script><p><strong>分类讨论</strong></p>
-<p><strong>第一种情况</strong>：$a=0$ 。那么 </p>
-<script type="math/tex; mode=display">
-f(a,b,c,n)= \sum\limits_{i=0}^{n} \lfloor \frac{b}{c} \rfloor=(n+1)\lfloor \frac{b}{c} \rfloor</script><p><strong>第二种情况</strong>：$a,b$ 中有一个大于等于 $c$ 。那么</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-f(a,b,c,n) &= \sum\limits_{i=0}^{n} \lfloor\frac{ai + b}{c}\rfloor \\\
-&= \sum\limits_{i = 0}^{n}(\lfloor\frac{a\bmod c\cdot i + b \bmod c}{c}\rfloor+i\lfloor\frac{a}{c} \rfloor+\lfloor \frac{b}{c} \rfloor) \\\
-&= \sum\limits_{i = 0}^{n}\lfloor\frac{a\bmod c\cdot i + b \bmod c}{c}\rfloor +\frac{n(n+1)}{2} \cdot \lfloor\frac{a}{c} \rfloor + (n+1)\lfloor \frac{b}{c} \rfloor \\\
-&= f(a\bmod c, b \bmod c , c, n) + \frac{n(n+1)}{2} \cdot \lfloor\frac{a}{c} \rfloor + (n+1)\lfloor \frac{b}{c} \rfloor
-\end{aligned}</script><p><strong>第三种情况</strong>：$a&lt;c$ 且 $b &lt; c$ 。那么 </p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-f(a,b,c,n) &= \sum\limits_{i=0}^{n} \lfloor\frac{ai + b}{c}\rfloor \\\
-&= \sum\limits_{i=0}^{n} \sum\limits_{j=0}^{\lfloor\frac{an + b}{c}\rfloor-1} [j+1 \leq \lfloor\frac{ai + b}{c}\rfloor] \\\
-&= \sum\limits_{j=0}^{\lfloor\frac{an + b}{c}\rfloor-1}\sum\limits_{i=0}^{n} [c(j+1) <ai + b + 1] \\\
-&= \sum\limits_{j=0}^{\lfloor\frac{an + b}{c}\rfloor-1}\sum\limits_{i=0}^{n} [i > \frac{cj+c-b-1}{a}] \\\
-&= \sum\limits_{j=0}^{\lfloor\frac{an + b}{c}\rfloor-1}(n - \lfloor \frac{cj+c-b-1}{a} \rfloor) \\\
-&= n \cdot \lfloor\frac{an + b}{c}\rfloor - \sum\limits_{j=0}^{\lfloor\frac{an + b}{c}\rfloor-1}\lfloor \frac{cj+c-b-1}{a} \rfloor \\\
-&= n \cdot \lfloor\frac{an + b}{c}\rfloor - f(c, c - b - 1, a, \lfloor\frac{an + b}{c}\rfloor-1)
-\end{aligned}</script><p>递归计算即可 复杂度一个 $\log​$ </p>
-
+            <p>类欧几里得算法用来求诸如此类问题：<br>$$<br>f(a,b,c,n)=\sum\limits_{i=0}^{n} \lfloor\frac{ai + b}{c}\rfloor<br>$$<br></p>
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2019/03/03/类欧几里得算法学习笔记/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>

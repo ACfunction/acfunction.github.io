@@ -4,7 +4,8 @@
   
     -webkit-user-select: none;
     -moz-user-select: none;
-    user-select: none;
+    -ms-user-select: none;
+        user-select: none;
   }
   
   .pace-inactive {

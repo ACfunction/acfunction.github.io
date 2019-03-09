@@ -139,7 +139,7 @@
 </li>
 <li><p>Parick Wang <a href="https://tle666.github.io" target="_blank" rel="noopener">https://tle666.github.io</a> </p>
 </li>
-<li>书海扬帆 <a href="http://www.ljhedp.cn" target="_blank" rel="noopener">www.ljhedp.cn</a></li>
+<li>书海扬帆 www.ljhedp.cn</li>
 </ul>
 <h5 id="大佬"><a href="#大佬" class="headerlink" title="大佬"></a>大佬</h5><ul>
 <li><p>Siyuan 小姐姐 Orz <a href="https://hydingsy.github.io/" target="_blank" rel="noopener">https://hydingsy.github.io/</a></p>
@@ -471,7 +471,24 @@ MathJax.Hub.Queue(function() {
 </script>
 <script src="/js/insight.js" defer></script>
 <link rel="stylesheet" href="/css/search.css">
-<link rel="stylesheet" href="/css/insight.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<link rel="stylesheet" href="/css/insight.css"><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
     
 </body>
 </html>

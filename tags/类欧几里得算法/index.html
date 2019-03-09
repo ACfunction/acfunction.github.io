@@ -169,7 +169,9 @@
         </div>
         
         <div class="content">
-            <p>类欧几里得算法用来求诸如此类问题：<br>$$<br>f(a,b,c,n)=\sum\limits_{i=0}^{n} \lfloor\frac{ai + b}{c}\rfloor<br>$$<br></p>
+            <p>类欧几里得算法用来求诸如此类问题：</p>
+<script type="math/tex; mode=display">
+f(a,b,c,n)=\sum\limits_{i=0}^{n} \lfloor\frac{ai + b}{c}\rfloor</script>
         </div>
         
         
@@ -482,7 +484,24 @@ MathJax.Hub.Queue(function() {
 </script>
 <script src="/js/insight.js" defer></script>
 <link rel="stylesheet" href="/css/search.css">
-<link rel="stylesheet" href="/css/insight.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<link rel="stylesheet" href="/css/insight.css"><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
     
 </body>
 </html>

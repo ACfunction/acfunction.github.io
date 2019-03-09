@@ -2,21 +2,23 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-<title>归档: 2019 - AcF&#39;s Blog</title>
+<title>BZOJ1042 「HNOI2008」硬币购物 - AcF&#39;s Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="向来心是看客心，乃何人是剧中人">
-<meta property="og:type" content="website">
-<meta property="og:title" content="AcF&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/archives/2019/index.html">
+    <meta name="description" content="Description一共有 $4$ 种硬币。面值分别为 $c_1,c_2,c_3,c_4$m。某人去商店买东西，去了 $tot$ 次。每次带 $d_i$ 枚 $c_i$ 硬币，买 $s$ 的价值的东西。请问每次有多少种付款方法。">
+<meta name="keywords" content="容斥,组合数学,动态规划">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BZOJ1042 「HNOI2008」硬币购物">
+<meta property="og:url" content="http://yoursite.com/2019/03/09/BZOJ1042/index.html">
 <meta property="og:site_name" content="AcF&#39;s Blog">
-<meta property="og:description" content="向来心是看客心，乃何人是剧中人">
+<meta property="og:description" content="Description一共有 $4$ 种硬币。面值分别为 $c_1,c_2,c_3,c_4$m。某人去商店买东西，去了 $tot$ 次。每次带 $d_i$ 枚 $c_i$ 硬币，买 $s$ 的价值的东西。请问每次有多少种付款方法。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-09T08:34:45.645Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="AcF&#39;s Blog">
-<meta name="twitter:description" content="向来心是看客心，乃何人是剧中人">
+<meta name="twitter:title" content="BZOJ1042 「HNOI2008」硬币购物">
+<meta name="twitter:description" content="Description一共有 $4$ 种硬币。面值分别为 $c_1,c_2,c_3,c_4$m。某人去商店买东西，去了 $tot$ 次。每次带 $d_i$ 枚 $c_i$ 硬币，买 $s$ 的价值的东西。请问每次有多少种付款方法。">
 
 
 
@@ -86,7 +88,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <!-- <img src="/favicon.ico" alt="AcF&#39;s Blog" height="25"> -->
+                <!-- <img src="/favicon.ico" alt="BZOJ1042 「HNOI2008」硬币购物" height="25"> -->
                 <span class="navbar-title"> AcF's blog </span>
             
             </a>
@@ -123,224 +125,102 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column my-content is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main">
-
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="tag is-link">
-        2019
-        </h3>
-        <div class="timeline">
+                <div class="column my-content is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article
+         
+    ">
         
-            <article class="media">
+        <div class="my-title  my-post-title ">
+            <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-03-09T08:21:03.000Z">2019-03-09</time>
-                        <a href="/2019/03/09/BZOJ1042/" class="has-link-black-ter is-size-6">BZOJ1042 「HNOI2008」硬币购物</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/题解/">题解</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
+                    BZOJ1042 「HNOI2008」硬币购物
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-03-03T06:32:49.000Z">2019-03-03</time>
-                        <a href="/2019/03/03/类欧几里得算法学习笔记/" class="has-link-black-ter is-size-6">类欧几里得算法学习笔记</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/算法笔记/">算法笔记</a>
-                                </div>
-                                
-                            </div>
+            </h1>
+            <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
+                <div class="level-left">
+                    <i class="far fa-clock"></i>
+                    <time class="level-item has-text-grey" datetime="2019-03-09T08:21:03.000Z">
+                        2019-03-09
+                    </time>
+                    <i class="far fa-folder"></i>
+                    
+                        <div class="level-item">
+                            <a class="has-link-grey -link" href="/categories/题解/">题解</a>
                         </div>
-                    </div>
+                    
+                    <i class="far fa-edit"></i>
+                    
+                        <span class="level-item has-text-grey">
+                            319 Words
+                        </span>
+                    
                 </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-03-01T11:13:21.000Z">2019-03-01</time>
-                        <a href="/2019/03/01/杜教筛学习笔记/" class="has-link-black-ter is-size-6">杜教筛学习笔记</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/算法笔记/">算法笔记</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-02-28T10:58:37.000Z">2019-02-28</time>
-                        <a href="/2019/02/28/BZOJ3160/" class="has-link-black-ter is-size-6">BZOJ3160 万径人踪灭</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/题解/">题解</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-02-21T14:44:18.000Z">2019-02-21</time>
-                        <a href="/2019/02/21/BZOJ3091/" class="has-link-black-ter is-size-6">BZOJ3091 城市旅行</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/题解/">题解</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-02-09T01:52:27.000Z">2019-02-09</time>
-                        <a href="/2019/02/09/CF1110E/" class="has-link-black-ter is-size-6">CF1110E Magic Stones</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/题解/">题解</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-02-09T00:59:23.000Z">2019-02-09</time>
-                        <a href="/2019/02/09/CF1110F/" class="has-link-black-ter is-size-6">CF1110F Nearest Leaf</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/题解/">题解</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-02-02T06:20:23.000Z">2019-02-02</time>
-                        <a href="/2019/02/02/Cloud-Player-Rescue-Plan/" class="has-link-black-ter is-size-6">「云玩家拯救计划」小题单</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-02-01T11:41:04.000Z">2019-02-01</time>
-                        <a href="/2019/02/01/CF757F/" class="has-link-black-ter is-size-6">CF757F Team Rocket Rises Again</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/题解/">题解</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-01-23T13:35:50.000Z">2019-01-23</time>
-                        <a href="/2019/01/23/Red-And-Blue-Eye/" class="has-link-black-ter is-size-6">趣题「红眼睛与蓝眼睛」</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/趣题/">趣题</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
+            </div>
         </div>
+        
+        <div class="content">
+            <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>一共有 $4$ 种硬币。面值分别为 $c_1,c_2,c_3,c_4$m。某人去商店买东西，去了 $tot$ 次。每次带 $d_i$ 枚 $c_i$ 硬币，买 $s$ 的价值的东西。请问每次有多少种付款方法。</p>
+<a id="more"></a> 
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>考虑没有 $d$ 的限制，直接完全背包。$dp_i$ 表示 $i$ 这个面值用 $c_1…c_4$ 凑有多少种方法</p>
+<p>加上限制就容斥枚举 $16$ 种情况表示哪几种面值的性质没有被满足。</p>
+<p>然后可以观察到，如果对于 $i$ 不满足限制，方案数就是 $dp_{s-(d_i+1)c_i}$ </p>
+<p>所以归纳一下就是 </p>
+<script type="math/tex; mode=display">
+ans = \sum\limits_{S \subseteq {1,2,3,4}}(-1)^{|S|}dp_{(s-\sum\limits_{x \in S} (d_x+1)c_x)}</script><h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * Author: AcFunction</span></span><br><span class="line"><span class="hljs-comment"> * Date:   2019-03-04 17:57:01</span></span><br><span class="line"><span class="hljs-comment"> * Email:  3486942970@qq.com</span></span><br><span class="line"><span class="hljs-comment">**/</span></span><br><span class="line"> </span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> int long long</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> RG register </span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> rep(i, l, r) for(RG int i = l; i &lt;= r; i++) </span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> per(i, r, l) for(RG int i = r; i &gt;= l; i--)</span></span><br><span class="line"> </span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"> </span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">INIT</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">  ios :: sync_with_stdio(<span class="hljs-literal">false</span>); <span class="hljs-built_in">cin</span>.tie(<span class="hljs-number">0</span>); </span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N = <span class="hljs-number">100100</span>; </span><br><span class="line"> </span><br><span class="line"><span class="hljs-keyword">int</span> n, c[<span class="hljs-number">5</span>], d[<span class="hljs-number">5</span>]; <span class="hljs-keyword">int</span> dp[N]; </span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">  INIT(); dp[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>; </span><br><span class="line">  rep(i, <span class="hljs-number">1</span>, <span class="hljs-number">4</span>) <span class="hljs-built_in">cin</span> &gt;&gt; c[i]; <span class="hljs-built_in">cin</span> &gt;&gt; n; </span><br><span class="line">  rep(j, <span class="hljs-number">1</span>, <span class="hljs-number">4</span>) rep(i, <span class="hljs-number">0</span>, <span class="hljs-number">100000</span>)</span><br><span class="line">      <span class="hljs-keyword">if</span>(i + c[j] &lt;= <span class="hljs-number">100000</span>) </span><br><span class="line">        dp[i + c[j]] += dp[i]; </span><br><span class="line">  rep(i, <span class="hljs-number">1</span>, n) &#123; <span class="hljs-keyword">int</span> s; <span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>; </span><br><span class="line">    rep(j, <span class="hljs-number">1</span>, <span class="hljs-number">4</span>) <span class="hljs-built_in">cin</span> &gt;&gt; d[j]; <span class="hljs-built_in">cin</span> &gt;&gt; s;  </span><br><span class="line">    rep(j, <span class="hljs-number">0</span>, <span class="hljs-number">15</span>) &#123;</span><br><span class="line">      <span class="hljs-keyword">int</span> s1 = <span class="hljs-number">0</span>, s2 = s; </span><br><span class="line">      rep(t, <span class="hljs-number">1</span>, <span class="hljs-number">4</span>) </span><br><span class="line">        <span class="hljs-keyword">if</span>(j &amp; (<span class="hljs-number">1</span> &lt;&lt; (t - <span class="hljs-number">1</span>))) &#123;</span><br><span class="line">          s1++; s2 -= (d[t] + <span class="hljs-number">1</span>) * c[t]; </span><br><span class="line">        &#125;</span><br><span class="line">      ans += ((s1 &amp; <span class="hljs-number">1</span>) ? <span class="hljs-number">-1</span> : <span class="hljs-number">1</span>) * (s2 &gt;= <span class="hljs-number">0</span> ? dp[s2] : <span class="hljs-number">0</span>); </span><br><span class="line">    &#125;  <span class="hljs-built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="hljs-built_in">endl</span>; </span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase my-post-tags">
+            <div class="level-start">
+                <div class="level-item">
+                    <!-- <span class="is-size-6 has-text-grey has-mr-7">#</span> -->
+                    <a class="my-post-tag has-link-grey -link" href="/tags/动态规划/">动态规划</a>, <a class="my-post-tag has-link-grey -link" href="/tags/容斥/">容斥</a>, <a class="my-post-tag has-link-grey -link" href="/tags/组合数学/">组合数学</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/03/03/类欧几里得算法学习笔记/">
+                <span class="level-item">类欧几里得算法学习笔记</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
     </div>
 </div>
 
 
 
-    
-<div class="card card-transparent">
-    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-        <div class="pagination-previous is-invisible is-hidden-mobile">
-            <a class="is-flex-grow has-text-black-ter" href="/archives/2019/page/0/">上一页</a>
-        </div>
-        <div class="pagination-next">
-            <a class="is-flex-grow has-text-black-ter" href="/archives/2019/page/2/">下一页</a>
-        </div>
-        <ul class="pagination-list is-hidden-mobile">
-            
-            <li><a class="pagination-link is-current" href="/archives/2019/">1</a></li>
-            
-            <li><a class="pagination-link has-text-black-ter" href="/archives/2019/page/2/">2</a></li>
-            
-        </ul>
-    </nav>
+<div class="card">
+    <div class="card-content">
+        <!-- <h3 class="title is-5 has-text-weight-normal">评论</h3> -->
+        
+<div id="valine-thread"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: false,
+        verify: false,
+        app_id: 'wiVbO6sPSKaPiIkxSOAt7AHB-gzGzoHsz',
+        app_key: 'b69xXD4MxvplOVlDfJ0lGM3S',
+        placeholder: '有什么感想吗w'
+    });
+</script>
+
+    </div>
 </div>
 </div>
                 
@@ -425,6 +305,29 @@
 </div>
     
         
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#Description">
+        <span class="has-mr-6">1</span>
+        <span>Description</span>
+        </a></li><li>
+        <a class="is-flex" href="#Solution">
+        <span class="has-mr-6">2</span>
+        <span>Solution</span>
+        </a></li><li>
+        <a class="is-flex" href="#Code">
+        <span class="has-mr-6">3</span>
+        <span>Code</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
     
         
 <div class="card widget">
@@ -480,7 +383,7 @@
             <div class="level-start has-text-centered-mobile">
                 <!-- <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/favicon.ico" alt="AcF&#39;s Blog" height="28">
+                    <img src="/favicon.ico" alt="BZOJ1042 「HNOI2008」硬币购物" height="28">
                 
                 </a> -->
                 <p class="is-size-7">

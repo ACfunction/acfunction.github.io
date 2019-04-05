@@ -8,7 +8,7 @@
 
 
     <meta name="description" content="向来心是看客心，乃何人是剧中人">
-<meta name="keywords" content="容斥,组合数学,动态规划,主席树,二分,概率期望,高斯消元,贪心,manacher,FFT,NTT,LCT,树状数组,线段树,dfs序,支配树,倍增,LCA,博弈论,数论,莫比乌斯反演,杜教筛,类欧几里得算法">
+<meta name="keywords" content="省选游记,爆零,容斥,组合数学,动态规划,概率期望,主席树,二分,LCT,高斯消元,贪心,manacher,FFT,NTT,树状数组,可并堆,线段树,dfs序,支配树,倍增,LCA,博弈论,杜教筛,数论,莫比乌斯反演,类欧几里得算法">
 <meta property="og:type" content="website">
 <meta property="og:title" content="AcF&#39;s Blog">
 <meta property="og:url" content="http://yoursite.com/tags/index.html">
@@ -254,6 +254,17 @@
                 </li>
                 
                 <li>
+                    <a class="level is-marginless" href="/tags/可并堆/">
+                        <span class="level-start">
+                            <span class="level-item">可并堆</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">1</span>
+                        </span>
+                    </a>
+                </li>
+                
+                <li>
                     <a class="level is-marginless" href="/tags/容斥/">
                         <span class="level-start">
                             <span class="level-item">容斥</span>
@@ -303,7 +314,7 @@
                             <span class="level-item">树状数组</span>
                         </span>
                         <span class="level-end">
-                            <span class="level-item tag">2</span>
+                            <span class="level-item tag">3</span>
                         </span>
                     </a>
                 </li>
@@ -315,6 +326,28 @@
                         </span>
                         <span class="level-end">
                             <span class="level-item tag">3</span>
+                        </span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a class="level is-marginless" href="/tags/爆零/">
+                        <span class="level-start">
+                            <span class="level-item">爆零</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">1</span>
+                        </span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a class="level is-marginless" href="/tags/省选游记/">
+                        <span class="level-start">
+                            <span class="level-item">省选游记</span>
+                        </span>
+                        <span class="level-end">
+                            <span class="level-item tag">1</span>
                         </span>
                     </a>
                 </li>
@@ -369,7 +402,7 @@
                             <span class="level-item">贪心</span>
                         </span>
                         <span class="level-end">
-                            <span class="level-item tag">1</span>
+                            <span class="level-item tag">2</span>
                         </span>
                     </a>
                 </li>
@@ -420,7 +453,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        19
+                        22
                     </p>
                 </div>
             </div>
@@ -430,7 +463,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        3
+                        4
                     </p>
                 </div>
             </div>
@@ -440,7 +473,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        23
+                        26
                     </p>
                 </div>
             </div>
@@ -481,6 +514,14 @@
             </h3>
             <ul class="menu-list">
             <li>
+        <a class="level is-marginless" href="/categories/游记/">
+            <span class="level-start">
+                <span class="level-item">游记</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/算法笔记/">
             <span class="level-start">
                 <span class="level-item">算法笔记</span>
@@ -502,7 +543,7 @@
                 <span class="level-item">题解</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">15</span>
+                <span class="level-item tag">17</span>
             </span>
         </a></li>
             </ul>
@@ -681,24 +722,22 @@ MathJax.Hub.Queue(function() {
 </script>
 <script src="/js/insight.js" defer></script>
 <link rel="stylesheet" href="/css/search.css">
-<link rel="stylesheet" href="/css/insight.css"><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config("");
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+<link rel="stylesheet" href="/css/insight.css">
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>

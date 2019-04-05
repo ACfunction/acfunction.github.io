@@ -129,6 +129,8 @@
     <div class="card-content article
          
     ">
+
+
         
         <div class="content">
             <h3 id="常用-OJ"><a href="#常用-OJ" class="headerlink" title="常用 OJ"></a>常用 OJ</h3><p> <a href="lhttps://www.luogu.org/" target="_blank" rel="noopener">Luogu</a> | <a href="https://www.lydsy.com/JudgeOnline/wttl/wttl.php" target="_blank" rel="noopener">BZOJ</a> | <a href="loj.ac">LOJ</a> | <a href="http://uoj.ac/" target="_blank" rel="noopener">UOJ</a> | <a href="http://codeforces.com/" target="_blank" rel="noopener">CodeForces</a> | <a href="https://atcoder.jp/" target="_blank" rel="noopener">AtCoder</a> | <a href="https://www.codechef.com/" target="_blank" rel="noopener">CodeChef</a> </p>
@@ -209,7 +211,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        19
+                        22
                     </p>
                 </div>
             </div>
@@ -219,7 +221,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        3
+                        4
                     </p>
                 </div>
             </div>
@@ -229,7 +231,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        23
+                        26
                     </p>
                 </div>
             </div>
@@ -270,6 +272,14 @@
             </h3>
             <ul class="menu-list">
             <li>
+        <a class="level is-marginless" href="/categories/游记/">
+            <span class="level-start">
+                <span class="level-item">游记</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/算法笔记/">
             <span class="level-start">
                 <span class="level-item">算法笔记</span>
@@ -291,7 +301,7 @@
                 <span class="level-item">题解</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">15</span>
+                <span class="level-item tag">17</span>
             </span>
         </a></li>
             </ul>
@@ -470,24 +480,22 @@ MathJax.Hub.Queue(function() {
 </script>
 <script src="/js/insight.js" defer></script>
 <link rel="stylesheet" href="/css/search.css">
-<link rel="stylesheet" href="/css/insight.css"><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config("");
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+<link rel="stylesheet" href="/css/insight.css">
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>

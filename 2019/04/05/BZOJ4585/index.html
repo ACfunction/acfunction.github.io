@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+<title>BZOJ4585 「APIO2016」烟火表演 - AcF&#39;s Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="Description给定一棵以 $1$ 为根的 $n$ 个节点的树，每条边有一个边权。有 $m$ 个叶子。将一条边的边权从 $x$ 修改至 $y$ 需要的代价是 $|x-y|$  。求将所有叶子到根节点的距离修改成相同的最小代价。">
+<meta name="keywords" content="可并堆">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BZOJ4585 「APIO2016」烟火表演">
+<meta property="og:url" content="http://yoursite.com/2019/04/05/BZOJ4585/index.html">
+<meta property="og:site_name" content="AcF&#39;s Blog">
+<meta property="og:description" content="Description给定一棵以 $1$ 为根的 $n$ 个节点的树，每条边有一个边权。有 $m$ 个叶子。将一条边的边权从 $x$ 修改至 $y$ 需要的代价是 $|x-y|$  。求将所有叶子到根节点的距离修改成相同的最小代价。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-04-05T10:42:55.877Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="BZOJ4585 「APIO2016」烟火表演">
+<meta name="twitter:description" content="Description给定一棵以 $1$ 为根的 $n$ 个节点的树，每条边有一个边权。有 $m$ 个叶子。将一条边的边权从 $x$ 修改至 $y$ 需要的代价是 $|x-y|$  。求将所有叶子到根节点的距离修改成相同的最小代价。">
+
+
+
+
+
+<link rel="icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+<body class="is-2-column">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <!-- <img src="/favicon.ico" alt="BZOJ4585 「APIO2016」烟火表演" height="25"> -->
+                <span class="navbar-title"> AcF's blog </span>
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">首页</a>
+                
+                <a class="navbar-item" href="/archives">归档</a>
+                
+                <a class="navbar-item" href="/categories">分类</a>
+                
+                <a class="navbar-item" href="/tags">标签</a>
+                
+                <a class="navbar-item" href="/Links">友链</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column my-content is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article
+         
+    ">
+
+
+        
+
+        <div class="my-title  my-post-title ">
+            <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+                
+                    BZOJ4585 「APIO2016」烟火表演
+                
+            </h1>
+            <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
+                <div class="level-left">
+                 
+                    <i class="far fa-clock"></i>
+                    <time class="level-item has-text-grey" datetime="2019-04-05T09:37:11.000Z">
+                        2019-04-05
+                    </time>
+                    <i class="far fa-folder"></i>
+                    
+                        <div class="level-item">
+                            <a class="has-link-grey -link" href="/categories/题解/">题解</a>
+                        </div>
+                    
+                    <i class="far fa-edit"></i>
+                    
+                        <span class="level-item has-text-grey">
+                            1603 Words
+                        </span>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>给定一棵以 $1$ 为根的 $n$ 个节点的树，每条边有一个边权。有 $m$ 个叶子。将一条边的边权从 $x$ 修改至 $y$ 需要的代价是 $|x-y|$  。求将所有叶子到根节点的距离修改成相同的最小代价。</p>
+<a id="more"></a>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>神仙题。参考：<a href="https://blog.csdn.net/u014609452/article/details/52347062；洛谷题解第一篇。" target="_blank" rel="noopener">https://blog.csdn.net/u014609452/article/details/52347062；洛谷题解第一篇。</a></p>
+<p>定义 $f_x(y)$ 表示将以 $x$ 为根的子树中所有叶子结点到 $x$ 节点的距离都修改成 $y$ 所需要的代价。我们得到的结论是：<strong>$f_x$ 是个分段函数，每一段为一个一次函数，并且下凸（即一个凸壳）</strong>。</p>
+<p>这个结论的证明要用到数学归纳法，不多赘述。</p>
+<p>考虑维护这个凸壳。即现在已知每个儿子的凸壳，应该如何合并出这个节点的凸壳。</p>
+<p>儿子节点的凸壳首先需要往其中加入父亲到他的这一条边。可以证明有了这一条边后依然是一个凸壳。</p>
+<p>对每个儿子都这么做，得到的所有凸壳相加即为父亲节点的凸壳。</p>
+<p>于是问题变为如何维护 ”往上增加一条边“ 后凸壳的变化。</p>
+<p>设增加这条边的边权是 $w$ ，要增加的这个函数是 $f$ ，新的函数是 $g$ ，最小值在 $L$ 到 $R$ 取到。</p>
+<ol>
+<li>对于 $x \leq L$ ，此时要把新加的这条边减成 $0$ ，代价 $w$ 即 $g(x) = f(x) + w$</li>
+<li>对于 $L \leq x \leq L + w$ ，此时先将原来的子树里的每个叶子到根的距离修改成 $L$ ，加上 $w$ 后要再修改成 $x$ 需要 $L + w - x$ 的代价 （先把 $w$ 的边干掉然后用 $L - x$ 的代价从 $L$ 到 $x$ ）。即 $g(x) = f(x) + w + L -x$</li>
+<li>对于 $L + w \leq x \leq R + w$ ，此时 $g(x) = f(x - w)$ 。又因为 $x - w \in [L, R]$ 都是最小值，所以 $g(x) = f(L)$ </li>
+<li>对于 $R+w \leq x$ ，此时先将原来的子树里的每个叶子到根的距离修改成 $R$ ，加上 $w$ 再修改成 $x$ 需要 $|R + w - x| = x - w - R$ （其实和 2 差不多只是正负的问题）。即 $g(x) = f(x) + x - w - R$ </li>
+</ol>
+<p>容易看出，$g$ 的最小值在 $[L + w, R + w]$ 取到。</p>
+<p>得到这些性质后，<del>我已经自闭了…</del> 我们可以分析它的几何意义。</p>
+<p>第一段（$x \leq L$） 相当于是往上做了一个平移。</p>
+<p>第二段（$L \leq x \leq L + w$）你会发现，$g(x) = f(x) + w - L - x$ 中有一个 $-x$ 。这说明这一段的斜率是 $-1$ </p>
+<p>第三段（$L + w \leq x \leq R + w$）这一段其实就是一段平的（这也是为啥它是新函数取到最小值的段），斜率维 $0$</p>
+<p>第四段（$R + w \leq x$ ）你会发现，$g(x) = f(x) + x - w - R$ 有一个 $+x$ 。这说明这一段的斜率是 $1$ </p>
+<p>这样我们就知道了新凸壳与原来的凸壳的区别：<strong>将 $L$ 左边一段向上平移，删除右边，新增两个拐点 $L+w, R+w$ 并且 $L$  到 $L+w$ 的斜率为 $-1$ ，$L+w$ 到 $R + w$ 的斜率是 $0$，$R + w$ 往右的斜率是 $1$ </strong>。</p>
+<p>有了这个结论，然后的做法其实还不是很显然（至少对我来说）。</p>
+<p>这个凸壳还有一个可以证明的性质：（从左到右）每当<strong>经过一个拐点</strong>，那么<strong>斜率会增加 $1$ </strong></p>
+<p>我们可以对每个点存放凸壳的拐点（的横坐标）。</p>
+<p>每次将儿子节点的凸壳弹出后面的（从大到小）拐点，然后加入两个新拐点。然后将儿子节点的拐点合并到该节点的凸壳中。</p>
+<p>这个过程中，需要支持：删除（横坐标）最大的拐点；合并。自然想到<strong>可并堆</strong>。</p>
+<p>还剩下几个小问题：</p>
+<ol>
+<li><strong>实现时，如何弹出拐点直到最小值的那一段</strong>？最右边的那一段的斜率是儿子数量。（因为每合并一次右端斜率 ++） 所以弹出儿子数量个拐点即可。</li>
+<li><strong>最后的答案如何计算？或：最小值那一段该如何计算？</strong> $f_1(0)$ 很好计算，为所有边权的和。我们又知道，每一个拐点使得斜率++。于是可以先把右边的点弹掉（儿子个），然后计算即可</li>
+</ol>
+<p>还有一个很骚的操作，即一种快乐的可并堆：</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">merge</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">if</span>(!x || !y) <span class="hljs-keyword">return</span> x + y; </span><br><span class="line">  <span class="hljs-keyword">if</span>(vx[x] &lt; vx[y]) swap(x, y); </span><br><span class="line">  <span class="hljs-keyword">int</span> d = rand() % <span class="hljs-number">2</span>; </span><br><span class="line">  ch[x][d] = merge(ch[x][d], y); </span><br><span class="line">  <span class="hljs-keyword">return</span> x; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>懒人专用，复杂度很对（426ms）。会证明复杂度的可以私信我，我太菜了不会证…</p>
+<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * Author: AcFunction</span></span><br><span class="line"><span class="hljs-comment"> * Date:   2019-03-19 21:45:47</span></span><br><span class="line"><span class="hljs-comment"> * Email:  3486942970@qq.com</span></span><br><span class="line"><span class="hljs-comment">**/</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> db double</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> PII pair <span class="hljs-meta-string">&lt;int, int&gt; </span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> pb push_back </span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> Fi first</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> Se second </span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MP make_pair</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> RG register </span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> rep(i, l, r) for(RG int i = l; i &lt;= r; i++) </span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> per(i, r, l) for(RG int i = r; i &gt;= l; i--)</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">INIT</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">  ios :: sync_with_stdio(<span class="hljs-literal">false</span>); <span class="hljs-built_in">cin</span>.tie(<span class="hljs-number">0</span>); </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">template</span> &lt; <span class="hljs-keyword">typename</span> T &gt; <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">sc</span><span class="hljs-params">(T&amp; t)</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">char</span> c = getchar(); T x = <span class="hljs-number">1</span>; t = <span class="hljs-number">0</span>; <span class="hljs-keyword">while</span>(!<span class="hljs-built_in">isdigit</span>(c)) &#123;<span class="hljs-keyword">if</span>(c == <span class="hljs-string">'-'</span>) x = <span class="hljs-number">-1</span>; c = getchar();&#125;</span><br><span class="line">  <span class="hljs-keyword">while</span>(<span class="hljs-built_in">isdigit</span>(c)) t = t * <span class="hljs-number">10</span> + c - <span class="hljs-string">'0'</span> , c = getchar();t *= x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">template</span> &lt; <span class="hljs-keyword">typename</span> T , <span class="hljs-keyword">typename</span>... Args &gt; <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">sc</span><span class="hljs-params">(T&amp; t , Args&amp;... args)</span> </span>&#123;sc(t); sc(args...);&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N = <span class="hljs-number">600300</span>; </span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> n, m, fa[N], son[N];</span><br><span class="line">ll w[N], ans, vx[N];  </span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> cnt, ch[N][<span class="hljs-number">2</span>], rt[N];  </span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">New</span><span class="hljs-params">(ll x)</span> </span>&#123;</span><br><span class="line">  vx[++cnt] = x; ch[cnt][<span class="hljs-number">0</span>] = ch[cnt][<span class="hljs-number">1</span>] = <span class="hljs-number">0</span>; <span class="hljs-keyword">return</span> cnt; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">merge</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">if</span>(!x || !y) <span class="hljs-keyword">return</span> x + y; </span><br><span class="line">  <span class="hljs-keyword">if</span>(vx[x] &lt; vx[y]) swap(x, y); </span><br><span class="line">  <span class="hljs-keyword">int</span> d = rand() % <span class="hljs-number">2</span>; </span><br><span class="line">  ch[x][d] = merge(ch[x][d], y); </span><br><span class="line">  <span class="hljs-keyword">return</span> x; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">  <span class="hljs-comment">// INIT(); </span></span><br><span class="line">  srand((<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span>)<span class="hljs-keyword">new</span> <span class="hljs-keyword">char</span>); </span><br><span class="line">  sc(n, m); </span><br><span class="line">  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt;= n + m; i++) &#123;</span><br><span class="line">    sc(fa[i], w[i]); ans += w[i]; son[fa[i]]++; </span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = n + m; i &gt;= <span class="hljs-number">2</span>; i--) &#123;</span><br><span class="line">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt;= son[i] - <span class="hljs-number">1</span>; j++)</span><br><span class="line">      rt[i] = merge(ch[rt[i]][<span class="hljs-number">0</span>], ch[rt[i]][<span class="hljs-number">1</span>]); </span><br><span class="line">    ll R = vx[rt[i]]; rt[i] = merge(ch[rt[i]][<span class="hljs-number">0</span>], ch[rt[i]][<span class="hljs-number">1</span>]); </span><br><span class="line">    ll L = vx[rt[i]]; rt[i] = merge(ch[rt[i]][<span class="hljs-number">0</span>], ch[rt[i]][<span class="hljs-number">1</span>]); </span><br><span class="line">    rt[i] = merge(rt[i], merge(New(L + w[i]), New(R + w[i])));  </span><br><span class="line">    rt[fa[i]] = merge(rt[fa[i]], rt[i]); </span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt;= son[<span class="hljs-number">1</span>]; j++) </span><br><span class="line">    rt[<span class="hljs-number">1</span>] = merge(ch[rt[<span class="hljs-number">1</span>]][<span class="hljs-number">0</span>], ch[rt[<span class="hljs-number">1</span>]][<span class="hljs-number">1</span>]); </span><br><span class="line">  <span class="hljs-keyword">while</span>(rt[<span class="hljs-number">1</span>]) &#123;</span><br><span class="line">    ans -= vx[rt[<span class="hljs-number">1</span>]]; </span><br><span class="line">    rt[<span class="hljs-number">1</span>] = merge(ch[rt[<span class="hljs-number">1</span>]][<span class="hljs-number">0</span>], ch[rt[<span class="hljs-number">1</span>]][<span class="hljs-number">1</span>]); </span><br><span class="line">  &#125; <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld\n"</span>, ans); </span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase my-post-tags">
+            <div class="level-start">
+                <div class="level-item">
+                    <!-- <span class="is-size-6 has-text-grey has-mr-7">#</span> -->
+                    <a class="my-post-tag has-link-grey -link" href="/tags/可并堆/">可并堆</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/04/05/HDU6203/">
+                <span class="level-item">HDU6203 ping ping ping</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <!-- <h3 class="title is-5 has-text-weight-normal">评论</h3> -->
+        
+<div id="valine-thread"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: false,
+        verify: false,
+        app_id: 'wiVbO6sPSKaPiIkxSOAt7AHB-gzGzoHsz',
+        app_key: 'b69xXD4MxvplOVlDfJ0lGM3S',
+        placeholder: '有什么感想吗w'
+    });
+</script>
+
+    </div>
+</div>
+</div>
+                
+                
+
+
+
+
+<div class="column my-sidebar is-4-tablet is-4-desktop is-4-widescreen  has-order-3 column-right is-sticky">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                    <img class="image is-128x128 has-mb-6" src="/images/avatar.png" alt="AcFunction">
+                    
+                    <p class="is-size-4 is-block">
+                        AcFunction
+                    </p>
+                    
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        22
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        4
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        26
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="http://github.com/acfunction">
+                关注我</a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="http://github.com/acfunction">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#Description">
+        <span class="has-mr-6">1</span>
+        <span>Description</span>
+        </a></li><li>
+        <a class="is-flex" href="#Solution">
+        <span class="has-mr-6">2</span>
+        <span>Solution</span>
+        </a></li><li>
+        <a class="is-flex" href="#Code">
+        <span class="has-mr-6">3</span>
+        <span>Code</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/游记/">
+            <span class="level-start">
+                <span class="level-item">游记</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/算法笔记/">
+            <span class="level-start">
+                <span class="level-item">算法笔记</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/趣题/">
+            <span class="level-start">
+                <span class="level-item">趣题</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/题解/">
+            <span class="level-start">
+                <span class="level-item">题解</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">17</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <!-- <script type="text/javascript">
+        myHideElement('my-id-sidebar-profile');
+        myHideElement('my-id-sidebar-category');
+    </script> -->
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <!-- <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/favicon.ico" alt="BZOJ4585 「APIO2016」烟火表演" height="28">
+                
+                </a> -->
+                <p class="is-size-7">
+                &copy; 2019
+                <i class="fa fa-heart"></i>
+                 AcFunction
+                <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+                </p><p class="is-size-7">
+                    <span id="busuanzi_value_site_pv"></span> Views
+                    
+                    <span id="busuanzi_container_site_uv" style="display:none">
+                    <span class="division">|</span>
+                    <span id="busuanzi_value_site_uv"></span> Visitors
+                    </span>
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="GitHub" href="http://github.com/acfunction">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>

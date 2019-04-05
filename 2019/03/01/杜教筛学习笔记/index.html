@@ -8,7 +8,7 @@
 
 
     <meta name="description" content="设现在要求积性函数 $f$ 的前缀和， 设  $\sum \limits_{i=1}^{n} f(i) = S(n)$。 再找一个积性函数 $g$ ，则考虑它们的狄利克雷卷积的前缀和  \begin{aligned}  \sum\limits_{i=1}^{n}(f*g)(i) &amp;= \sum\limits_{i=1}^{n} \sum \limits _{d|i} f(d)g(\frac{i}{">
-<meta name="keywords" content="数论,杜教筛">
+<meta name="keywords" content="杜教筛,数论">
 <meta property="og:type" content="article">
 <meta property="og:title" content="杜教筛学习笔记">
 <meta property="og:url" content="http://yoursite.com/2019/03/01/杜教筛学习笔记/index.html">
@@ -130,7 +130,10 @@
     <div class="card-content article
          
     ">
+
+
         
+
         <div class="my-title  my-post-title ">
             <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
                 
@@ -139,6 +142,7 @@
             </h1>
             <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
                 <div class="level-left">
+                 
                     <i class="far fa-clock"></i>
                     <time class="level-item has-text-grey" datetime="2019-03-01T11:13:21.000Z">
                         2019-03-01
@@ -283,7 +287,7 @@ T(n) = \sum\limits_{i=1}^{\lfloor \frac{n}{m} \rfloor} \sqrt \frac{n}{i} = O({\f
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        19
+                        22
                     </p>
                 </div>
             </div>
@@ -293,7 +297,7 @@ T(n) = \sum\limits_{i=1}^{\lfloor \frac{n}{m} \rfloor} \sqrt \frac{n}{i} = O({\f
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        3
+                        4
                     </p>
                 </div>
             </div>
@@ -303,7 +307,7 @@ T(n) = \sum\limits_{i=1}^{\lfloor \frac{n}{m} \rfloor} \sqrt \frac{n}{i} = O({\f
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        23
+                        26
                     </p>
                 </div>
             </div>
@@ -355,6 +359,14 @@ T(n) = \sum\limits_{i=1}^{\lfloor \frac{n}{m} \rfloor} \sqrt \frac{n}{i} = O({\f
             </h3>
             <ul class="menu-list">
             <li>
+        <a class="level is-marginless" href="/categories/游记/">
+            <span class="level-start">
+                <span class="level-item">游记</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/算法笔记/">
             <span class="level-start">
                 <span class="level-item">算法笔记</span>
@@ -376,7 +388,7 @@ T(n) = \sum\limits_{i=1}^{\lfloor \frac{n}{m} \rfloor} \sqrt \frac{n}{i} = O({\f
                 <span class="level-item">题解</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">15</span>
+                <span class="level-item tag">17</span>
             </span>
         </a></li>
             </ul>
@@ -555,24 +567,22 @@ MathJax.Hub.Queue(function() {
 </script>
 <script src="/js/insight.js" defer></script>
 <link rel="stylesheet" href="/css/search.css">
-<link rel="stylesheet" href="/css/insight.css"><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config("");
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+<link rel="stylesheet" href="/css/insight.css">
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>

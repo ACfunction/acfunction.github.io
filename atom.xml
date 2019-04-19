@@ -67,9 +67,9 @@
     <link href="http://yoursite.com/2019/03/31/BJOI2019-%E6%B8%B8%E8%AE%B0/"/>
     <id>http://yoursite.com/2019/03/31/BJOI2019-游记/</id>
     <published>2019-03-31T07:10:29.000Z</published>
-    <updated>2019-04-06T09:53:21.621Z</updated>
+    <updated>2019-04-19T13:10:52.781Z</updated>
     
-    <content type="html"><![CDATA[<p>提前占坑。记录第一次省（bao）选（ling）</p><a id="more"></a><hr><h1 id="Day-n"><a href="#Day-n" class="headerlink" title="Day -n"></a>Day -n</h1><p>颓废</p><h1 id="Day-m"><a href="#Day-m" class="headerlink" title="Day -m"></a>Day -m</h1><p>模拟赛爆零（严肃）</p><p><a href="https://lim817.github.io/2019/04/06/BJOI2019-%E6%B8%B8%E8%AE%B0/" target="_blank" rel="noopener">AK大佬点这里</a></p>]]></content>
+    <content type="html"><![CDATA[<p>提前占坑。记录第一次省（bao）选（ling）</p><a id="more"></a><hr><h1 id="Day-n"><a href="#Day-n" class="headerlink" title="Day -n"></a>Day -n</h1><p>颓废</p><h1 id="Day-m"><a href="#Day-m" class="headerlink" title="Day -m"></a>Day -m</h1><p>模拟赛（集训）爆零（严肃）</p><p><a href="https://lim817.github.io/2019/04/06/BJOI2019-%E6%B8%B8%E8%AE%B0/" target="_blank" rel="noopener">AK大佬点这里</a></p><h1 id="Day-0"><a href="#Day-0" class="headerlink" title="Day 0"></a>Day 0</h1><p>复习期中</p><p>打了些板子</p><p>准备迎接退役（雾</p>]]></content>
     
     <summary type="html">
     
@@ -312,9 +312,9 @@ f(a,b,c,n)=\sum\limits_{i=0}^{n} \lfloor\frac{ai + b}{c}\rfloor&lt;/script&gt;
       <category term="算法笔记" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="数论" scheme="http://yoursite.com/tags/%E6%95%B0%E8%AE%BA/"/>
-    
       <category term="杜教筛" scheme="http://yoursite.com/tags/%E6%9D%9C%E6%95%99%E7%AD%9B/"/>
+    
+      <category term="数论" scheme="http://yoursite.com/tags/%E6%95%B0%E8%AE%BA/"/>
     
   </entry>
   

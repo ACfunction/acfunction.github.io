@@ -8,7 +8,7 @@
 
 
     <meta name="description" content="设现在要求积性函数 $f$ 的前缀和， 设  $\sum \limits_{i=1}^{n} f(i) = S(n)$。 再找一个积性函数 $g$ ，则考虑它们的狄利克雷卷积的前缀和  \begin{aligned}  \sum\limits_{i=1}^{n}(f*g)(i) &amp;= \sum\limits_{i=1}^{n} \sum \limits _{d|i} f(d)g(\frac{i}{">
-<meta name="keywords" content="杜教筛,数论">
+<meta name="keywords" content="数论,杜教筛">
 <meta property="og:type" content="article">
 <meta property="og:title" content="杜教筛学习笔记">
 <meta property="og:url" content="http://yoursite.com/2019/03/01/杜教筛学习笔记/index.html">
@@ -567,7 +567,22 @@ MathJax.Hub.Queue(function() {
 </script>
 <script src="/js/insight.js" defer></script>
 <link rel="stylesheet" href="/css/search.css">
-<link rel="stylesheet" href="/css/insight.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<link rel="stylesheet" href="/css/insight.css">
     
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>

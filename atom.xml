@@ -67,9 +67,9 @@
     <link href="http://yoursite.com/2019/03/31/BJOI2019-%E6%B8%B8%E8%AE%B0/"/>
     <id>http://yoursite.com/2019/03/31/BJOI2019-游记/</id>
     <published>2019-03-31T07:10:29.000Z</published>
-    <updated>2019-04-20T09:18:52.366Z</updated>
+    <updated>2019-04-20T13:35:08.106Z</updated>
     
-    <content type="html"><![CDATA[<p>提前占坑。记录第一次省（bao）选（ling）</p><a id="more"></a><hr><h1 id="Day-n"><a href="#Day-n" class="headerlink" title="Day -n"></a>Day -n</h1><p>颓废</p><h1 id="Day-m"><a href="#Day-m" class="headerlink" title="Day -m"></a>Day -m</h1><p>模拟赛（集训）爆零（严肃）</p><p><a href="https://lim817.github.io/2019/04/06/BJOI2019-%E6%B8%B8%E8%AE%B0/" target="_blank" rel="noopener">AK大佬点这里</a></p><h1 id="Day-0"><a href="#Day-0" class="headerlink" title="Day 0"></a>Day 0</h1><p>复习期中</p><p>打了些板子</p><p>准备迎接退役（雾</p><h1 id="Day-1"><a href="#Day-1" class="headerlink" title="Day 1"></a>Day 1</h1><p>密码输错了几次..开题</p><p>T1 什么鬼…字符串匹配？…几何平均值？？</p><p>T2 emm感觉很可做</p><p>T3 什么鬼…看了下标题和题面长度，然后就几乎没看过…现在都不知道题意是啥（事实证明这决策非常对</p><p>T1 想了一会感觉这个15分很好拿，先放着，20min写得完。感觉下面可以搞个dp但是输出方案不好弄写起来性价比有点低放了去看 T2</p><p>T2 显然这个 2*n 就是求区间 C_{斐波数列}^{k} 的和。把组合数拆一下发现可以直接预处理出几次方的系数。然后问题转化成前缀和减一下。貌似能直接矩阵快速幂，写起来不算特别麻烦。算了下复杂度勉强能过  k &lt;= 50 突然发现 l, r 比较小的可以直接跑如果 k 太大反而不能用矩阵快速幂。于是就写写写。写了2个小时(3个小时?我还是太弱了码力不够)过了第一个样例（中间差点心态崩了）。最后写了一坨奇怪的代码</p><p>3*n 有点卡住，时间只剩 2h 了吧（记不清了）。然后回去写了一发 T2 的暴力。然后还剩 1.5h-。回去想 T2。手花了几种方格图发现是由这个 3 乘 奇数多一块 或者 3 乘偶数少一块递推而来的。设了个方程解出来是 4乘前面一项减去前面两项的数。也是一个二阶线性递推。还剩 1h+ 赶紧把前面的代码复制粘贴魔改了一番系数然后调了半天还剩 20min 的时候调出来了。最后还发现 T3 有个无解过了两个样例心情舒坦检查了一番文件名就结束了。</p><p>中午（看大佬）颓废。等分真是漫长。</p><p>出分了。 15 + 65 + 0 丢了 5 分还行。rk16(17?)?!出人意料…</p><p>讲题，T1貌似听上去很套路？取个 log 变成平均数，然后二分，然后 AC自动机上dp？反正肯定是不会的。</p><p>T2正解要用什么奇怪的扩展整数域，听得很懵。。</p><p>T3全程掉线，我题意都不知道是啥（我还是太菜了</p><p>晚上还是要复习万恶的期中（（（</p><p>Day2 爆零预备</p>]]></content>
+    <content type="html"><![CDATA[<p>提前占坑。记录第一次省（bao）选（ling）</p><a id="more"></a><hr><h1 id="Day-n"><a href="#Day-n" class="headerlink" title="Day -n"></a>Day -n</h1><p>颓废</p><h1 id="Day-m"><a href="#Day-m" class="headerlink" title="Day -m"></a>Day -m</h1><p>模拟赛（集训）爆零（严肃）</p><p><a href="https://lim817.github.io/2019/04/06/BJOI2019-%E6%B8%B8%E8%AE%B0/" target="_blank" rel="noopener">AK大佬点这里</a></p><h1 id="Day-0"><a href="#Day-0" class="headerlink" title="Day 0"></a>Day 0</h1><p>复习期中</p><p>打了些板子</p><p>准备迎接退役（雾</p><h1 id="Day-1"><a href="#Day-1" class="headerlink" title="Day 1"></a>Day 1</h1><p>密码输错了几次..开题</p><p>T1 什么鬼…字符串匹配？…几何平均值？？</p><p>T2 emm感觉很可做</p><p>T3 什么鬼…看了下标题和题面长度，然后就几乎没看过…现在都不知道题意是啥（事实证明这决策非常对</p><p>T1 想了一会感觉这个15分很好拿，先放着，20min写得完。感觉下面可以搞个dp但是输出方案不好弄写起来性价比有点低放了去看 T2</p><p>T2 显然这个 2*n 就是求区间 C_{斐波数列}^{k} 的和。把组合数拆一下发现可以直接预处理出几次方的系数。然后问题转化成前缀和减一下。貌似能直接矩阵快速幂，写起来不算特别麻烦。算了下复杂度勉强能过  k &lt;= 50 突然发现 l, r 比较小的可以直接跑如果 k 太大反而不能用矩阵快速幂。于是就写写写。写了2个小时(3个小时?我还是太弱了码力不够)过了第一个样例（中间差点心态崩了）。最后写了一坨奇怪的代码</p><p>3*n 有点卡住，时间只剩 2h 了吧（记不清了）。然后回去写了一发 T2 的暴力。然后还剩 1.5h-。回去想 T2。手花了几种方格图发现是由这个 3 乘 奇数多一块 或者 3 乘偶数少一块递推而来的。设了个方程解出来是 4乘前面一项减去前面两项的数。也是一个二阶线性递推。还剩 1h+ 赶紧把前面的代码复制粘贴魔改了一番系数然后调了半天还剩 20min 的时候调出来了。过了两个样例心情舒坦。最后还发现 T3 有个无解输出个 -1 。检查了一番文件名就结束了。</p><p>中午（看大佬）颓废。等分真是漫长。</p><p>出分了。 15 + 65 + 0 丢了 5 分还行。rk16(17?)?!出人意料…</p><p>讲题，T1貌似听上去很套路？取个 log 变成平均数，然后二分，然后 AC自动机上dp？反正肯定是不会的。</p><p>T2正解要用什么奇怪的扩展整数域，听得很懵。。</p><p>T3全程掉线，我题意都不知道是啥（我还是太菜了</p><p>晚上还是要复习万恶的期中（（（</p><p>Day2 爆零预备</p>]]></content>
     
     <summary type="html">
     
@@ -105,9 +105,9 @@
       <category term="题解" scheme="http://yoursite.com/categories/%E9%A2%98%E8%A7%A3/"/>
     
     
-      <category term="动态规划" scheme="http://yoursite.com/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
-    
       <category term="概率期望" scheme="http://yoursite.com/tags/%E6%A6%82%E7%8E%87%E6%9C%9F%E6%9C%9B/"/>
+    
+      <category term="动态规划" scheme="http://yoursite.com/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
     
       <category term="高斯消元" scheme="http://yoursite.com/tags/%E9%AB%98%E6%96%AF%E6%B6%88%E5%85%83/"/>
     
@@ -133,9 +133,9 @@
       <category term="题解" scheme="http://yoursite.com/categories/%E9%A2%98%E8%A7%A3/"/>
     
     
-      <category term="动态规划" scheme="http://yoursite.com/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
-    
       <category term="概率期望" scheme="http://yoursite.com/tags/%E6%A6%82%E7%8E%87%E6%9C%9F%E6%9C%9B/"/>
+    
+      <category term="动态规划" scheme="http://yoursite.com/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
     
   </entry>
   
@@ -312,9 +312,9 @@ f(a,b,c,n)=\sum\limits_{i=0}^{n} \lfloor\frac{ai + b}{c}\rfloor&lt;/script&gt;
       <category term="算法笔记" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="数论" scheme="http://yoursite.com/tags/%E6%95%B0%E8%AE%BA/"/>
-    
       <category term="杜教筛" scheme="http://yoursite.com/tags/%E6%9D%9C%E6%95%99%E7%AD%9B/"/>
+    
+      <category term="数论" scheme="http://yoursite.com/tags/%E6%95%B0%E8%AE%BA/"/>
     
   </entry>
   

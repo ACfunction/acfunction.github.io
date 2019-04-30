@@ -12,7 +12,7 @@ button,
 input,
 select,
 textarea {
-  font-family: Lato, -apple-system, 'PingFang SC', 'Source Han Sans SC', 'Noto Sans CJK SC', 'Microsoft Yahei', 'Lantinghei SC', 'Hiragino Sans GB', 'Microsoft Sans Serif', 'WenQuanYi Micro Hei', sans-serif;
+  font-family: 'Fira Sans', Lato, -apple-system, 'PingFang SC', 'Source Han Sans SC', 'Noto Sans CJK SC', 'Microsoft Yahei', 'Lantinghei SC', 'Hiragino Sans GB', 'Microsoft Sans Serif', 'WenQuanYi Micro Hei', sans-serif;
 }
 @media screen and (min-width: 1280px) {
   .is-1-column .container,
@@ -412,9 +412,10 @@ figure.highlight table {
 figure.highlight pre {
   padding: 0;
   overflow: visible;
+  font-size: 1em;
 }
 figure.highlight pre .line {
-  line-height: 1.5rem;
+  line-height: 1.2rem;
 }
 figure.highlight figcaption,
 figure.highlight .gutter {

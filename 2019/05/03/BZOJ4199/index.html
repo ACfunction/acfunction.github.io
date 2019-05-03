@@ -2,23 +2,23 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-<title>LOJ2174 「FJOI2016」神秘数 - AcF&#39;s Blog</title>
+<title>BZOJ4199 「NOI2015」品酒大会 - AcF&#39;s Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="Description$n$ 个数的序列，每次询问一个区间，求最小的一个数使得不能用这个区间中的数之和表示。 $n \leq 10^5, \sum a_i \leq 10^9$">
-<meta name="keywords" content="主席树">
+    <meta name="description" content="Description给定字符串 $s$ ，和每个位置上的权值 $a_i$。对于每一个 $i \in [0, n)$ 求出有多少对 $(i, j)$  满足 $LCP(sa_i, sa_j) \ge i$ 以及在这些 $(i, j)$ 中 $a_i \times a_j$  最大是多少。$sa_i$ 表示从 $i$ 开始的后缀。">
+<meta name="keywords" content="后缀自动机">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LOJ2174 「FJOI2016」神秘数">
-<meta property="og:url" content="http://yoursite.com/2019/01/17/LOJ2174/index.html">
+<meta property="og:title" content="BZOJ4199 「NOI2015」品酒大会">
+<meta property="og:url" content="http://yoursite.com/2019/05/03/BZOJ4199/index.html">
 <meta property="og:site_name" content="AcF&#39;s Blog">
-<meta property="og:description" content="Description$n$ 个数的序列，每次询问一个区间，求最小的一个数使得不能用这个区间中的数之和表示。 $n \leq 10^5, \sum a_i \leq 10^9$">
+<meta property="og:description" content="Description给定字符串 $s$ ，和每个位置上的权值 $a_i$。对于每一个 $i \in [0, n)$ 求出有多少对 $(i, j)$  满足 $LCP(sa_i, sa_j) \ge i$ 以及在这些 $(i, j)$ 中 $a_i \times a_j$  最大是多少。$sa_i$ 表示从 $i$ 开始的后缀。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-17T13:49:08.370Z">
+<meta property="og:updated_time" content="2019-05-03T14:26:35.994Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LOJ2174 「FJOI2016」神秘数">
-<meta name="twitter:description" content="Description$n$ 个数的序列，每次询问一个区间，求最小的一个数使得不能用这个区间中的数之和表示。 $n \leq 10^5, \sum a_i \leq 10^9$">
+<meta name="twitter:title" content="BZOJ4199 「NOI2015」品酒大会">
+<meta name="twitter:description" content="Description给定字符串 $s$ ，和每个位置上的权值 $a_i$。对于每一个 $i \in [0, n)$ 求出有多少对 $(i, j)$  满足 $LCP(sa_i, sa_j) \ge i$ 以及在这些 $(i, j)$ 中 $a_i \times a_j$  最大是多少。$sa_i$ 表示从 $i$ 开始的后缀。">
 
 
 
@@ -88,7 +88,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <!-- <img src="/favicon.ico" alt="LOJ2174 「FJOI2016」神秘数" height="25"> -->
+                <!-- <img src="/favicon.ico" alt="BZOJ4199 「NOI2015」品酒大会" height="25"> -->
                 <span class="navbar-title"> AcF's blog </span>
             
             </a>
@@ -137,15 +137,15 @@
         <div class="my-title  my-post-title ">
             <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
                 
-                    LOJ2174 「FJOI2016」神秘数
+                    BZOJ4199 「NOI2015」品酒大会
                 
             </h1>
             <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
                 <div class="level-left">
                  
                     <i class="far fa-clock"></i>
-                    <time class="level-item has-text-grey" datetime="2019-01-17T08:32:40.000Z">
-                        2019-01-17
+                    <time class="level-item has-text-grey" datetime="2019-05-03T08:26:54.000Z">
+                        2019-05-03
                     </time>
                     <i class="far fa-folder"></i>
                     
@@ -156,7 +156,7 @@
                     <i class="far fa-edit"></i>
                     
                         <span class="level-item has-text-grey">
-                            481 Words
+                            679 Words
                         </span>
                     
                 </div>
@@ -164,24 +164,13 @@
         </div>
         
         <div class="content">
-            <hr>
-<h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>$n$ 个数的序列，每次询问一个区间，求最小的一个数使得不能用这个区间中的数之和表示。</p>
-<p>$n \leq 10^5, \sum a_i \leq 10^9$</p>
-<a id="more"></a>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p><del>第一次用数组写数据结构真短啊</del></p>
-<p>考虑只有一次询问怎么做</p>
-<p>把给定的区间内的数排序，从小到大扫一遍。</p>
-<p>如果一个数比他之前的数之和至少大了 $1$ ，那么答案就是和 + 1</p>
-<p>否则就可以把$[1,\text{前缀和}]$ 都表示出来（感性理解很容易）</p>
-<p>这道题怎么做也就显然了起来。只需要用主席树维护区间中小于等于某个数的数之和即可。流程如下</p>
-<p>当前答案是 $a$，令 $S$ 是区间中 $\leq a$ 的数之和  </p>
-<ol>
-<li>如果 $S &lt; a$ 则 $a$ 就是最后的答案</li>
-<li>否则 让 $a = S+1$ 然后重复此操作</li>
-</ol>
-<p>最开始的时候 $a=1$</p>
-<p>这样做的话 $a$ 每次都会翻一倍，所以最后的总复杂度是  $O(m \log n \log \sum a_i)$</p>
-<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N = <span class="hljs-number">50000500</span>; </span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> L = <span class="hljs-number">1000000000</span>; </span><br><span class="line"><span class="hljs-keyword">int</span> n, m, a[N], cnt; </span><br><span class="line"><span class="hljs-keyword">int</span> root[N], ch[N][<span class="hljs-number">2</span>]; ll sum[N]; </span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">I</span> <span class="hljs-params">(<span class="hljs-keyword">int</span> pre, <span class="hljs-keyword">int</span> now, <span class="hljs-keyword">int</span> l, <span class="hljs-keyword">int</span> r, <span class="hljs-keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">  ch[now][<span class="hljs-number">0</span>] = ch[pre][<span class="hljs-number">0</span>], ch[now][<span class="hljs-number">1</span>] = ch[pre][<span class="hljs-number">1</span>]; </span><br><span class="line">  <span class="hljs-keyword">int</span> mid = (l + r) &gt;&gt; <span class="hljs-number">1</span>; sum[now] = sum[pre] + val; <span class="hljs-keyword">if</span>(l == r) <span class="hljs-keyword">return</span> ; </span><br><span class="line">  <span class="hljs-keyword">if</span>(val &lt;= mid) ch[now][<span class="hljs-number">0</span>] = ++cnt, I(ch[pre][<span class="hljs-number">0</span>], ch[now][<span class="hljs-number">0</span>], l, mid, val);</span><br><span class="line">  <span class="hljs-keyword">else</span> ch[now][<span class="hljs-number">1</span>] = ++cnt, I(ch[pre][<span class="hljs-number">1</span>], ch[now][<span class="hljs-number">1</span>], mid + <span class="hljs-number">1</span>, r, val); </span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">Q</span><span class="hljs-params">(<span class="hljs-keyword">int</span> pre, <span class="hljs-keyword">int</span> now, <span class="hljs-keyword">int</span> l, <span class="hljs-keyword">int</span> r, <span class="hljs-keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">if</span>(l == r) <span class="hljs-keyword">return</span> sum[now] - sum[pre]; <span class="hljs-keyword">int</span> mid = (l + r) / <span class="hljs-number">2</span>;</span><br><span class="line">  <span class="hljs-keyword">if</span>(val &lt;= mid) <span class="hljs-keyword">return</span> Q(ch[pre][<span class="hljs-number">0</span>], ch[now][<span class="hljs-number">0</span>], l, mid, val);</span><br><span class="line">  <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> sum[ch[now][<span class="hljs-number">0</span>]] - sum[ch[pre][<span class="hljs-number">0</span>]] + Q(ch[pre][<span class="hljs-number">1</span>], ch[now][<span class="hljs-number">1</span>], mid + <span class="hljs-number">1</span>, r, val); </span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">  <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;n);</span><br><span class="line">  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;a[i]); root[i] = ++cnt; </span><br><span class="line">    I(root[i - <span class="hljs-number">1</span>], root[i], <span class="hljs-number">1</span>, L, a[i]); </span><br><span class="line">  &#125; <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;m); </span><br><span class="line">  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= m; i++) &#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> l, r; <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d %d"</span>, &amp;l, &amp;r); </span><br><span class="line">    <span class="hljs-keyword">int</span> ans = <span class="hljs-number">1</span>; </span><br><span class="line">    <span class="hljs-keyword">int</span> S; <span class="hljs-keyword">while</span>(<span class="hljs-number">1</span>) &#123;</span><br><span class="line">      S = Q(root[l - <span class="hljs-number">1</span>], root[r], <span class="hljs-number">1</span>, L, ans); </span><br><span class="line">      <span class="hljs-keyword">if</span>(S &lt; ans) &#123; <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, ans); <span class="hljs-keyword">break</span> ; &#125;</span><br><span class="line">      <span class="hljs-keyword">else</span> ans = S + <span class="hljs-number">1</span>; </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>给定字符串 $s$ ，和每个位置上的权值 $a_i$。对于每一个 $i \in [0, n)$ 求出有多少对 $(i, j)$  满足 $LCP(sa_i, sa_j) \ge i$ 以及在这些 $(i, j)$ 中 $a_i \times a_j$  最大是多少。$sa_i$ 表示从 $i$ 开始的后缀。</p>
+<a id="more"></a> 
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>将原串反过来建 SAM 求得后缀树。考虑后缀树上一个节点 $u$ ，这个节点代表的子串是他的任意后代的后缀 。所以每两个在其子树中的点都会对第一问的答案造成贡献。只需要维护 right 集合的大小即可。</p>
+<p>对于第二问，乘积最大有两种可能：一个是最大的两个相乘，一个是最小的两个相乘（负负得正）。所以只需要在 dfs 的时候顺便维护子树中的最大值和最小值，与子树合并的时候维护处答案。</p>
+<p>最后再从后往前更新一遍答案。因为小的肯定包含在大的中，对第一问做加法，第二问取 max</p>
+<p>具体看代码</p>
+<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * Author: AcFunction</span></span><br><span class="line"><span class="hljs-comment"> * Date:   2019-05-02 09:10:52</span></span><br><span class="line"><span class="hljs-comment"> * Email:  3486942970@qq.com</span></span><br><span class="line"><span class="hljs-comment">**/</span></span><br><span class="line"> </span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ll long long </span></span><br><span class="line"> </span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"> </span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N = (<span class="hljs-keyword">int</span>)<span class="hljs-number">1e6</span> + <span class="hljs-number">10</span>; </span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> INF = (<span class="hljs-keyword">int</span>)<span class="hljs-number">1e9</span>; </span><br><span class="line"> </span><br><span class="line"><span class="hljs-keyword">int</span> n, siz[N], o[N], w[N], mx[N], mn[N], dep[N]; </span><br><span class="line"><span class="hljs-keyword">char</span> s[N];</span><br><span class="line">ll ans1[N], ans2[N]; </span><br><span class="line"> </span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">sam</span> &#123;</span></span><br><span class="line">  <span class="hljs-keyword">int</span> ch[<span class="hljs-number">26</span>], len, fa; </span><br><span class="line">&#125; a[N]; </span><br><span class="line"> </span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">edge</span> &#123;</span></span><br><span class="line">  <span class="hljs-keyword">int</span> v; edge *next; </span><br><span class="line">&#125; pool[N * <span class="hljs-number">2</span>], *h[N], *cur = pool; </span><br><span class="line"> </span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">addedge</span><span class="hljs-params">(<span class="hljs-keyword">int</span> u, <span class="hljs-keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">  edge *p = cur++; p-&gt;v = v; </span><br><span class="line">  p-&gt;next = h[u], h[u] = p; </span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="hljs-keyword">int</span> last = <span class="hljs-number">1</span>, tot = <span class="hljs-number">1</span>; </span><br><span class="line"> </span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> c, <span class="hljs-keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">int</span> p = last, tp = ++tot; last = tp; w[tp] = o[x]; </span><br><span class="line">  a[tp].len = a[p].len + <span class="hljs-number">1</span>; siz[tot] = <span class="hljs-number">1</span>; </span><br><span class="line">  <span class="hljs-keyword">for</span>(; p &amp;&amp; !a[p].ch[c]; p = a[p].fa) </span><br><span class="line">    a[p].ch[c] = tp; </span><br><span class="line">  <span class="hljs-keyword">if</span>(!p) &#123;</span><br><span class="line">    a[tp].fa = <span class="hljs-number">1</span>; </span><br><span class="line">  &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> q = a[p].ch[c]; </span><br><span class="line">    <span class="hljs-keyword">if</span>(a[q].len == a[p].len + <span class="hljs-number">1</span>) &#123;</span><br><span class="line">      a[tp].fa = q; </span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      <span class="hljs-keyword">int</span> cl = ++tot; a[cl] = a[q]; </span><br><span class="line">      a[cl].len = a[p].len + <span class="hljs-number">1</span>; </span><br><span class="line">      a[q].fa = a[tp].fa = cl; </span><br><span class="line">      <span class="hljs-keyword">for</span>(; p &amp;&amp; a[p].ch[c] == q; p = a[p].fa)</span><br><span class="line">        a[p].ch[c] = cl; </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> u, <span class="hljs-keyword">int</span> pre)</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">if</span>(siz[u] == <span class="hljs-number">1</span>) &#123;</span><br><span class="line">    mx[u] = mn[u] = w[u]; </span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">for</span>(edge *p = h[u]; p; p = p-&gt;next) &#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> v = p-&gt;v; <span class="hljs-keyword">if</span>(v == pre) <span class="hljs-keyword">continue</span> ; </span><br><span class="line">    dep[v] = dep[u] + <span class="hljs-number">1</span>; </span><br><span class="line">    dfs(v, u); </span><br><span class="line">    <span class="hljs-keyword">if</span>(mx[u] != INF &amp;&amp; mn[u] != INF)</span><br><span class="line">      ans2[a[u].len] = max(ans2[a[u].len], max(<span class="hljs-number">1l</span>l * mx[u] * mx[v], <span class="hljs-number">1l</span>l * mn[u] * mn[v])); </span><br><span class="line">    ans1[a[u].len] += <span class="hljs-number">1l</span>l * siz[u] * siz[v]; </span><br><span class="line">    siz[u] += siz[v]; </span><br><span class="line">    mx[u] = max(mx[u], mx[v]); </span><br><span class="line">    mn[u] = min(mn[u], mn[v]); </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">  <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;n); <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%s"</span>, s + <span class="hljs-number">1</span>); </span><br><span class="line">  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt;= n; i++) ans1[i] = <span class="hljs-number">0</span>, ans2[i] = -(ll)<span class="hljs-number">9e18</span>; </span><br><span class="line">  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;o[i]); </span><br><span class="line">  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = n; i &gt;= <span class="hljs-number">1</span>; i--) add(s[i] - <span class="hljs-string">'a'</span>, i); </span><br><span class="line">  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= tot; i++) </span><br><span class="line">    mx[i] = -INF, mn[i] = INF; </span><br><span class="line">  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt;= tot; i++) addedge(a[i].fa, i); </span><br><span class="line">  dep[<span class="hljs-number">1</span>] = <span class="hljs-number">1</span>, dfs(<span class="hljs-number">1</span>, <span class="hljs-number">0</span>);</span><br><span class="line">  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = n - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; i--) </span><br><span class="line">    ans1[i] += ans1[i + <span class="hljs-number">1</span>], </span><br><span class="line">    ans2[i] = max(ans2[i], ans2[i + <span class="hljs-number">1</span>]); </span><br><span class="line">  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span>(ans1[i] == <span class="hljs-number">0</span>) ans2[i] = <span class="hljs-number">0</span>; </span><br><span class="line">    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld %lld\n"</span>, ans1[i], ans2[i]); </span><br><span class="line">  &#125; </span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
         </div>
         
@@ -189,7 +178,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <!-- <span class="is-size-6 has-text-grey has-mr-7">#</span> -->
-                    <a class="my-post-tag has-link-grey -link" href="/tags/主席树/">主席树</a>
+                    <a class="my-post-tag has-link-grey -link" href="/tags/后缀自动机/">后缀自动机</a>
                 </div>
             </div>
         </div>
@@ -203,17 +192,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/01/20/BZOJ2653/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">BZOJ2653 middle</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/01/14/bzoj3529/">
-                <span class="level-item">BZOJ3529 「SDOI2014」数表</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/04/30/Do-geese-see-god/">
+                <span class="level-item">Do geese see god?</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -412,7 +394,7 @@
             <div class="level-start has-text-centered-mobile">
                 <!-- <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/favicon.ico" alt="LOJ2174 「FJOI2016」神秘数" height="28">
+                    <img src="/favicon.ico" alt="BZOJ4199 「NOI2015」品酒大会" height="28">
                 
                 </a> -->
                 <p class="is-size-7">

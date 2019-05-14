@@ -477,10 +477,10 @@ figure.highlight:hover .copy {
   all: initial;
 }
 .my-content {
-  width: 79% !important;
+  width: 70% !important;
 }
 .my-sidebar {
-  width: 21% !important;
+  width: 22% !important;
 }
 @media screen and (max-width: 1000px) {
   .my-content {

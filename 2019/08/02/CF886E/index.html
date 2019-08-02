@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="AcF&#39;s Blog">
 <meta property="og:description" content="Description​    有一个排列 $a_1, a_2,\cdots, a_n$。已知一种求最大值的方式：遍历一遍序列，如果一个数比他后面的 $k$ 个值都要大，则直接返回该值。求有多少个排列使得这种方式返回的答案是错误的。 ​    $n, k \leq 10^6$ 。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-02T13:33:34.159Z">
+<meta property="og:updated_time" content="2019-08-02T13:45:45.151Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CF886E Maximum Element">
 <meta name="twitter:description" content="Description​    有一个排列 $a_1, a_2,\cdots, a_n$。已知一种求最大值的方式：遍历一遍序列，如果一个数比他后面的 $k$ 个值都要大，则直接返回该值。求有多少个排列使得这种方式返回的答案是错误的。 ​    $n, k \leq 10^6$ 。">
@@ -156,7 +156,7 @@
                     <i class="far fa-edit"></i>
                     
                         <span class="level-item has-text-grey">
-                            654 Words
+                            655 Words
                         </span>
                     
                 </div>
@@ -176,8 +176,8 @@
 dp_i = \sum\limits_{j=i-k+1}^{i} \binom{i-1}{j-1} \cdot dp_{j-1} \cdot (i-j)!</script><p>​    暴力 dp 是 $O(n^2)$ 的，考虑把组合数拆开，简单推导可得：</p>
 <script type="math/tex; mode=display">
 dp_i = (i-1)!\cdot \sum\limits_{j=i-k}^{i-1} \frac{dp_j}{j!}</script><p>​    直接维护 $\sum\limits_{j=i-k}^{i-1} \frac{dp_j}{j!}$ 即可。</p>
-<pre><code> 最后的答案如何计算？考虑最大值的位置 $i$ ，有： 
-</code></pre><script type="math/tex; mode=display">
+<p>​    最后的答案如何计算？考虑最大值的位置 $i$ ，有： </p>
+<script type="math/tex; mode=display">
 \begin{aligned}
 ans &= n!- \sum\limits_{i=1}^{n} dp_{i-1} \cdot \binom{n-1}{i-1} \cdot (n-i)! \\
 &= n!-(n-1)!\cdot \sum\limits_{i=1}^{n} \frac{dp_{i-1}}{(i-1)!}

@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+<title>CF848C Goodbye Souvenir - AcF&#39;s Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="Description给出一个长度为 $n$ 的序列 $a_i$，$1 \le a_i \le n$ 。有 $m$ 个操作，每次操作输入三个数 $o,x,y$ 表示  $o=1$ ，此时表示令 $a_x=y$  $o=2$ ，此时表示询问 $\sum_{i=1}^n v(i)$ 。其中 $v(i)$ 是数字 $i$ 在 $[x,y]$ 中最后一次出现的位置减去第一次出现的位置。如果没有出现，则 $">
+<meta name="keywords" content="CDQ分治">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CF848C Goodbye Souvenir">
+<meta property="og:url" content="http://yoursite.com/2019/07/07/CF848C/index.html">
+<meta property="og:site_name" content="AcF&#39;s Blog">
+<meta property="og:description" content="Description给出一个长度为 $n$ 的序列 $a_i$，$1 \le a_i \le n$ 。有 $m$ 个操作，每次操作输入三个数 $o,x,y$ 表示  $o=1$ ，此时表示令 $a_x=y$  $o=2$ ，此时表示询问 $\sum_{i=1}^n v(i)$ 。其中 $v(i)$ 是数字 $i$ 在 $[x,y]$ 中最后一次出现的位置减去第一次出现的位置。如果没有出现，则 $">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-07-07T14:28:13.250Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CF848C Goodbye Souvenir">
+<meta name="twitter:description" content="Description给出一个长度为 $n$ 的序列 $a_i$，$1 \le a_i \le n$ 。有 $m$ 个操作，每次操作输入三个数 $o,x,y$ 表示  $o=1$ ，此时表示令 $a_x=y$  $o=2$ ，此时表示询问 $\sum_{i=1}^n v(i)$ 。其中 $v(i)$ 是数字 $i$ 在 $[x,y]$ 中最后一次出现的位置减去第一次出现的位置。如果没有出现，则 $">
+
+
+
+
+
+<link rel="icon" href="/favicon.ico">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+<body class="is-2-column">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <!-- <img src="/favicon.ico" alt="CF848C Goodbye Souvenir" height="25"> -->
+                <span class="navbar-title"> AcF's blog </span>
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">首页</a>
+                
+                <a class="navbar-item" href="/archives">归档</a>
+                
+                <a class="navbar-item" href="/categories">分类</a>
+                
+                <a class="navbar-item" href="/tags">标签</a>
+                
+                <a class="navbar-item" href="/Links">友链</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column my-content is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article
+         
+    ">
+
+
+        
+
+        <div class="my-title  my-post-title ">
+            <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+                
+                    CF848C Goodbye Souvenir
+                
+            </h1>
+            <div class="level article-meta is-size-7 is-mobile is-overflow-x-auto">
+                <div class="level-left">
+                 
+                    <i class="far fa-clock"></i>
+                    <time class="level-item has-text-grey" datetime="2019-07-07T14:00:36.000Z">
+                        2019-07-07
+                    </time>
+                    <i class="far fa-folder"></i>
+                    
+                        <div class="level-item">
+                            <a class="has-link-grey -link" href="/categories/题解/">题解</a>
+                        </div>
+                    
+                    <i class="far fa-edit"></i>
+                    
+                        <span class="level-item has-text-grey">
+                            1093 Words
+                        </span>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>给出一个长度为 $n$ 的序列 $a_i$，$1 \le a_i \le n$ 。有 $m$ 个操作，每次操作输入三个数 $o,x,y$ 表示</p>
+<ul>
+<li>$o=1$ ，此时表示令 $a_x=y$ </li>
+<li>$o=2$ ，此时表示询问 $\sum_{i=1}^n v(i)$ 。其中 $v(i)$ 是数字 $i$ 在 $[x,y]$ 中最后一次出现的位置减去第一次出现的位置。如果没有出现，则 $v(i) = 0$ </li>
+</ul>
+<p>$n, m \leq 10^5$ </p>
+<a id="more"></a>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>我们令 $pre_i$ 表示最大的 $j$ 满足 $j &lt; i$ 且 $a_j = a_i$ （若不存在这样的 $j$ 则 $j = 0$）</p>
+<p>同样的 $nxt_i$ 表示最小的 $j$ 满足 $j &gt; i$ 且 $a_j = a_i$ （若不存在这样的 $j$ 则 $j = n+1$）</p>
+<p>如果没有修改操作，那么我们把每一个 $(i, pre_i)$ 这样的二元组看成坐标上的一个点，他的值为 $i - pre_i$ ，那么每次询问 $[l, r]$ 的答案就是一个左下角为 $(l,l)$ 右上角为 $(r,r)$ 的矩（正方）形内的所有点值之和（包括边）。</p>
+<p>这样做的原因在于，对于一个值，如果他最后一次出现在 $e$ 这个位置，第一次出现在 $s$ 这个位置，那么他对答案的贡献就是 $s-e = (s - pre_s) + (pre_s - pre_{pre_s})+ \cdots+(nxt_s - s)$ 即把 $[s, e]$ 这个区间拆分成若干个 $[pre_i, i]$ 的区间。如果把 $(i, pre_i)$  看成一个坐标系上的点，那么他的两个维度都满足在 $[l, r]$ 中，那么他会对答案产生贡献；反之，$[l, r]$ 内的答案也是由这些点的贡献所组成的。</p>
+<p>有了修改操作，直接用 $n$ 个 set 维护一下 $nxt$ 和 $pre$ 。对于每一个 $a[x] = y$ 修改，会减少 $(x, pre_{a_x}), (nxt_{a_x}, x), (nxt_y, pre_y)$ 三个点，增加了 $(nxt_{a_x}, pre_{a_x}), (x, pre_y), (nxt_y, x)$ 三个点。（注意这里的 $nxt_a, pre_a$ 表示的是对于 $a$ 这个值在 $x$ 这个位置之前/之后第一次出现的位置）。于是问题转化成一个加点删点求矩形内部值之和，可以以时间为第一维，$i$ 为第二维，$pre_i$ 为第三维用CDQ分治做三维偏序就做完了。（询问矩阵再用一个差分）</p>
+<p>时间复杂度：$O(n \log^2 n)$ （由于点数可能很多所以参与 CDQ 分治的点有大概 $6n$ 个所以很慢）</p>
+<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/**</span></span><br><span class="line"><span class="hljs-comment"> * Author: AcFunction</span></span><br><span class="line"><span class="hljs-comment"> * Date:   2019-07-06 17:01:34</span></span><br><span class="line"><span class="hljs-comment"> * Email:  3486942970@qq.com</span></span><br><span class="line"><span class="hljs-comment">**/</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ll long long</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> N = <span class="hljs-number">500500</span>; </span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> n, m, a[N], nxt[N], pre[N], po[N]; </span><br><span class="line"><span class="hljs-keyword">int</span> tot, fla[N]; </span><br><span class="line">ll ans[N], c[N]; </span><br><span class="line"><span class="hljs-built_in">set</span> &lt;<span class="hljs-keyword">int</span>&gt; s[<span class="hljs-number">100001</span>]; </span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Query</span> &#123;</span></span><br><span class="line">  <span class="hljs-keyword">int</span> op, y, z, v, id; </span><br><span class="line">&#125; Q[N * <span class="hljs-number">2</span>]; </span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">mk</span> <span class="hljs-params">(<span class="hljs-keyword">int</span> op, <span class="hljs-keyword">int</span> y, <span class="hljs-keyword">int</span> z, <span class="hljs-keyword">int</span> v, <span class="hljs-keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">  Q[++tot].y = y, Q[tot].z = z; </span><br><span class="line">  Q[tot].id = id; Q[tot].op = op; Q[tot].v = v; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">lb</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">return</span> x &amp; (-x); </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> d)</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = x; i &lt;= <span class="hljs-number">100005</span>; i += lb(i))</span><br><span class="line">    c[i] += d; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function">ll <span class="hljs-title">sum</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">  ll ret = <span class="hljs-number">0</span>; </span><br><span class="line">  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = x; i; i -= lb(i)) </span><br><span class="line">    ret += c[i]; </span><br><span class="line">  <span class="hljs-keyword">return</span> ret; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">cmp</span><span class="hljs-params">(Query x, Query y)</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">return</span> x.y &lt; y.y; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">CDQ</span><span class="hljs-params">(<span class="hljs-keyword">int</span> l, <span class="hljs-keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">if</span>(l == r) <span class="hljs-keyword">return</span> ; </span><br><span class="line">  <span class="hljs-keyword">int</span> mid = (l + r) &gt;&gt; <span class="hljs-number">1</span>; </span><br><span class="line">  CDQ(l, mid); CDQ(mid + <span class="hljs-number">1</span>, r); </span><br><span class="line">  sort(Q + l, Q + mid + <span class="hljs-number">1</span>, cmp); </span><br><span class="line">  sort(Q + mid + <span class="hljs-number">1</span>, Q + r + <span class="hljs-number">1</span>, cmp); </span><br><span class="line">  <span class="hljs-keyword">int</span> pos = l; </span><br><span class="line">  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = mid + <span class="hljs-number">1</span>; i &lt;= r; i++) &#123;</span><br><span class="line">    <span class="hljs-keyword">while</span>(pos &lt;= mid &amp;&amp; Q[pos].y &lt;= Q[i].y) &#123;</span><br><span class="line">      <span class="hljs-keyword">if</span>(Q[pos].op == <span class="hljs-number">0</span>)</span><br><span class="line">        add(Q[pos].z + <span class="hljs-number">1</span>, Q[pos].v); </span><br><span class="line">      pos++; </span><br><span class="line">    &#125; <span class="hljs-keyword">if</span>(Q[i].op == <span class="hljs-number">1</span>) &#123;</span><br><span class="line">      ans[Q[i].id] += sum(Q[i].z + <span class="hljs-number">1</span>); </span><br><span class="line">    &#125;</span><br><span class="line">  &#125; </span><br><span class="line">  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = l; i &lt; pos; i++) &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span>(Q[i].op == <span class="hljs-number">0</span>) </span><br><span class="line">      add(Q[i].z + <span class="hljs-number">1</span>, -(Q[i].v)); </span><br><span class="line">  &#125;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">  <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d %d"</span>, &amp;n, &amp;m); </span><br><span class="line">  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">    s[i].insert(<span class="hljs-number">0</span>), s[i].insert(n + <span class="hljs-number">1</span>); </span><br><span class="line">    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;a[i]); </span><br><span class="line">    pre[i] = po[a[i]]; </span><br><span class="line">    po[a[i]] = i; </span><br><span class="line">    mk(<span class="hljs-number">0</span>, i, pre[i], i - pre[i], <span class="hljs-number">0</span>); </span><br><span class="line">    s[a[i]].insert(i); </span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) </span><br><span class="line">    po[i] = n + <span class="hljs-number">1</span>; </span><br><span class="line">  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = n; i &gt;= <span class="hljs-number">1</span>; i--) &#123;</span><br><span class="line">    nxt[i] = po[a[i]]; </span><br><span class="line">    po[a[i]] = i; </span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= m; i++) &#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> op, x, y; </span><br><span class="line">    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d %d %d"</span>, &amp;op, &amp;x, &amp;y);</span><br><span class="line">    <span class="hljs-keyword">if</span>(op == <span class="hljs-number">1</span>) &#123;</span><br><span class="line">      <span class="hljs-keyword">if</span>(a[x] == y) <span class="hljs-keyword">continue</span> ;</span><br><span class="line">      mk(<span class="hljs-number">0</span>, x, pre[x], pre[x] - x, <span class="hljs-number">0</span>); </span><br><span class="line">      mk(<span class="hljs-number">0</span>, nxt[x], x, x - nxt[x], <span class="hljs-number">0</span>); </span><br><span class="line">      mk(<span class="hljs-number">0</span>, nxt[x], pre[x], nxt[x] - pre[x], <span class="hljs-number">0</span>);   </span><br><span class="line">      nxt[pre[x]] = nxt[x]; </span><br><span class="line">      pre[nxt[x]] = pre[x]; </span><br><span class="line">      s[a[x]].erase(x);</span><br><span class="line">      a[x] = y; </span><br><span class="line">      s[y].insert(x);</span><br><span class="line">      <span class="hljs-built_in">set</span> &lt; <span class="hljs-keyword">int</span> &gt; :: iterator Nw = s[y].find(x); </span><br><span class="line">      <span class="hljs-keyword">int</span> Pr = *(--Nw), Nx = *(++(++(Nw))); </span><br><span class="line">      mk(<span class="hljs-number">0</span>, Nx, Pr, Pr - Nx, <span class="hljs-number">0</span>); </span><br><span class="line">      mk(<span class="hljs-number">0</span>, x, Pr, x - Pr, <span class="hljs-number">0</span>); </span><br><span class="line">      mk(<span class="hljs-number">0</span>, Nx, x, Nx - x, <span class="hljs-number">0</span>); </span><br><span class="line">      pre[Nx] = nxt[Pr] = x; </span><br><span class="line">      pre[x] = Pr, nxt[x] = Nx; </span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      mk(<span class="hljs-number">1</span>, x - <span class="hljs-number">1</span>, x - <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, i * <span class="hljs-number">4</span> - <span class="hljs-number">3</span>); </span><br><span class="line">      mk(<span class="hljs-number">1</span>, x - <span class="hljs-number">1</span>, y, <span class="hljs-number">0</span>, i * <span class="hljs-number">4</span> - <span class="hljs-number">2</span>); </span><br><span class="line">      mk(<span class="hljs-number">1</span>, y, x - <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, i * <span class="hljs-number">4</span> - <span class="hljs-number">1</span>); </span><br><span class="line">      mk(<span class="hljs-number">1</span>, y, y, <span class="hljs-number">0</span>, i * <span class="hljs-number">4</span>); </span><br><span class="line">      fla[i] = <span class="hljs-number">1</span>; </span><br><span class="line">    &#125;</span><br><span class="line">  &#125; </span><br><span class="line">  CDQ(<span class="hljs-number">1</span>, tot);</span><br><span class="line">  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= m; i++) &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span>(fla[i]) &#123;</span><br><span class="line">      <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld\n"</span>, ans[i * <span class="hljs-number">4</span> - <span class="hljs-number">3</span>] - ans[i * <span class="hljs-number">4</span> - <span class="hljs-number">2</span>] - ans[i * <span class="hljs-number">4</span> - <span class="hljs-number">1</span>] + ans[i * <span class="hljs-number">4</span>]); </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase my-post-tags">
+            <div class="level-start">
+                <div class="level-item">
+                    <!-- <span class="is-size-6 has-text-grey has-mr-7">#</span> -->
+                    <a class="my-post-tag has-link-grey -link" href="/tags/CDQ分治/">CDQ分治</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/08/02/CF886E/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">CF886E Maximum Element</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/06/21/BZOJ4828/">
+                <span class="level-item">BZOJ4828 「HNOI2017」大佬</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <!-- <h3 class="title is-5 has-text-weight-normal">评论</h3> -->
+        
+<div id="valine-thread"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: false,
+        verify: false,
+        app_id: 'wiVbO6sPSKaPiIkxSOAt7AHB-gzGzoHsz',
+        app_key: 'b69xXD4MxvplOVlDfJ0lGM3S',
+        placeholder: '有什么感想吗w'
+    });
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column my-sidebar is-4-tablet is-4-desktop is-4-widescreen  has-order-1 column-left is-sticky">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                        <img class="image is-128x128 has-mb-6" src="/images/avatar.png" alt="AcFunction">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        AcFunction
+                    </p>
+                    
+                    
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        31
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        4
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        36
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="http://github.com/acfunction" target="_blank">
+                关注我</a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="Github" href="http://github.com/acfunction">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank" title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#Description">
+        <span class="has-mr-6">1</span>
+        <span>Description</span>
+        </a></li><li>
+        <a class="is-flex" href="#Solution">
+        <span class="has-mr-6">2</span>
+        <span>Solution</span>
+        </a></li><li>
+        <a class="is-flex" href="#Code">
+        <span class="has-mr-6">3</span>
+        <span>Code</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/游记/">
+            <span class="level-start">
+                <span class="level-item">游记</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/算法笔记/">
+            <span class="level-start">
+                <span class="level-item">算法笔记</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/趣题/">
+            <span class="level-start">
+                <span class="level-item">趣题</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/题解/">
+            <span class="level-start">
+                <span class="level-item">题解</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">25</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen is-sticky">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <!-- <script type="text/javascript">
+        myHideElement('my-id-sidebar-profile');
+        myHideElement('my-id-sidebar-category');
+    </script> -->
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <!-- <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/favicon.ico" alt="CF848C Goodbye Souvenir" height="28">
+                
+                </a> -->
+                <p class="is-size-7">
+                &copy; 2019
+                <i class="fa fa-heart"></i>
+                 AcFunction
+                <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+                </p><p class="is-size-7">
+                    <span id="busuanzi_value_site_pv"></span> Views
+                    
+                    <span id="busuanzi_container_site_uv" style="display:none">
+                    <span class="division">|</span>
+                    <span id="busuanzi_value_site_uv"></span> Visitors
+                    </span>
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="GitHub" href="http://github.com/acfunction">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>

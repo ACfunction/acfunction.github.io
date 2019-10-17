@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Description给定字符串 $s$ ，和每个位置上的权值 $a_i$。对于每一个 $i \in [0, n)$ 求出有多少对 $(i, j)$  满足 $LCP(sa_i, sa_j) \ge i$ 以及在这些 $(i, j)$ 中 $a_i \times a_j$  最大是多少。$sa_i$ 表示从 $i$ 开始的后缀。">
+<meta name="keywords" content="后缀自动机">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BZOJ4199 「NOI2015」品酒大会">
+<meta property="og:url" content="http://yoursite.com/2019/05/03/BZOJ4199/index.html">
+<meta property="og:site_name" content="AcF&#39;s Blog">
+<meta property="og:description" content="Description给定字符串 $s$ ，和每个位置上的权值 $a_i$。对于每一个 $i \in [0, n)$ 求出有多少对 $(i, j)$  满足 $LCP(sa_i, sa_j) \ge i$ 以及在这些 $(i, j)$ 中 $a_i \times a_j$  最大是多少。$sa_i$ 表示从 $i$ 开始的后缀。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-03T14:26:35.994Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="BZOJ4199 「NOI2015」品酒大会">
+<meta name="twitter:description" content="Description给定字符串 $s$ ，和每个位置上的权值 $a_i$。对于每一个 $i \in [0, n)$ 求出有多少对 $(i, j)$  满足 $LCP(sa_i, sa_j) \ge i$ 以及在这些 $(i, j)$ 中 $a_i \times a_j$  最大是多少。$sa_i$ 表示从 $i$ 开始的后缀。">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>BZOJ4199 「NOI2015」品酒大会</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">    
+      <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives">Articles</a></li>
+         
+          <li><a href="/Links">Links</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/05/14/一些-dp-的优化方式/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/04/30/Do-geese-see-god/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/05/03/BZOJ4199/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/05/03/BZOJ4199/&text=BZOJ4199 「NOI2015」品酒大会"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/05/03/BZOJ4199/&title=BZOJ4199 「NOI2015」品酒大会"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/05/03/BZOJ4199/&is_video=false&description=BZOJ4199 「NOI2015」品酒大会"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=BZOJ4199 「NOI2015」品酒大会&body=Check out this article: http://yoursite.com/2019/05/03/BZOJ4199/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/05/03/BZOJ4199/&title=BZOJ4199 「NOI2015」品酒大会"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/05/03/BZOJ4199/&title=BZOJ4199 「NOI2015」品酒大会"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/05/03/BZOJ4199/&title=BZOJ4199 「NOI2015」品酒大会"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/05/03/BZOJ4199/&title=BZOJ4199 「NOI2015」品酒大会"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/05/03/BZOJ4199/&name=BZOJ4199 「NOI2015」品酒大会&description=&lt;h1 id=&#34;Description&#34;&gt;&lt;a href=&#34;#Description&#34; class=&#34;headerlink&#34; title=&#34;Description&#34;&gt;&lt;/a&gt;Description&lt;/h1&gt;&lt;p&gt;给定字符串 $s$ ，和每个位置上的权值 $a_i$。对于每一个 $i \in [0, n)$ 求出有多少对 $(i, j)$  满足 $LCP(sa_i, sa_j) \ge i$ 以及在这些 $(i, j)$ 中 $a_i \times a_j$  最大是多少。$sa_i$ 表示从 $i$ 开始的后缀。&lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Description"><span class="toc-number">1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Solution"><span class="toc-number">2.</span> <span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Code"><span class="toc-number">3.</span> <span class="toc-text">Code</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        BZOJ4199 「NOI2015」品酒大会
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+        <span itemprop="name">AcF's Blog</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-05-03T08:26:54.000Z" itemprop="datePublished">2019-05-03</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/题解/">题解</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/后缀自动机/">后缀自动机</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>给定字符串 $s$ ，和每个位置上的权值 $a_i$。对于每一个 $i \in [0, n)$ 求出有多少对 $(i, j)$  满足 $LCP(sa_i, sa_j) \ge i$ 以及在这些 $(i, j)$ 中 $a_i \times a_j$  最大是多少。$sa_i$ 表示从 $i$ 开始的后缀。</p>
+<a id="more"></a> 
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>将原串反过来建 SAM 求得后缀树。考虑后缀树上一个节点 $u$ ，这个节点代表的子串是他的任意后代的后缀 。所以每两个在其子树中的点都会对第一问的答案造成贡献。只需要维护 right 集合的大小即可。</p>
+<p>对于第二问，乘积最大有两种可能：一个是最大的两个相乘，一个是最小的两个相乘（负负得正）。所以只需要在 dfs 的时候顺便维护子树中的最大值和最小值，与子树合并的时候维护处答案。</p>
+<p>最后再从后往前更新一遍答案。因为小的肯定包含在大的中，对第一问做加法，第二问取 max</p>
+<p>具体看代码</p>
+<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Author: AcFunction</span></span><br><span class="line"><span class="comment"> * Date:   2019-05-02 09:10:52</span></span><br><span class="line"><span class="comment"> * Email:  3486942970@qq.com</span></span><br><span class="line"><span class="comment">**/</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long </span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = (<span class="keyword">int</span>)<span class="number">1e6</span> + <span class="number">10</span>; </span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = (<span class="keyword">int</span>)<span class="number">1e9</span>; </span><br><span class="line"> </span><br><span class="line"><span class="keyword">int</span> n, siz[N], o[N], w[N], mx[N], mn[N], dep[N]; </span><br><span class="line"><span class="keyword">char</span> s[N];</span><br><span class="line">ll ans1[N], ans2[N]; </span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sam</span> &#123;</span></span><br><span class="line">  <span class="keyword">int</span> ch[<span class="number">26</span>], len, fa; </span><br><span class="line">&#125; a[N]; </span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span> &#123;</span></span><br><span class="line">  <span class="keyword">int</span> v; edge *next; </span><br><span class="line">&#125; pool[N * <span class="number">2</span>], *h[N], *cur = pool; </span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">addedge</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">  edge *p = cur++; p-&gt;v = v; </span><br><span class="line">  p-&gt;next = h[u], h[u] = p; </span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">int</span> last = <span class="number">1</span>, tot = <span class="number">1</span>; </span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> c, <span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> p = last, tp = ++tot; last = tp; w[tp] = o[x]; </span><br><span class="line">  a[tp].len = a[p].len + <span class="number">1</span>; siz[tot] = <span class="number">1</span>; </span><br><span class="line">  <span class="keyword">for</span>(; p &amp;&amp; !a[p].ch[c]; p = a[p].fa) </span><br><span class="line">    a[p].ch[c] = tp; </span><br><span class="line">  <span class="keyword">if</span>(!p) &#123;</span><br><span class="line">    a[tp].fa = <span class="number">1</span>; </span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">int</span> q = a[p].ch[c]; </span><br><span class="line">    <span class="keyword">if</span>(a[q].len == a[p].len + <span class="number">1</span>) &#123;</span><br><span class="line">      a[tp].fa = q; </span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">int</span> cl = ++tot; a[cl] = a[q]; </span><br><span class="line">      a[cl].len = a[p].len + <span class="number">1</span>; </span><br><span class="line">      a[q].fa = a[tp].fa = cl; </span><br><span class="line">      <span class="keyword">for</span>(; p &amp;&amp; a[p].ch[c] == q; p = a[p].fa)</span><br><span class="line">        a[p].ch[c] = cl; </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> pre)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(siz[u] == <span class="number">1</span>) &#123;</span><br><span class="line">    mx[u] = mn[u] = w[u]; </span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span>(edge *p = h[u]; p; p = p-&gt;next) &#123;</span><br><span class="line">    <span class="keyword">int</span> v = p-&gt;v; <span class="keyword">if</span>(v == pre) <span class="keyword">continue</span> ; </span><br><span class="line">    dep[v] = dep[u] + <span class="number">1</span>; </span><br><span class="line">    dfs(v, u); </span><br><span class="line">    <span class="keyword">if</span>(mx[u] != INF &amp;&amp; mn[u] != INF)</span><br><span class="line">      ans2[a[u].len] = max(ans2[a[u].len], max(<span class="number">1l</span>l * mx[u] * mx[v], <span class="number">1l</span>l * mn[u] * mn[v])); </span><br><span class="line">    ans1[a[u].len] += <span class="number">1l</span>l * siz[u] * siz[v]; </span><br><span class="line">    siz[u] += siz[v]; </span><br><span class="line">    mx[u] = max(mx[u], mx[v]); </span><br><span class="line">    mn[u] = min(mn[u], mn[v]); </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n); <span class="built_in">scanf</span>(<span class="string">"%s"</span>, s + <span class="number">1</span>); </span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= n; i++) ans1[i] = <span class="number">0</span>, ans2[i] = -(ll)<span class="number">9e18</span>; </span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;o[i]); </span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = n; i &gt;= <span class="number">1</span>; i--) add(s[i] - <span class="string">'a'</span>, i); </span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= tot; i++) </span><br><span class="line">    mx[i] = -INF, mn[i] = INF; </span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= tot; i++) addedge(a[i].fa, i); </span><br><span class="line">  dep[<span class="number">1</span>] = <span class="number">1</span>, dfs(<span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) </span><br><span class="line">    ans1[i] += ans1[i + <span class="number">1</span>], </span><br><span class="line">    ans2[i] = max(ans2[i], ans2[i + <span class="number">1</span>]); </span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span>(ans1[i] == <span class="number">0</span>) ans2[i] = <span class="number">0</span>; </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%lld %lld\n"</span>, ans1[i], ans2[i]); </span><br><span class="line">  &#125; </span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives">Articles</a></li>
+         
+          <li><a href="/Links">Links</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Description"><span class="toc-number">1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Solution"><span class="toc-number">2.</span> <span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Code"><span class="toc-number">3.</span> <span class="toc-text">Code</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/05/03/BZOJ4199/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/05/03/BZOJ4199/&text=BZOJ4199 「NOI2015」品酒大会"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/05/03/BZOJ4199/&title=BZOJ4199 「NOI2015」品酒大会"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/05/03/BZOJ4199/&is_video=false&description=BZOJ4199 「NOI2015」品酒大会"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=BZOJ4199 「NOI2015」品酒大会&body=Check out this article: http://yoursite.com/2019/05/03/BZOJ4199/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/05/03/BZOJ4199/&title=BZOJ4199 「NOI2015」品酒大会"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/05/03/BZOJ4199/&title=BZOJ4199 「NOI2015」品酒大会"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/05/03/BZOJ4199/&title=BZOJ4199 「NOI2015」品酒大会"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/05/03/BZOJ4199/&title=BZOJ4199 「NOI2015」品酒大会"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/05/03/BZOJ4199/&name=BZOJ4199 「NOI2015」品酒大会&description=&lt;h1 id=&#34;Description&#34;&gt;&lt;a href=&#34;#Description&#34; class=&#34;headerlink&#34; title=&#34;Description&#34;&gt;&lt;/a&gt;Description&lt;/h1&gt;&lt;p&gt;给定字符串 $s$ ，和每个位置上的权值 $a_i$。对于每一个 $i \in [0, n)$ 求出有多少对 $(i, j)$  满足 $LCP(sa_i, sa_j) \ge i$ 以及在这些 $(i, j)$ 中 $a_i \times a_j$  最大是多少。$sa_i$ 表示从 $i$ 开始的后缀。&lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 AcFunction
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives">Articles</a></li>
+         
+          <li><a href="/Links">Links</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>

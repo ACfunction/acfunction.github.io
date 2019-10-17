@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Description$n$ 个数的序列，每次询问一个区间，求最小的一个数使得不能用这个区间中的数之和表示。 $n \leq 10^5, \sum a_i \leq 10^9$">
+<meta name="keywords" content="主席树">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LOJ2174 「FJOI2016」神秘数">
+<meta property="og:url" content="http://yoursite.com/2019/01/17/LOJ2174/index.html">
+<meta property="og:site_name" content="AcF&#39;s Blog">
+<meta property="og:description" content="Description$n$ 个数的序列，每次询问一个区间，求最小的一个数使得不能用这个区间中的数之和表示。 $n \leq 10^5, \sum a_i \leq 10^9$">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-01-17T13:49:08.370Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LOJ2174 「FJOI2016」神秘数">
+<meta name="twitter:description" content="Description$n$ 个数的序列，每次询问一个区间，求最小的一个数使得不能用这个区间中的数之和表示。 $n \leq 10^5, \sum a_i \leq 10^9$">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>LOJ2174 「FJOI2016」神秘数</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">    
+      <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives">Articles</a></li>
+         
+          <li><a href="/Links">Links</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/01/20/BZOJ2653/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/01/14/bzoj3529/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/01/17/LOJ2174/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/01/17/LOJ2174/&text=LOJ2174 「FJOI2016」神秘数"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/01/17/LOJ2174/&title=LOJ2174 「FJOI2016」神秘数"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/01/17/LOJ2174/&is_video=false&description=LOJ2174 「FJOI2016」神秘数"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=LOJ2174 「FJOI2016」神秘数&body=Check out this article: http://yoursite.com/2019/01/17/LOJ2174/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/01/17/LOJ2174/&title=LOJ2174 「FJOI2016」神秘数"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/01/17/LOJ2174/&title=LOJ2174 「FJOI2016」神秘数"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/01/17/LOJ2174/&title=LOJ2174 「FJOI2016」神秘数"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/01/17/LOJ2174/&title=LOJ2174 「FJOI2016」神秘数"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/01/17/LOJ2174/&name=LOJ2174 「FJOI2016」神秘数&description=&lt;hr&gt;
+&lt;h1 id=&#34;Description&#34;&gt;&lt;a href=&#34;#Description&#34; class=&#34;headerlink&#34; title=&#34;Description&#34;&gt;&lt;/a&gt;Description&lt;/h1&gt;&lt;p&gt;$n$ 个数的序列，每次询问一个区间，求最小的一个数使得不能用这个区间中的数之和表示。&lt;/p&gt;
+&lt;p&gt;$n \leq 10^5, \sum a_i \leq 10^9$&lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Description"><span class="toc-number">1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Solution"><span class="toc-number">2.</span> <span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Code"><span class="toc-number">3.</span> <span class="toc-text">Code</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        LOJ2174 「FJOI2016」神秘数
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+        <span itemprop="name">AcF's Blog</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-01-17T08:32:40.000Z" itemprop="datePublished">2019-01-17</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/题解/">题解</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/主席树/">主席树</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <hr>
+<h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>$n$ 个数的序列，每次询问一个区间，求最小的一个数使得不能用这个区间中的数之和表示。</p>
+<p>$n \leq 10^5, \sum a_i \leq 10^9$</p>
+<a id="more"></a>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p><del>第一次用数组写数据结构真短啊</del></p>
+<p>考虑只有一次询问怎么做</p>
+<p>把给定的区间内的数排序，从小到大扫一遍。</p>
+<p>如果一个数比他之前的数之和至少大了 $1$ ，那么答案就是和 + 1</p>
+<p>否则就可以把$[1,\text{前缀和}]$ 都表示出来（感性理解很容易）</p>
+<p>这道题怎么做也就显然了起来。只需要用主席树维护区间中小于等于某个数的数之和即可。流程如下</p>
+<p>当前答案是 $a$，令 $S$ 是区间中 $\leq a$ 的数之和  </p>
+<ol>
+<li>如果 $S &lt; a$ 则 $a$ 就是最后的答案</li>
+<li>否则 让 $a = S+1$ 然后重复此操作</li>
+</ol>
+<p>最开始的时候 $a=1$</p>
+<p>这样做的话 $a$ 每次都会翻一倍，所以最后的总复杂度是  $O(m \log n \log \sum a_i)$</p>
+<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">50000500</span>; </span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> L = <span class="number">1000000000</span>; </span><br><span class="line"><span class="keyword">int</span> n, m, a[N], cnt; </span><br><span class="line"><span class="keyword">int</span> root[N], ch[N][<span class="number">2</span>]; ll sum[N]; </span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">I</span> <span class="params">(<span class="keyword">int</span> pre, <span class="keyword">int</span> now, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">  ch[now][<span class="number">0</span>] = ch[pre][<span class="number">0</span>], ch[now][<span class="number">1</span>] = ch[pre][<span class="number">1</span>]; </span><br><span class="line">  <span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>; sum[now] = sum[pre] + val; <span class="keyword">if</span>(l == r) <span class="keyword">return</span> ; </span><br><span class="line">  <span class="keyword">if</span>(val &lt;= mid) ch[now][<span class="number">0</span>] = ++cnt, I(ch[pre][<span class="number">0</span>], ch[now][<span class="number">0</span>], l, mid, val);</span><br><span class="line">  <span class="keyword">else</span> ch[now][<span class="number">1</span>] = ++cnt, I(ch[pre][<span class="number">1</span>], ch[now][<span class="number">1</span>], mid + <span class="number">1</span>, r, val); </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">Q</span><span class="params">(<span class="keyword">int</span> pre, <span class="keyword">int</span> now, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(l == r) <span class="keyword">return</span> sum[now] - sum[pre]; <span class="keyword">int</span> mid = (l + r) / <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">if</span>(val &lt;= mid) <span class="keyword">return</span> Q(ch[pre][<span class="number">0</span>], ch[now][<span class="number">0</span>], l, mid, val);</span><br><span class="line">  <span class="keyword">else</span> <span class="keyword">return</span> sum[ch[now][<span class="number">0</span>]] - sum[ch[pre][<span class="number">0</span>]] + Q(ch[pre][<span class="number">1</span>], ch[now][<span class="number">1</span>], mid + <span class="number">1</span>, r, val); </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;a[i]); root[i] = ++cnt; </span><br><span class="line">    I(root[i - <span class="number">1</span>], root[i], <span class="number">1</span>, L, a[i]); </span><br><span class="line">  &#125; <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;m); </span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++) &#123;</span><br><span class="line">    <span class="keyword">int</span> l, r; <span class="built_in">scanf</span>(<span class="string">"%d %d"</span>, &amp;l, &amp;r); </span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">1</span>; </span><br><span class="line">    <span class="keyword">int</span> S; <span class="keyword">while</span>(<span class="number">1</span>) &#123;</span><br><span class="line">      S = Q(root[l - <span class="number">1</span>], root[r], <span class="number">1</span>, L, ans); </span><br><span class="line">      <span class="keyword">if</span>(S &lt; ans) &#123; <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans); <span class="keyword">break</span> ; &#125;</span><br><span class="line">      <span class="keyword">else</span> ans = S + <span class="number">1</span>; </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives">Articles</a></li>
+         
+          <li><a href="/Links">Links</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Description"><span class="toc-number">1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Solution"><span class="toc-number">2.</span> <span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Code"><span class="toc-number">3.</span> <span class="toc-text">Code</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/01/17/LOJ2174/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/01/17/LOJ2174/&text=LOJ2174 「FJOI2016」神秘数"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/01/17/LOJ2174/&title=LOJ2174 「FJOI2016」神秘数"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/01/17/LOJ2174/&is_video=false&description=LOJ2174 「FJOI2016」神秘数"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=LOJ2174 「FJOI2016」神秘数&body=Check out this article: http://yoursite.com/2019/01/17/LOJ2174/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/01/17/LOJ2174/&title=LOJ2174 「FJOI2016」神秘数"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/01/17/LOJ2174/&title=LOJ2174 「FJOI2016」神秘数"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/01/17/LOJ2174/&title=LOJ2174 「FJOI2016」神秘数"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/01/17/LOJ2174/&title=LOJ2174 「FJOI2016」神秘数"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/01/17/LOJ2174/&name=LOJ2174 「FJOI2016」神秘数&description=&lt;hr&gt;
+&lt;h1 id=&#34;Description&#34;&gt;&lt;a href=&#34;#Description&#34; class=&#34;headerlink&#34; title=&#34;Description&#34;&gt;&lt;/a&gt;Description&lt;/h1&gt;&lt;p&gt;$n$ 个数的序列，每次询问一个区间，求最小的一个数使得不能用这个区间中的数之和表示。&lt;/p&gt;
+&lt;p&gt;$n \leq 10^5, \sum a_i \leq 10^9$&lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 AcFunction
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives">Articles</a></li>
+         
+          <li><a href="/Links">Links</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>

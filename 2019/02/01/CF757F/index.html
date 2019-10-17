@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Description一个 $n$ 个点 $m$ 条边的无向图，给出起点 $S$ 。求删除掉一个不是 $S$ 的点后最多能改变多少个点到 $S$ 的最短路。输出这个最大值。 $n \leq 200000, m \leq \min(\frac{n(n-1)}{2},300000)$">
+<meta name="keywords" content="支配树,倍增,LCA">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CF757F Team Rocket Rises Again">
+<meta property="og:url" content="http://yoursite.com/2019/02/01/CF757F/index.html">
+<meta property="og:site_name" content="AcF&#39;s Blog">
+<meta property="og:description" content="Description一个 $n$ 个点 $m$ 条边的无向图，给出起点 $S$ 。求删除掉一个不是 $S$ 的点后最多能改变多少个点到 $S$ 的最短路。输出这个最大值。 $n \leq 200000, m \leq \min(\frac{n(n-1)}{2},300000)$">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-02-01T12:15:18.513Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CF757F Team Rocket Rises Again">
+<meta name="twitter:description" content="Description一个 $n$ 个点 $m$ 条边的无向图，给出起点 $S$ 。求删除掉一个不是 $S$ 的点后最多能改变多少个点到 $S$ 的最短路。输出这个最大值。 $n \leq 200000, m \leq \min(\frac{n(n-1)}{2},300000)$">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>CF757F Team Rocket Rises Again</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">    
+      <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives">Articles</a></li>
+         
+          <li><a href="/Links">Links</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/02/02/Cloud-Player-Rescue-Plan/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/01/23/Red-And-Blue-Eye/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/02/01/CF757F/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/02/01/CF757F/&text=CF757F Team Rocket Rises Again"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/02/01/CF757F/&title=CF757F Team Rocket Rises Again"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/02/01/CF757F/&is_video=false&description=CF757F Team Rocket Rises Again"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=CF757F Team Rocket Rises Again&body=Check out this article: http://yoursite.com/2019/02/01/CF757F/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/02/01/CF757F/&title=CF757F Team Rocket Rises Again"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/02/01/CF757F/&title=CF757F Team Rocket Rises Again"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/02/01/CF757F/&title=CF757F Team Rocket Rises Again"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/02/01/CF757F/&title=CF757F Team Rocket Rises Again"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/02/01/CF757F/&name=CF757F Team Rocket Rises Again&description=&lt;hr&gt;
+&lt;h1 id=&#34;Description&#34;&gt;&lt;a href=&#34;#Description&#34; class=&#34;headerlink&#34; title=&#34;Description&#34;&gt;&lt;/a&gt;Description&lt;/h1&gt;&lt;p&gt;一个 $n$ 个点 $m$ 条边的无向图，给出起点 $S$ 。求删除掉一个不是 $S$ 的点后最多能改变多少个点到 $S$ 的最短路。输出这个最大值。&lt;/p&gt;
+&lt;p&gt;$n \leq 200000, m \leq \min(\frac{n(n-1)}{2},300000)$ &lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Description"><span class="toc-number">1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Solution"><span class="toc-number">2.</span> <span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Code"><span class="toc-number">3.</span> <span class="toc-text">Code</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        CF757F Team Rocket Rises Again
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+        <span itemprop="name">AcF's Blog</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-02-01T11:41:04.000Z" itemprop="datePublished">2019-02-01</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/题解/">题解</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/LCA/">LCA</a>, <a class="tag-link" href="/tags/倍增/">倍增</a>, <a class="tag-link" href="/tags/支配树/">支配树</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <hr>
+<h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>一个 $n$ 个点 $m$ 条边的无向图，给出起点 $S$ 。求删除掉一个不是 $S$ 的点后最多能改变多少个点到 $S$ 的最短路。输出这个最大值。</p>
+<p>$n \leq 200000, m \leq \min(\frac{n(n-1)}{2},300000)$ </p>
+<a id="more"></a>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>在飞机上写的题解 2333</p>
+<p>定义 $d_u$ 是 $S$ 到 $u$ 的最短路；最短路 DAG 为所有有向边 $(u,v)$ 满足 $d_u+w(u,v)=d_v$ 组成的 DAG .</p>
+<p>那么显然删这个 DAG 上的点才是对答案有贡献的。</p>
+<p>考虑如何求出删完一个点会使得有多少个点的最短路有改变。</p>
+<p>把这个 DAG 的支配树建出来然后对于一个点它在支配树上的子树大小就是答案。</p>
+<p>注：支配树是啥？</p>
+<p>在一个有向图中有一个节点是 $S$ ；对于节点 $u$ 从 $S$ 到 $u$ 上的路径必到的点称之为 $u$ 的支配点</p>
+<p>对于每一个 $u$ ，从离他最近的一个点向他连一条边。这些边组成的便是原图的支配树。其中 $S$ 为根节点</p>
+<p>对于一个 DAG 如何建出他的支配树？即对于一个点怎么求出离他最近的支配点？</p>
+<p>可以考虑用拓扑排序的顺序更新。对于节点 $u$ ，它的所有前驱在支配树上的 LCA便是它在支配树上的父亲；即离他最近的支配点。</p>
+<p>这个过程需要维护的就是 加点 和 维护 LCA 。可以用倍增用 $O(n \log n)$ 的时间复杂度解决</p>
+<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long <span class="comment">// don't think I use int ! </span></span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">300300</span>; </span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = (<span class="keyword">int</span>)<span class="number">4e18</span>; </span><br><span class="line"><span class="keyword">int</span> n, m, S, dis[N], U[N], V[N], W[N], ind[N], fa[N][<span class="number">25</span>], dep[N], siz[N]; </span><br><span class="line"><span class="built_in">vector</span> &lt;<span class="keyword">int</span>&gt; g[N]; </span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span> &#123;</span></span><br><span class="line">  <span class="keyword">int</span> v, w; edge *next; </span><br><span class="line">&#125; *h1[N], *h2[N], *h3[N], pool[N * <span class="number">6</span>], *cur = pool; </span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add1</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v, <span class="keyword">int</span> w)</span> </span>&#123;</span><br><span class="line">  edge *p = cur++; p-&gt;w = w; </span><br><span class="line">  p-&gt;v = v, p-&gt;next = h1[u], h1[u] = p; </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add2</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">  edge *p = cur++;</span><br><span class="line">  p-&gt;v = v, p-&gt;next = h2[u], h2[u] = p; </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add3</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">  edge *p = cur++;</span><br><span class="line">  p-&gt;v = v, p-&gt;next = h3[u], h3[u] = p; </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> f)</span> </span>&#123;</span><br><span class="line">  fa[x][<span class="number">0</span>] = f;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">20</span>; i++)</span><br><span class="line">    fa[x][i] = fa[fa[x][i - <span class="number">1</span>]][i - <span class="number">1</span>]; </span><br><span class="line">  dep[x] = dep[f] + <span class="number">1</span>; </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">LCA</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(dep[u] &lt; dep[v]) swap(u, v); </span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">20</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">    <span class="keyword">if</span>(dep[fa[u][i]] &gt;= dep[v] &amp;&amp; fa[u][i])</span><br><span class="line">      u = fa[u][i]; </span><br><span class="line">  <span class="keyword">if</span>(u == v) <span class="keyword">return</span> u; </span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">20</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">    <span class="keyword">if</span>(fa[u][i] != fa[v][i])</span><br><span class="line">      u = fa[u][i], v = fa[v][i];</span><br><span class="line">  <span class="keyword">return</span> fa[u][<span class="number">0</span>]; </span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span> &#123;</span></span><br><span class="line">  <span class="keyword">int</span> d, id; </span><br><span class="line">  <span class="keyword">inline</span> <span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (<span class="keyword">const</span> node &amp;x) <span class="keyword">const</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> d &gt; x.d; </span><br><span class="line">  &#125;</span><br><span class="line">&#125; tmp; </span><br><span class="line">priority_queue &lt;node&gt; Q; </span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">dijkstra</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    dis[i] = INF;</span><br><span class="line">  tmp.id = S, tmp.d = <span class="number">0</span>; Q.push(tmp); dis[S] = <span class="number">0</span>; </span><br><span class="line">  <span class="keyword">while</span>(!Q.empty()) &#123;</span><br><span class="line">    tmp = Q.top(); Q.pop();</span><br><span class="line">    <span class="keyword">int</span> u = tmp.id;</span><br><span class="line">    <span class="keyword">if</span>(dis[u] &lt; tmp.d) <span class="keyword">continue</span> ; </span><br><span class="line">    <span class="keyword">for</span>(edge *p = h1[u]; p; p = p-&gt;next) &#123;</span><br><span class="line">      <span class="keyword">int</span> v = p-&gt;v; </span><br><span class="line">      <span class="keyword">if</span>(dis[v] &gt; dis[u] + p-&gt;w) &#123;</span><br><span class="line">        dis[v] = dis[u] + p-&gt;w; </span><br><span class="line">        tmp.id = v, tmp.d = dis[v];</span><br><span class="line">        Q.push(tmp); </span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> pre)</span> </span>&#123;</span><br><span class="line">  siz[u] = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span>(edge *p = h3[u]; p; p = p-&gt;next) &#123;</span><br><span class="line">    <span class="keyword">int</span> v = p-&gt;v; <span class="keyword">if</span>(v == pre) <span class="keyword">continue</span> ; </span><br><span class="line">    dfs(v, u); siz[u] += siz[v]; </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="built_in">scanf</span>(<span class="string">"%lld %lld %lld"</span>, &amp;n, &amp;m, &amp;S);</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++) &#123;</span><br><span class="line">    <span class="keyword">int</span> u, v, w;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%lld %lld %lld"</span>, &amp;u, &amp;v, &amp;w); </span><br><span class="line">    U[i] = u, V[i] = v, W[i] = w; </span><br><span class="line">    add1(u, v, w), add1(v, u, w); </span><br><span class="line">  &#125;</span><br><span class="line">  dijkstra(); </span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span>(dis[U[i]] == dis[V[i]] + W[i])</span><br><span class="line">      add2(V[i], U[i]), ind[U[i]]++, g[U[i]].push_back(V[i]);</span><br><span class="line">    <span class="keyword">if</span>(dis[V[i]] == dis[U[i]] + W[i])</span><br><span class="line">      add2(U[i], V[i]), ind[V[i]]++, g[V[i]].push_back(U[i]); </span><br><span class="line">  &#125; <span class="built_in">queue</span> &lt;<span class="keyword">int</span>&gt; Q; Q.push(S); dep[S] = <span class="number">1</span>; </span><br><span class="line">  <span class="keyword">while</span>(!Q.empty()) &#123;</span><br><span class="line">    <span class="keyword">int</span> u = Q.front(); Q.pop();</span><br><span class="line">    <span class="comment">// printf("%d\n", u); </span></span><br><span class="line">    <span class="keyword">if</span>(g[u].size()) &#123;</span><br><span class="line">      <span class="keyword">int</span> lca = g[u][<span class="number">0</span>];</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; g[u].size(); i++) &#123;</span><br><span class="line">       <span class="comment">// printf("%d\n", g[u][i]); </span></span><br><span class="line">        lca = LCA(g[u][i], lca);</span><br><span class="line">      &#125; </span><br><span class="line">      add(u, lca); add3(lca, u); </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(edge *p = h2[u]; p; p = p-&gt;next) &#123;</span><br><span class="line">      <span class="keyword">int</span> v = p-&gt;v; ind[v]--;</span><br><span class="line">      <span class="keyword">if</span>(ind[v] == <span class="number">0</span>) Q.push(v); </span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">int</span> ans = <span class="number">0</span>;  </span><br><span class="line">  dfs(S, <span class="number">0</span>); </span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">    <span class="keyword">if</span>(i != S) ans = max(ans, siz[i]); </span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, ans); </span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives">Articles</a></li>
+         
+          <li><a href="/Links">Links</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Description"><span class="toc-number">1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Solution"><span class="toc-number">2.</span> <span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Code"><span class="toc-number">3.</span> <span class="toc-text">Code</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/02/01/CF757F/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/02/01/CF757F/&text=CF757F Team Rocket Rises Again"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/02/01/CF757F/&title=CF757F Team Rocket Rises Again"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/02/01/CF757F/&is_video=false&description=CF757F Team Rocket Rises Again"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=CF757F Team Rocket Rises Again&body=Check out this article: http://yoursite.com/2019/02/01/CF757F/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/02/01/CF757F/&title=CF757F Team Rocket Rises Again"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/02/01/CF757F/&title=CF757F Team Rocket Rises Again"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/02/01/CF757F/&title=CF757F Team Rocket Rises Again"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/02/01/CF757F/&title=CF757F Team Rocket Rises Again"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/02/01/CF757F/&name=CF757F Team Rocket Rises Again&description=&lt;hr&gt;
+&lt;h1 id=&#34;Description&#34;&gt;&lt;a href=&#34;#Description&#34; class=&#34;headerlink&#34; title=&#34;Description&#34;&gt;&lt;/a&gt;Description&lt;/h1&gt;&lt;p&gt;一个 $n$ 个点 $m$ 条边的无向图，给出起点 $S$ 。求删除掉一个不是 $S$ 的点后最多能改变多少个点到 $S$ 的最短路。输出这个最大值。&lt;/p&gt;
+&lt;p&gt;$n \leq 200000, m \leq \min(\frac{n(n-1)}{2},300000)$ &lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 AcFunction
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives">Articles</a></li>
+         
+          <li><a href="/Links">Links</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>

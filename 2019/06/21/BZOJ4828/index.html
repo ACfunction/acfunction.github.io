@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Description你现在要怼 $m$ 个大佬，第 $i$ 个大佬的自信值是 $C_i$ 。每次怼大佬之前，你的自信值是 $mc$，等级 $L=0$，嘲讽值 $F = 1$。对于每一个大佬，你都有 $n$ 天时间来怼大佬。无论哪个大佬，他们都会在第 $i$ 天使你的的自信值下降 $a_i$ 如果你的自信值为负数，那么你失败了。在第 $i$ 天，你可以干一下事情中的恰好一件：  使得大佬自信值下降">
+<meta name="keywords" content="动态规划,BFS,two pointers">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BZOJ4828 「HNOI2017」大佬">
+<meta property="og:url" content="http://yoursite.com/2019/06/21/BZOJ4828/index.html">
+<meta property="og:site_name" content="AcF&#39;s Blog">
+<meta property="og:description" content="Description你现在要怼 $m$ 个大佬，第 $i$ 个大佬的自信值是 $C_i$ 。每次怼大佬之前，你的自信值是 $mc$，等级 $L=0$，嘲讽值 $F = 1$。对于每一个大佬，你都有 $n$ 天时间来怼大佬。无论哪个大佬，他们都会在第 $i$ 天使你的的自信值下降 $a_i$ 如果你的自信值为负数，那么你失败了。在第 $i$ 天，你可以干一下事情中的恰好一件：  使得大佬自信值下降">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-06-21T11:48:44.227Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="BZOJ4828 「HNOI2017」大佬">
+<meta name="twitter:description" content="Description你现在要怼 $m$ 个大佬，第 $i$ 个大佬的自信值是 $C_i$ 。每次怼大佬之前，你的自信值是 $mc$，等级 $L=0$，嘲讽值 $F = 1$。对于每一个大佬，你都有 $n$ 天时间来怼大佬。无论哪个大佬，他们都会在第 $i$ 天使你的的自信值下降 $a_i$ 如果你的自信值为负数，那么你失败了。在第 $i$ 天，你可以干一下事情中的恰好一件：  使得大佬自信值下降">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>BZOJ4828 「HNOI2017」大佬</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">    
+      <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives">Articles</a></li>
+         
+          <li><a href="/Links">Links</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/07/07/CF848C/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/06/21/BZOJ4784/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/06/21/BZOJ4828/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/06/21/BZOJ4828/&text=BZOJ4828 「HNOI2017」大佬"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/06/21/BZOJ4828/&title=BZOJ4828 「HNOI2017」大佬"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/06/21/BZOJ4828/&is_video=false&description=BZOJ4828 「HNOI2017」大佬"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=BZOJ4828 「HNOI2017」大佬&body=Check out this article: http://yoursite.com/2019/06/21/BZOJ4828/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/06/21/BZOJ4828/&title=BZOJ4828 「HNOI2017」大佬"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/06/21/BZOJ4828/&title=BZOJ4828 「HNOI2017」大佬"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/06/21/BZOJ4828/&title=BZOJ4828 「HNOI2017」大佬"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/06/21/BZOJ4828/&title=BZOJ4828 「HNOI2017」大佬"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/06/21/BZOJ4828/&name=BZOJ4828 「HNOI2017」大佬&description=&lt;h1 id=&#34;Description&#34;&gt;&lt;a href=&#34;#Description&#34; class=&#34;headerlink&#34; title=&#34;Description&#34;&gt;&lt;/a&gt;Description&lt;/h1&gt;&lt;p&gt;你现在要怼 $m$ 个大佬，第 $i$ 个大佬的自信值是 $C_i$ 。每次怼大佬之前，你的自信值是 $mc$，等级 $L=0$，嘲讽值 $F = 1$。对于每一个大佬，你都有 $n$ 天时间来怼大佬。无论哪个大佬，他们都会在第 $i$ 天使你的的自信值下降 $a_i$ 如果你的自信值为负数，那么你失败了。在第 $i$ 天，你可以干一下事情中的恰好一件：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;使得大佬自信值下降 $1$&lt;/li&gt;
+&lt;li&gt;使得自己的自信值增加 $w_i$ &lt;/li&gt;
+&lt;li&gt;把自己的等级 $+1$ &lt;/li&gt;
+&lt;li&gt;把自己的 $F$ 乘上 $L$&lt;/li&gt;
+&lt;li&gt;怼大佬，使得大佬的自信值下降 $F$，之后$L=0$  ，$F=1$&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;如果中途大佬自信值为负数，你失败了。若大佬自信值恰好为 $0​$ ，则你成功了。&lt;/p&gt;
+&lt;p&gt;对于每个大佬求你能否成功。&lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Description"><span class="toc-number">1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Solution"><span class="toc-number">2.</span> <span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Code"><span class="toc-number">3.</span> <span class="toc-text">Code</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        BZOJ4828 「HNOI2017」大佬
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+        <span itemprop="name">AcF's Blog</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-06-21T10:34:44.000Z" itemprop="datePublished">2019-06-21</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/题解/">题解</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/BFS/">BFS</a>, <a class="tag-link" href="/tags/two-pointers/">two pointers</a>, <a class="tag-link" href="/tags/动态规划/">动态规划</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>你现在要怼 $m$ 个大佬，第 $i$ 个大佬的自信值是 $C_i$ 。每次怼大佬之前，你的自信值是 $mc$，等级 $L=0$，嘲讽值 $F = 1$。对于每一个大佬，你都有 $n$ 天时间来怼大佬。无论哪个大佬，他们都会在第 $i$ 天使你的的自信值下降 $a_i$ 如果你的自信值为负数，那么你失败了。在第 $i$ 天，你可以干一下事情中的恰好一件：</p>
+<ol>
+<li>使得大佬自信值下降 $1$</li>
+<li>使得自己的自信值增加 $w_i$ </li>
+<li>把自己的等级 $+1$ </li>
+<li>把自己的 $F$ 乘上 $L$</li>
+<li>怼大佬，使得大佬的自信值下降 $F$，之后$L=0$  ，$F=1$</li>
+</ol>
+<p>如果中途大佬自信值为负数，你失败了。若大佬自信值恰好为 $0​$ ，则你成功了。</p>
+<p>对于每个大佬求你能否成功。</p>
+<a id="more"></a>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>首先，可以发现，怼大佬和活下来两件事是互相独立的。并且怼大佬只与天数相关。显然天数越多越有可能。</p>
+<p>所以先用一遍简单 dp 得出最多能剩下多少天来怼大佬并且保证自己活下来。设最多天数是 $D$ 。</p>
+<p>然后用一遍 BFS 的出所有二元组 $(d, f)$ 表示用了 $d(&lt;D)$  天并且此时 $F = f$ 。注意去重。</p>
+<p>你能怼死大佬有三种情况：</p>
+<ol>
+<li>不怼大佬。只执行 $1$ 操作。此时需要满足 $C_i \leq D$ </li>
+<li>只怼一次大佬。这时能怼死大佬需要满足存在一个二元组 $(d’,f’)$ 使得 $f’ \leq C_i$ 并且 $f’+D - d \ge C_i$ （一次不能怼死，用 $1$ 操作耗死）</li>
+<li>怼两次。可以发现，若两次分别是 $(d_1,f_1), (d_2, f_2)$ 则类似于第二种情况，有 $f_1+f_2\leq C_i$ 并且 $f_1+f_2+(D-d_1-d_2) \ge C_i$ 。显然，对于一个 $f_i$ ，只有最小的那个 $d_i$ 才是最优的。所以我们对每个 $f$  只保存最小的 $d$ ，并且按照 $f$ 排序。由于需要满足$f_1+f_2\leq C_i$， 就可以直接用双指针扫一遍，中途判断是否存在 $f_1+f_2+(D-d_1-d_2) \ge C_i$ 即可。</li>
+</ol>
+<p>由于 $f$ 增长的很快，导致二元组不会特别多，于是可以通过此题。</p>
+<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Author: AcFunction</span></span><br><span class="line"><span class="comment"> * Date:   2019-06-21 14:35:24</span></span><br><span class="line"><span class="comment"> * Email:  3486942970@qq.com</span></span><br><span class="line"><span class="comment">**/</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PII pair <span class="meta-string">&lt;int, int&gt; </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fi first </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> se second </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MP make_pair</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">105</span>; </span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> NN = (<span class="keyword">int</span>)<span class="number">3e6</span> + <span class="number">10</span>; </span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = (<span class="keyword">int</span>)<span class="number">1e9</span>; </span><br><span class="line"> </span><br><span class="line"><span class="keyword">int</span> n, m, mc, mxc, cnt, tot; </span><br><span class="line"><span class="keyword">int</span> a[N], w[N], dp[N][N], D, C[<span class="number">22</span>]; </span><br><span class="line"> </span><br><span class="line">pair &lt;<span class="keyword">int</span>, PII&gt; Q[NN]; </span><br><span class="line">PII A[NN], B[NN]; </span><br><span class="line"><span class="built_in">map</span> &lt;PII, <span class="keyword">int</span>&gt; mp; </span><br><span class="line"><span class="built_in">map</span> &lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; mmp; </span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getday</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j = a[i]; j &lt;= mc; j++) &#123;</span><br><span class="line">      dp[i][j - a[i]] = max(dp[i][j - a[i]], dp[i - <span class="number">1</span>][j] + <span class="number">1</span>); </span><br><span class="line">      <span class="keyword">int</span> t = min(j - a[i] + w[i], mc); </span><br><span class="line">      dp[i][t] = max(dp[i][t], dp[i - <span class="number">1</span>][j]); </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= mc; j++)</span><br><span class="line">      D = max(D, dp[i][j]); </span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getst</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> h = <span class="number">1</span>, t = <span class="number">0</span>;</span><br><span class="line">  <span class="comment">// fi : day</span></span><br><span class="line">  <span class="comment">// se.fi : level</span></span><br><span class="line">  <span class="comment">// se.se : att</span></span><br><span class="line">  Q[++t] = MP(<span class="number">1</span>, MP(<span class="number">0</span>, <span class="number">1</span>)); </span><br><span class="line">  mp[MP(<span class="number">1</span>, <span class="number">1</span>)] = <span class="number">1</span>; </span><br><span class="line">  <span class="keyword">while</span>(h &lt;= t) &#123;</span><br><span class="line">    pair &lt;<span class="keyword">int</span>, PII&gt; tmp = Q[h++]; </span><br><span class="line">    <span class="keyword">if</span>(tmp.fi &gt;= D) <span class="keyword">continue</span> ; </span><br><span class="line">    <span class="keyword">int</span> d = tmp.fi, l = tmp.se.fi, f = tmp.se.se;</span><br><span class="line">    Q[++t] = MP(d + <span class="number">1</span>, MP(l + <span class="number">1</span>, f)); </span><br><span class="line">    mp[MP(d + <span class="number">1</span>, f)] = <span class="number">1</span>; </span><br><span class="line">    <span class="keyword">if</span>(l &gt; <span class="number">1</span> &amp;&amp; <span class="number">1l</span>l * l * f &lt;= mxc &amp;&amp; !mp[MP(d + <span class="number">1</span>, l * f)]) &#123;</span><br><span class="line">      <span class="keyword">int</span> nf = l * f; </span><br><span class="line">      Q[++t] = MP(d + <span class="number">1</span>, MP(l, nf)); </span><br><span class="line">      mp[MP(d + <span class="number">1</span>, nf)] = <span class="number">1</span>; A[++cnt] = MP(d + <span class="number">1</span>, nf); </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(PII a, PII b)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a.se == b.se ? a.fi &lt; b.fi : a.se &lt; b.se; </span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="built_in">scanf</span>(<span class="string">"%d %d %d"</span>, &amp;n, &amp;m, &amp;mc); </span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;a[i]); </span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;w[i]); </span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++) &#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;C[i]); </span><br><span class="line">    mxc = max(mxc, C[i]); </span><br><span class="line">  &#125;</span><br><span class="line">  getday(); </span><br><span class="line">  getst(); </span><br><span class="line">  sort(A + <span class="number">1</span>, A + cnt + <span class="number">1</span>, cmp); </span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= cnt; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span>(!mmp[A[i].se]) &#123;</span><br><span class="line">      mmp[A[i].se] = <span class="number">1</span>; </span><br><span class="line">      B[++tot] = A[i]; </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> _ = <span class="number">1</span>; _ &lt;= m; _++) &#123;</span><br><span class="line">    <span class="keyword">if</span>(C[_] &lt;= D) &#123;</span><br><span class="line">      <span class="built_in">puts</span>(<span class="string">"1"</span>); </span><br><span class="line">      <span class="keyword">continue</span> ; </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> ok = <span class="number">0</span>, pos = <span class="number">1</span>; </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = tot; i &gt;= <span class="number">1</span>; i--) &#123;</span><br><span class="line">      <span class="keyword">int</span> d = B[i].fi, f = B[i].se;</span><br><span class="line">      <span class="keyword">if</span>(f &lt;= C[_] &amp;&amp; D - d + f &gt;= C[_]) &#123;</span><br><span class="line">        ok = <span class="number">1</span>; <span class="keyword">break</span> ; </span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">int</span> mx = -INF; </span><br><span class="line">      <span class="keyword">while</span>(pos &lt;= tot &amp;&amp; f + B[pos].se &lt;= C[_]) &#123;</span><br><span class="line">        mx = max(mx, B[pos].se - B[pos].fi); pos++; </span><br><span class="line">      &#125; </span><br><span class="line">      <span class="keyword">if</span>(f - d + mx &gt;= C[_] - D) &#123;</span><br><span class="line">        ok = <span class="number">1</span>; <span class="keyword">break</span> ; </span><br><span class="line">      &#125; </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ok); </span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives">Articles</a></li>
+         
+          <li><a href="/Links">Links</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Description"><span class="toc-number">1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Solution"><span class="toc-number">2.</span> <span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Code"><span class="toc-number">3.</span> <span class="toc-text">Code</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/06/21/BZOJ4828/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/06/21/BZOJ4828/&text=BZOJ4828 「HNOI2017」大佬"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/06/21/BZOJ4828/&title=BZOJ4828 「HNOI2017」大佬"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/06/21/BZOJ4828/&is_video=false&description=BZOJ4828 「HNOI2017」大佬"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=BZOJ4828 「HNOI2017」大佬&body=Check out this article: http://yoursite.com/2019/06/21/BZOJ4828/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/06/21/BZOJ4828/&title=BZOJ4828 「HNOI2017」大佬"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/06/21/BZOJ4828/&title=BZOJ4828 「HNOI2017」大佬"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/06/21/BZOJ4828/&title=BZOJ4828 「HNOI2017」大佬"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/06/21/BZOJ4828/&title=BZOJ4828 「HNOI2017」大佬"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/06/21/BZOJ4828/&name=BZOJ4828 「HNOI2017」大佬&description=&lt;h1 id=&#34;Description&#34;&gt;&lt;a href=&#34;#Description&#34; class=&#34;headerlink&#34; title=&#34;Description&#34;&gt;&lt;/a&gt;Description&lt;/h1&gt;&lt;p&gt;你现在要怼 $m$ 个大佬，第 $i$ 个大佬的自信值是 $C_i$ 。每次怼大佬之前，你的自信值是 $mc$，等级 $L=0$，嘲讽值 $F = 1$。对于每一个大佬，你都有 $n$ 天时间来怼大佬。无论哪个大佬，他们都会在第 $i$ 天使你的的自信值下降 $a_i$ 如果你的自信值为负数，那么你失败了。在第 $i$ 天，你可以干一下事情中的恰好一件：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;使得大佬自信值下降 $1$&lt;/li&gt;
+&lt;li&gt;使得自己的自信值增加 $w_i$ &lt;/li&gt;
+&lt;li&gt;把自己的等级 $+1$ &lt;/li&gt;
+&lt;li&gt;把自己的 $F$ 乘上 $L$&lt;/li&gt;
+&lt;li&gt;怼大佬，使得大佬的自信值下降 $F$，之后$L=0$  ，$F=1$&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;如果中途大佬自信值为负数，你失败了。若大佬自信值恰好为 $0​$ ，则你成功了。&lt;/p&gt;
+&lt;p&gt;对于每个大佬求你能否成功。&lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 AcFunction
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives">Articles</a></li>
+         
+          <li><a href="/Links">Links</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>

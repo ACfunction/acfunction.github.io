@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Description给一个长度为 $n$ 的序列 $a_i$ 和一个数 $k$ 。现在把 $a$ 序列重复 $k$ 次生成一个数列 $b$ ，然后从第一位开始往一个栈中加入 $b_i$ 。如果这个栈里存在元素与 $b_i$ 相等那么一直 $\text{pop}$ 直到把那个数弹掉然后不加入新数；否则 $\text{push}$ $b_i$ 入栈。求全部操作完之后栈中的元素。 数据范围：$n \l">
+<meta name="keywords" content="思维题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「AGC036B」Do Not Duplicate">
+<meta property="og:url" content="http://yoursite.com/2019/09/06/AGC036B/index.html">
+<meta property="og:site_name" content="AcF&#39;s Blog">
+<meta property="og:description" content="Description给一个长度为 $n$ 的序列 $a_i$ 和一个数 $k$ 。现在把 $a$ 序列重复 $k$ 次生成一个数列 $b$ ，然后从第一位开始往一个栈中加入 $b_i$ 。如果这个栈里存在元素与 $b_i$ 相等那么一直 $\text{pop}$ 直到把那个数弹掉然后不加入新数；否则 $\text{push}$ $b_i$ 入栈。求全部操作完之后栈中的元素。 数据范围：$n \l">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-17T12:47:00.003Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="「AGC036B」Do Not Duplicate">
+<meta name="twitter:description" content="Description给一个长度为 $n$ 的序列 $a_i$ 和一个数 $k$ 。现在把 $a$ 序列重复 $k$ 次生成一个数列 $b$ ，然后从第一位开始往一个栈中加入 $b_i$ 。如果这个栈里存在元素与 $b_i$ 相等那么一直 $\text{pop}$ 直到把那个数弹掉然后不加入新数；否则 $\text{push}$ $b_i$ 入栈。求全部操作完之后栈中的元素。 数据范围：$n \l">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>「AGC036B」Do Not Duplicate</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss --><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">    
+      <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives">Articles</a></li>
+         
+          <li><a href="/Links">Links</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2019/09/06/AGC037B/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/09/06/AGC036B/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/09/06/AGC036B/&text=「AGC036B」Do Not Duplicate"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/09/06/AGC036B/&title=「AGC036B」Do Not Duplicate"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/09/06/AGC036B/&is_video=false&description=「AGC036B」Do Not Duplicate"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=「AGC036B」Do Not Duplicate&body=Check out this article: http://yoursite.com/2019/09/06/AGC036B/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/09/06/AGC036B/&title=「AGC036B」Do Not Duplicate"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/09/06/AGC036B/&title=「AGC036B」Do Not Duplicate"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/09/06/AGC036B/&title=「AGC036B」Do Not Duplicate"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/09/06/AGC036B/&title=「AGC036B」Do Not Duplicate"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/09/06/AGC036B/&name=「AGC036B」Do Not Duplicate&description=&lt;h1 id=&#34;Description&#34;&gt;&lt;a href=&#34;#Description&#34; class=&#34;headerlink&#34; title=&#34;Description&#34;&gt;&lt;/a&gt;Description&lt;/h1&gt;&lt;p&gt;给一个长度为 $n$ 的序列 $a_i$ 和一个数 $k$ 。现在把 $a$ 序列重复 $k$ 次生成一个数列 $b$ ，然后从第一位开始往一个栈中加入 $b_i$ 。如果这个栈里存在元素与 $b_i$ 相等那么一直 $\text{pop}$ 直到把那个数弹掉然后不加入新数；否则 $\text{push}$ $b_i$ 入栈。求全部操作完之后栈中的元素。&lt;/p&gt;
+&lt;p&gt;数据范围：$n \leq 2 \times 10^5, k \leq 10^{12}, a_i \leq 2 \times 10^5$   &lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Description"><span class="toc-number">1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Solution"><span class="toc-number">2.</span> <span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Code"><span class="toc-number">3.</span> <span class="toc-text">Code</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        「AGC036B」Do Not Duplicate
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+        <span itemprop="name">AcF's Blog</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-09-06T12:48:10.000Z" itemprop="datePublished">2019-09-06</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/题解/">题解</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/思维题/">思维题</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>给一个长度为 $n$ 的序列 $a_i$ 和一个数 $k$ 。现在把 $a$ 序列重复 $k$ 次生成一个数列 $b$ ，然后从第一位开始往一个栈中加入 $b_i$ 。如果这个栈里存在元素与 $b_i$ 相等那么一直 $\text{pop}$ 直到把那个数弹掉然后不加入新数；否则 $\text{push}$ $b_i$ 入栈。求全部操作完之后栈中的元素。</p>
+<p>数据范围：$n \leq 2 \times 10^5, k \leq 10^{12}, a_i \leq 2 \times 10^5$   </p>
+<a id="more"></a>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>把 $a_i$ 排在一个圆周上，定义 $nxt_i = j$ 表示沿着顺时针方向第一个 $j$ 使得 $a_i=a_j$ 。</p>
+<p>可以发现，假设目前栈中第一个元素是 $a_x = y$ ，那么下一次这个栈被整体清空是加入了<br>$nxt_x$ 之后。特别的，如果 $nxt_x = x$ ，那么就是再加一遍整个 $a_i$ 之后再次清空。</p>
+<p>自然地可以想象 $x$ 向 $nxt_x +1$ 加一条边，表示 $x$ 之后下一个第一个下标会是 $nxt_x + 1$。这样的得到的图会形成一个一个环。也就是说，加了若干次 $a$ 后，全部都被清空，回到原点，也就是循环节。</p>
+<p>我们可以把 $k$ 模上循环节，然后再对余下的不完整的部分直接模拟跳环的过程。如果一个时刻所加的数总数超出了 $k$ 就直接能够模拟一遍得到答案。</p>
+<p>由于最后跳环每次最多会跳出去 $n+1$ 个点，并且循环节长度不会超过 $n(n+1)$ ，所以最后最多跳 $n$ 次以及统计答案时最多只需要考虑 $n$ 个点。所以时间复杂度为 $O(n)$ </p>
+<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Author: AcFunction</span></span><br><span class="line"><span class="comment"> * Date:   2019-09-04 21:48:14</span></span><br><span class="line"><span class="comment"> * Email:  3486942970@qq.com</span></span><br><span class="line"><span class="comment">**/</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ull unsigned long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> db double</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ldb long double </span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fi first</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> se second</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MP make_pair</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pii pair <span class="meta-string">&lt;int, int&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pil pair <span class="meta-string">&lt;int, ll&gt; </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pli pair <span class="meta-string">&lt;ll, int&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pll pair <span class="meta-string">&lt;ll, ll&gt;  </span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> All(x) x.begin(), x.end()</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pb push_back</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pf push_front</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ms0(x) memset(x, 0, sizeof(x))</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ms1(x) memset(x, -1, sizeof(x))</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> oiu cerr &lt;&lt; <span class="meta-string">"Yes!"</span> &lt;&lt; endl; </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> O(x) cerr &lt;&lt; #x &lt;&lt; <span class="meta-string">": "</span> &lt;&lt; x &lt;&lt; endl;  </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="function"><span class="keyword">void</span> <span class="title">printarr</span><span class="params">(T a[], <span class="keyword">int</span> b, <span class="keyword">int</span> e)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(b &gt; e) <span class="keyword">return</span> ; </span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = b; i &lt; e; i++) <span class="built_in">cout</span> &lt;&lt; a[i] &lt;&lt; <span class="string">" "</span>; </span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; a[e] &lt;&lt; <span class="string">" "</span> &lt;&lt; <span class="built_in">endl</span>; </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="function"><span class="keyword">int</span> <span class="title">chkmax</span><span class="params">(T &amp;x, <span class="keyword">const</span> T &amp;y)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x &lt; y ? x = y, <span class="number">1</span> : <span class="number">0</span>; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="function"><span class="keyword">int</span> <span class="title">chkmin</span><span class="params">(T &amp;x, <span class="keyword">const</span> T &amp;y)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x &gt; y ? x = y, <span class="number">1</span> : <span class="number">0</span>; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">5001000</span>; </span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">int</span> nxt[N], fir[N], pos[N], a[N], ans[N], cnt, len[N];</span><br><span class="line">ll k;  </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="built_in">scanf</span>(<span class="string">"%d %lld"</span>, &amp;n, &amp;k); k *= n; </span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;a[i]); </span><br><span class="line">    <span class="keyword">if</span>(!fir[a[i]]) &#123;</span><br><span class="line">      fir[a[i]] = i;</span><br><span class="line">      pos[a[i]] = i;  </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">      nxt[pos[a[i]]] = i; </span><br><span class="line">      pos[a[i]] = i;  </span><br><span class="line">    &#125;</span><br><span class="line">    nxt[i] = fir[a[i]]; </span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span>(nxt[i] &gt; i) &#123;</span><br><span class="line">      len[i] = nxt[i] - i + <span class="number">1</span>; </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> len[i] = n - (i - nxt[i] - <span class="number">1</span>); </span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">int</span> u = <span class="number">1</span>; ll num = <span class="number">0</span>; </span><br><span class="line">  <span class="keyword">while</span>(<span class="number">1</span>) &#123;</span><br><span class="line">    num += len[u]; </span><br><span class="line">    u = nxt[u] + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(u &gt; n) u -= n;  </span><br><span class="line">    <span class="keyword">if</span>(u == <span class="number">1</span>) <span class="keyword">break</span> ; </span><br><span class="line">  &#125;</span><br><span class="line">  k = k % num; </span><br><span class="line">  <span class="keyword">if</span>(!k) <span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">  u = <span class="number">1</span>; num = <span class="number">0</span>; </span><br><span class="line">  <span class="comment">// k *= n; </span></span><br><span class="line">  <span class="keyword">while</span>(<span class="number">1</span>) &#123;</span><br><span class="line">    num += len[u];</span><br><span class="line">    <span class="keyword">if</span>(num &gt;= k) &#123;</span><br><span class="line">      num -= len[u]; </span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> j = u; j &lt;= u + k - num - <span class="number">1</span>; j++) &#123;</span><br><span class="line">        <span class="keyword">int</span> t = j; <span class="keyword">if</span>(t &gt; n) t -= n; </span><br><span class="line">        ans[++cnt] = a[t]; </span><br><span class="line">      &#125; </span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= cnt; i++) </span><br><span class="line">        pos[ans[i]] = fir[ans[i]] = nxt[i] = <span class="number">0</span>; </span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= cnt; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(!fir[ans[i]]) &#123;</span><br><span class="line">          fir[ans[i]] = i;</span><br><span class="line">          pos[ans[i]] = i;  </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">          nxt[pos[ans[i]]] = i;   </span><br><span class="line">          pos[ans[i]] = i;  </span><br><span class="line">        &#125;</span><br><span class="line">        nxt[i] = fir[ans[i]]; </span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">int</span> p = <span class="number">1</span>; </span><br><span class="line">      <span class="keyword">while</span>(p &lt;= cnt) &#123;</span><br><span class="line">        <span class="keyword">if</span>(nxt[p] &gt; p) &#123;</span><br><span class="line">          p = nxt[p] + <span class="number">1</span>; </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="built_in">printf</span>(<span class="string">"%d "</span>, ans[p]); </span><br><span class="line">          p++; </span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">    &#125;</span><br><span class="line">    u = nxt[u] + <span class="number">1</span>; </span><br><span class="line">    <span class="keyword">if</span>(u &gt; n) u -= n; </span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives">Articles</a></li>
+         
+          <li><a href="/Links">Links</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Description"><span class="toc-number">1.</span> <span class="toc-text">Description</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Solution"><span class="toc-number">2.</span> <span class="toc-text">Solution</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Code"><span class="toc-number">3.</span> <span class="toc-text">Code</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/09/06/AGC036B/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/09/06/AGC036B/&text=「AGC036B」Do Not Duplicate"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/09/06/AGC036B/&title=「AGC036B」Do Not Duplicate"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/09/06/AGC036B/&is_video=false&description=「AGC036B」Do Not Duplicate"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=「AGC036B」Do Not Duplicate&body=Check out this article: http://yoursite.com/2019/09/06/AGC036B/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/09/06/AGC036B/&title=「AGC036B」Do Not Duplicate"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/09/06/AGC036B/&title=「AGC036B」Do Not Duplicate"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/09/06/AGC036B/&title=「AGC036B」Do Not Duplicate"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/09/06/AGC036B/&title=「AGC036B」Do Not Duplicate"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/09/06/AGC036B/&name=「AGC036B」Do Not Duplicate&description=&lt;h1 id=&#34;Description&#34;&gt;&lt;a href=&#34;#Description&#34; class=&#34;headerlink&#34; title=&#34;Description&#34;&gt;&lt;/a&gt;Description&lt;/h1&gt;&lt;p&gt;给一个长度为 $n$ 的序列 $a_i$ 和一个数 $k$ 。现在把 $a$ 序列重复 $k$ 次生成一个数列 $b$ ，然后从第一位开始往一个栈中加入 $b_i$ 。如果这个栈里存在元素与 $b_i$ 相等那么一直 $\text{pop}$ 直到把那个数弹掉然后不加入新数；否则 $\text{push}$ $b_i$ 入栈。求全部操作完之后栈中的元素。&lt;/p&gt;
+&lt;p&gt;数据范围：$n \leq 2 \times 10^5, k \leq 10^{12}, a_i \leq 2 \times 10^5$   &lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 AcFunction
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives">Articles</a></li>
+         
+          <li><a href="/Links">Links</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>

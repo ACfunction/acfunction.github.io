@@ -58,9 +58,9 @@
       <category term="题解" scheme="http://yoursite.com/categories/%E9%A2%98%E8%A7%A3/"/>
     
     
-      <category term="贪心" scheme="http://yoursite.com/tags/%E8%B4%AA%E5%BF%83/"/>
-    
       <category term="思维题" scheme="http://yoursite.com/tags/%E6%80%9D%E7%BB%B4%E9%A2%98/"/>
+    
+      <category term="贪心" scheme="http://yoursite.com/tags/%E8%B4%AA%E5%BF%83/"/>
     
   </entry>
   
